@@ -4,6 +4,7 @@
 
 ### Starting the server standalone locally
 cd server
+
 ./gradlew bootRun
 
 or open the server project in the ide of your chouce and run
