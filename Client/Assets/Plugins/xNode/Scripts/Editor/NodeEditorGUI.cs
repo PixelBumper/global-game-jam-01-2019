@@ -15,7 +15,7 @@ namespace XNodeEditor {
         /// <summary> Executed after all other window GUI. Useful if Zoom is ruining your day. Automatically resets after being run.</summary>
         public event Action onLateGUI;
 
-        private string _searchText = "Search";
+        private string _searchText = string.Empty;
         private Rect contextWindowRect;
         private Vector2 contextMenuMousePos;
 
