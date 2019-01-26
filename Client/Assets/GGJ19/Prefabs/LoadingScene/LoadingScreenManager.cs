@@ -8,7 +8,7 @@ public class LoadingScreenManager : MonoBehaviour
 {
     public string ReadyRoomSceneName;
 
-    void Awake()
+    void Start()
     {
         GameLogicManager.instance.onRoomInfoChanged.AddListener(onRoomInfoChange);
     }

@@ -22,7 +22,7 @@ public class ReadyRoomManager : MonoBehaviour
     // From Server
     private string[] _knownPlayerIds;
 
-    private void Awake()
+    private void Start()
     {
         // Set Room Text
         roomIdDisplayField.text = "Room ID: " + GameLogicManager.instance.serverRoomName.Value;
