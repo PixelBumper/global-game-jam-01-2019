@@ -32,6 +32,8 @@ namespace GGJ19.Scripts.GameLogic
         private Playing currentPlayingState;
         private Room currentRoomState;
 
+        private long lastVersionReceived = long.MinValue;
+
         private void Awake()
         {
             myPlayerId.Value = PlayerId;
@@ -39,6 +41,16 @@ namespace GGJ19.Scripts.GameLogic
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
+            if (playingState != null)
+            {
+                if (playingState.Version < lastVersionReceived)
+                {
+                    return;
+                }
+
+                lastVersionReceived = playingState.Version;
+            }
+            
             previousPlayingState = currentPlayingState;
             currentPlayingState = playingState;
 
@@ -74,7 +86,5 @@ namespace GGJ19.Scripts.GameLogic
             Playing  playing = roomInfo.Playing;
             Room room = roomInfo.Waiting;
         }
-
-
     }
 }
