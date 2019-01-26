@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using GeneratedServerAPI;
 using HalfBlind.ScriptableVariables;
 using UnityEditor;
@@ -57,13 +56,13 @@ namespace GGJ19.Scripts.GameLogic
         private void Awake()
         {
             myPlayerId.Value = PlayerId;
-            allThreats = new RoleThreat[6] {
+            allThreats = new[] {
                 (RoleThreat)threat1.GetValue(),
                 (RoleThreat)threat2.GetValue(),
                 (RoleThreat)threat3.GetValue(),
                 (RoleThreat)threat4.GetValue(),
                 (RoleThreat)threat5.GetValue(),
-                (RoleThreat)threat5.GetValue()
+                (RoleThreat)threat6.GetValue()
             };
         }
 
