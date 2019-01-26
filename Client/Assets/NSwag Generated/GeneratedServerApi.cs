@@ -42,26 +42,26 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string playerId, string roomName)
+        public System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId)
         {
-            return StartRoomAsync(playerId, roomName, System.Threading.CancellationToken.None);
+            return StartRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string playerId, string roomName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
         {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/start-room?");
-            if (playerId != null) 
-            {
-                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (roomName != null) 
-            {
-                urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
             var client_ = _httpClient;
@@ -118,25 +118,29 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? seed)
         {
-            return CreateRoomAsync(playerId, possibleThreats, System.Threading.CancellationToken.None);
+            return CreateRoomAsync(playerId, possibleThreats, seed, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? seed, System.Threading.CancellationToken cancellationToken)
         {
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
+            if (possibleThreats == null)
+                throw new System.ArgumentNullException("possibleThreats");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/create-room?");
-            if (playerId != null) 
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("possibleThreats=").Append(System.Uri.EscapeDataString(ConvertToString(possibleThreats, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (seed != null) 
             {
-                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (possibleThreats != null) 
-            {
-                urlBuilder_.Append("possibleThreats=").Append(System.Uri.EscapeDataString(ConvertToString(possibleThreats, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append("seed=").Append(System.Uri.EscapeDataString(ConvertToString(seed, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
     
@@ -194,26 +198,26 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string playerId, string roomName)
+        public System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId)
         {
-            return JoinRoomAsync(playerId, roomName, System.Threading.CancellationToken.None);
+            return JoinRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string playerId, string roomName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
         {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/join-room?");
-            if (playerId != null) 
-            {
-                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (roomName != null) 
-            {
-                urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
             var client_ = _httpClient;
@@ -280,12 +284,12 @@ namespace GeneratedServerAPI
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         public async System.Threading.Tasks.Task<RoomInformation> RoomInformationAsync(string roomName, System.Threading.CancellationToken cancellationToken)
         {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/room-information?");
-            if (roomName != null) 
-            {
-                urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
             var client_ = _httpClient;
@@ -327,6 +331,138 @@ namespace GeneratedServerAPI
                                 throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
                             }
                         }
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task SendEmojisAsync(string roomName, string playerId, string emojis)
+        {
+            return SendEmojisAsync(roomName, playerId, emojis, System.Threading.CancellationToken.None);
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task SendEmojisAsync(string roomName, string playerId, string emojis, System.Threading.CancellationToken cancellationToken)
+        {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
+            if (emojis == null)
+                throw new System.ArgumentNullException("emojis");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/send-emojis?");
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("emojis=").Append(System.Uri.EscapeDataString(ConvertToString(emojis, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task SetRoleAsync(string roomName, string playerId, string role)
+        {
+            return SetRoleAsync(roomName, playerId, role, System.Threading.CancellationToken.None);
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task SetRoleAsync(string roomName, string playerId, string role, System.Threading.CancellationToken cancellationToken)
+        {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
+            if (role == null)
+                throw new System.ArgumentNullException("role");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/set-role?");
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("role=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
                     }
                     finally
                     {
