@@ -150,9 +150,7 @@ namespace XNodeEditor {
         public static bool OnOpen(int instanceID, int line) {
             XNode.INodeGraph nodeGraph = EditorUtility.InstanceIDToObject(instanceID) as XNode.INodeGraph;
             if (nodeGraph != null) {
-                NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "xNode", true) as NodeEditorWindow;
-                w.wantsMouseMove = true;
-                w.graph = nodeGraph;
+                OpenWithGraph(nodeGraph);
                 return true;
             }
             return false;
@@ -169,7 +167,7 @@ namespace XNodeEditor {
 
         public static void OpenWithGraph(XNode.INodeGraph nodeGraph) {
             if (nodeGraph != null) {
-                NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "xNode", false) as NodeEditorWindow;
+                NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "xNode", true) as NodeEditorWindow;
                 w.wantsMouseMove = true;
                 w.graph = nodeGraph;
             }
