@@ -17,11 +17,23 @@ MonoBehaviour:
   onEmojisChanged: {fileID: 11400000, guid: d5c127dbe4f3a49049f038eb8e417dc7, type: 2}
   onSelectableRoleDisabledChanged: {fileID: 11400000, guid: 0a9d5eabe14924db9ba2d3b6183174c8,
     type: 2}
-  onFailedThreatsChanged: {fileID: 0}
   onThreatsChanged: {fileID: 11400000, guid: e8b4aa66c7c8f43109c2ae3ff1455637, type: 2}
   onTurnChanged: {fileID: 11400000, guid: f98759b72b47d4dccb7a481cdfca786b, type: 2}
   onGameWon: {fileID: 11400000, guid: 5342016a276d64cfbb5d676e7f2a2a87, type: 2}
   onGameLost: {fileID: 11400000, guid: ae605b5bd17ed42578fb64884780edd0, type: 2}
+  player1Id: {fileID: 11400000, guid: 000c04a07d08a418b96afadc95365b53, type: 2}
+  player2Id: {fileID: 11400000, guid: 38d64fb050e264779862007447babc0a, type: 2}
+  player3Id: {fileID: 11400000, guid: 70d682553436e4f5b8032ed4b27a4a5e, type: 2}
+  player4Id: {fileID: 11400000, guid: 8dd048412d67a44f1bf3d3ad71f18754, type: 2}
+  lengthOfTurnInSeconds: {fileID: 11400000, guid: 0f0f32ce4977b46edb3cfd5cebfec55e,
+    type: 2}
+  amountOfTurns: {fileID: 11400000, guid: ddc856121055d45548ca10f74f48f82a, type: 2}
   onRoomInfoChanged: {fileID: 11400000, guid: 7e9702d846771458291603862cde1a33, type: 2}
+  threat1: {fileID: 11400000, guid: 140528c7cf99542b28c1e8a400a35185, type: 2}
+  threat2: {fileID: 11400000, guid: 7f7d17f02073d4a95a3a298e7eaa490c, type: 2}
+  threat3: {fileID: 11400000, guid: 450454b051a28410cbcfca979369ae26, type: 2}
+  threat4: {fileID: 11400000, guid: 00307ee5c048949d683b95f411078cb1, type: 2}
+  threat5: {fileID: 11400000, guid: a926a0b287a344bd69cee4461a2ad57f, type: 2}
+  threat6: {fileID: 11400000, guid: e9cf655fe808c4447b8adae71416fc4f, type: 2}
   serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
   myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
