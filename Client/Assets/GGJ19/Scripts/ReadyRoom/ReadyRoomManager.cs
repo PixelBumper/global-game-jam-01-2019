@@ -28,17 +28,15 @@ public class ReadyRoomManager : MonoBehaviour
         roomIdDisplayField.text = "Room ID: " + GameLogicManager.instance.serverRoomName.Value;
         initKnownPlayers();
         initPlayerDisplays();
-
         FAKE_SetVarsFromServer();
-        requestRoomInformation();
+        GameLogicManager.instance.onPlayerCountChanged.AddListener(onPlayerNumberUpdate);
+        InvokeRepeating("requestRoomInformation", 0, GameLogicManager.instance.serverPollTimeMs.Value / 1000f);
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            roomInformationResponse();
-        }
+        CancelInvoke();
+        GameLogicManager.instance.onPlayerCountChanged.RemoveListener(onPlayerNumberUpdate);
     }
 
     private void FAKE_SetVarsFromServer()
@@ -72,12 +70,12 @@ public class ReadyRoomManager : MonoBehaviour
         {
             if (string.IsNullOrEmpty(id))
             {
-                Invoke("requestRoomInformation", GameLogicManager.instance.serverPollTimeMs.Value);
                 return;
             }
         }
 
         // ALL PLAYERS FOUND! READY TO START!!!
+        CancelInvoke();
         Invoke("StartGame", 2000);
     }
 
@@ -85,13 +83,11 @@ public class ReadyRoomManager : MonoBehaviour
 
     private void requestRoomInformation()
     {
-
+        GameLogicManager.instance.SendRoomInfoRequest();
     }
 
-    private void roomInformationResponse()
+    private void onPlayerNumberUpdate()
     {
-
-        // Dispatch Updates
         updateKnownPlayers();
         checkForGameStart();
     }

@@ -47,7 +47,7 @@ public class SendCreateRoomMessage : FlowNode
             Debug.Log(playerId);
             if (!string.IsNullOrEmpty(threatString) && !string.IsNullOrEmpty(playerId))
             {
-                Debug.Log("Yes!");
+                Debug.Log("Sending Create Room Request");
                 var serverApi = ServerApi.Instance;
                 Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, threatString, null, null, null);
                 GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
@@ -55,7 +55,7 @@ public class SendCreateRoomMessage : FlowNode
         }
         catch (Exception e)
         {
-            Debug.Log(string.Format("Caught Error: {0} : {1}", e.Message, e.StackTrace));
+            GameLogicManager.instance.LogException(e);
         }
     }
 }
