@@ -118,7 +118,7 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? roundLengthInSeconds, long? seed)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed)
         {
             return CreateRoomAsync(playerId, possibleThreats, roundLengthInSeconds, seed, System.Threading.CancellationToken.None);
         }
@@ -126,7 +126,7 @@ namespace GeneratedServerAPI
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
         {
             if (playerId == null)
                 throw new System.ArgumentNullException("playerId");
@@ -591,6 +591,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Version { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("forbiddenRoles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.IDictionary<string, RoleThreat> ForbiddenRoles { get; set; }
     
@@ -598,10 +601,10 @@ namespace GeneratedServerAPI
         public System.Collections.Generic.IDictionary<string, RoleThreat> PlayedPlayerRoles { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojis", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, Emoji> PlayerEmojis { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<Emoji>> PlayerEmojis { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojisHistory", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<Emoji>> PlayerEmojisHistory { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<System.Collections.Generic.ICollection<Emoji>>> PlayerEmojisHistory { get; set; }
     
         [Newtonsoft.Json.JsonProperty("lastFailedThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> LastFailedThreats { get; set; }
