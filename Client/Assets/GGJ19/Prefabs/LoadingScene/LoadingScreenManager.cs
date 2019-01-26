@@ -10,6 +10,7 @@ public class LoadingScreenManager : MonoBehaviour
 
     void Start()
     {
+        GameLogicManager.instance.ResetGameVars();
         GameLogicManager.instance.onRoomInfoChanged.AddListener(onRoomInfoChange);
     }
 

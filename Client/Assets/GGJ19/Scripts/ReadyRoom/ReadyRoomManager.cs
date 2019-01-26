@@ -28,7 +28,7 @@ public class ReadyRoomManager : MonoBehaviour
         roomIdDisplayField.text = "Room ID: " + GameLogicManager.instance.serverRoomName.Value;
         initKnownPlayers();
         initPlayerDisplays();
-        FAKE_SetVarsFromServer();
+        updateKnownPlayers();
         GameLogicManager.instance.onPlayerCountChanged.AddListener(onPlayerNumberUpdate);
         InvokeRepeating("requestRoomInformation", 0, GameLogicManager.instance.serverPollTimeMs.Value / 1000f);
     }
@@ -37,11 +37,6 @@ public class ReadyRoomManager : MonoBehaviour
     {
         CancelInvoke();
         GameLogicManager.instance.onPlayerCountChanged.RemoveListener(onPlayerNumberUpdate);
-    }
-
-    private void FAKE_SetVarsFromServer()
-    {
-        _knownPlayerIds = new string[] { "", "Andy", "", "Frank" };
     }
 
     private void initPlayerDisplays()
@@ -65,7 +60,7 @@ public class ReadyRoomManager : MonoBehaviour
 
         for(int i = 0; i < _knownPlayerIds.Length; i++)
         {
-
+            Debug.Log(GameLogicManager.instance.PlayerId + "   ======      " + _knownPlayerIds[i]);
             bool isMyPlayer = GameLogicManager.instance.PlayerId != null && 
                 GameLogicManager.instance.PlayerId == _knownPlayerIds[i];
 
