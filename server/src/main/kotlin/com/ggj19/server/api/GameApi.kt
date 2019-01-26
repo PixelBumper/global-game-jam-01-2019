@@ -1,6 +1,7 @@
 package com.ggj19.server.api
 
 import com.ggj19.server.clock.Clock
+import com.ggj19.server.dtos.Emoji
 import com.ggj19.server.dtos.PlayerId
 import com.ggj19.server.dtos.RoleThreat
 import com.ggj19.server.dtos.RoomInformation
@@ -46,7 +47,6 @@ class GameApi(
     @NotNull @QueryParam("playerId") playerId: PlayerId
   ): RoomInformation {
     val room = getRoom(roomName)
-    val newRoom: RoomState
 
     when (room) {
       is Playing -> throw ClientErrorException("Game has already started", 422)
@@ -60,29 +60,30 @@ class GameApi(
         val maxPossibleAmount = minOf(room.players.size, room.possibleThreats.size)
         val numberOfThreats = maxOf(1, randomGenerator.nextInt(maxPossibleAmount))
 
-        newRoom = Playing(
+        val newRoom = Playing(
             players = room.players,
             possibleThreats = room.possibleThreats,
+            roundLengthInSeconds = room.roundLengthInSeconds,
+            version = 1,
             forbiddenRoles = emptyMap(),
+            playedPlayerRoles = emptyMap(),
+            playerEmojis = emptyMap(),
+            playerEmojisHistory = emptyMap(),
             lastFailedThreats = emptyList(),
             openThreats = randomGenerator.randomElements(room.possibleThreats, numberOfThreats),
             roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
             currentRoundState = COMMUNICATION_PHASE,
             currentRoundNumber = 0,
-            maxRoundNumber = 5 + randomGenerator.nextInt(10),
-            playedPlayerRoles = mapOf(),
-            playerEmojis = mapOf(),
-            gameWon = false,
-                playerEmojisHistory = mapOf()
+            maxRoundNumber = 5 + randomGenerator.nextInt(10)
         )
 
         synchronized(rooms) {
           rooms[roomName] = newRoom
         }
+
+        return newRoom.asRoomInformation()
       }
     }
-
-    return newRoom.asRoomInformation()
   }
 
   @GET
@@ -91,27 +92,26 @@ class GameApi(
   fun createRoom(
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("possibleThreats") possibleThreats: String,
-    @QueryParam("roundLengthInSeconds") roundLengthInSeconds: Int?,
+    @QueryParam("roundLengthInSeconds") roundLengthInSeconds: Long?,
     @QueryParam("seed") seed: Long?
   ): Room {
     val encodedPossibleThreats = possibleThreats.split(',')
+        .filterNot { it.isBlank() }
         .map { RoleThreat(it.trim()) }
     if (encodedPossibleThreats.size < 5) throw ClientErrorException("Not allowed to create a room with less than 5 possible threats", 422)
-
-    // TODO roundLengthInSeconds ?: 10
 
     // For the Game Jam we will assume we won't clash and override a room with the same name.
     val randomGenerator: RandomGenerator = DefaultRandomGenerator(seed)
     val roomName = RoomName(randomGenerator.generateRoomName())
     randomGenerators[roomName] = randomGenerator
 
-    val room = RoomState.Room(listOf(playerId), encodedPossibleThreats, roomName, playerId)
+    val nonNullRoundLengthInSeconds = roundLengthInSeconds ?: 10L
+    val room = RoomState.Room(listOf(playerId), encodedPossibleThreats, nonNullRoundLengthInSeconds, roomName, playerId)
 
     synchronized(rooms) {
       rooms[roomName] = room
+      return room
     }
-
-    return room
   }
 
   @GET
@@ -122,14 +122,12 @@ class GameApi(
     @NotNull @QueryParam("playerId") playerId: PlayerId
   ): RoomInformation {
     val room = getRoom(roomName) { if (it.players.contains(playerId)) throw ClientErrorException("You are already part of the room with the name: ${roomName.name}", 422) }
-    val newRoom: RoomState
+    val newRoom = room.copyJoining(playerId)
 
     synchronized(rooms) {
-      newRoom = room.copyJoining(playerId)
       rooms[roomName] = newRoom
+      return newRoom.asRoomInformation()
     }
-
-    return newRoom.asRoomInformation()
   }
 
   @GET
@@ -149,15 +147,22 @@ class GameApi(
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("emojis") emojis: String
   ): RoomInformation {
-    // Fill playerEmojis. Between [1 & 2]
+    val room = getRoom(roomName) {
+      if (it is Room) throw ClientErrorException("Game hasn't started", 422)
+      if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422)
+    }
 
-    getRoom(roomName) { if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422) }
+    val encodedEmojis = emojis.split(',')
+        .filterNot { it.isBlank() }
+        .map { Emoji(it.trim()) }
 
-    val encodedEmojis = emojis.split(',').map { it.trim() }
+    if (encodedEmojis.isEmpty() || encodedEmojis.size > 2) throw ClientErrorException("You must send between one and two Emojis :(", 422)
 
-    if (encodedEmojis.isEmpty()) throw ClientErrorException("You didn't give me any Emojis :(", 422)
-
-    return getRoom(roomName).asRoomInformation()
+    synchronized(rooms) {
+      val new = (room as Playing).copy(version = room.version + 1, playerEmojis = room.playerEmojis.plus(playerId to encodedEmojis))
+      rooms[roomName] = new
+      return new.asRoomInformation()
+    }
   }
 
   @GET
@@ -166,12 +171,20 @@ class GameApi(
   fun setRole(
     @NotNull @QueryParam("roomName") roomName: RoomName,
     @NotNull @QueryParam("playerId") playerId: PlayerId,
-    @NotNull @QueryParam("role") role: String
+    @NotNull @QueryParam("role") role: RoleThreat
   ): RoomInformation {
-    // Fill playedPlayerRoles.
+    val room = getRoom(roomName) {
+      if (it is Room) throw ClientErrorException("Game hasn't started", 422)
+      if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422)
+    }
 
-    getRoom(roomName) { if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422) }
-    return getRoom(roomName).asRoomInformation()
+    if ((room as Playing).playedPlayerRoles.containsKey(playerId)) throw ClientErrorException("Already set a role for this round", 422)
+
+    synchronized(rooms) {
+      val new = room.copy(version = room.version + 1, playedPlayerRoles = room.playedPlayerRoles.plus(playerId to role))
+      rooms[roomName] = new
+      return new.asRoomInformation()
+    }
   }
 
   private inline fun getRoom(roomName: RoomName, validation: (RoomState) -> Unit = { }): RoomState {
@@ -179,10 +192,8 @@ class GameApi(
 
     synchronized(rooms) {
       room = rooms[roomName] ?: throw NotFoundException("Can't find a room with the name: ${roomName.name}")
-
       validation.invoke(room)
+      return room
     }
-
-    return room
   }
 }

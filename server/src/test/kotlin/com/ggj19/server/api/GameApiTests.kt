@@ -1,6 +1,7 @@
 package com.ggj19.server.api
 
 import com.ggj19.server.clock.TestingClock
+import com.ggj19.server.dtos.Emoji
 import com.ggj19.server.dtos.PlayerId
 import com.ggj19.server.dtos.RoleThreat
 import com.ggj19.server.dtos.RoomInformation
@@ -90,7 +91,12 @@ import javax.ws.rs.NotFoundException
     assertThat(gameApi.startRoom(room.name, player1)).isEqualTo(RoomInformation(null, Playing(
         players = room.players,
         possibleThreats = room.possibleThreats,
+        version = 1,
+        roundLengthInSeconds = 10L,
         forbiddenRoles = emptyMap(),
+        playedPlayerRoles = emptyMap(),
+        playerEmojis = emptyMap(),
+        playerEmojisHistory = emptyMap(),
         lastFailedThreats = emptyList(),
         openThreats = listOf(possibleThreatShooter),
         roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
@@ -117,7 +123,12 @@ import javax.ws.rs.NotFoundException
     assertThat(gameApi.startRoom(room.name, player1)).isEqualTo(RoomInformation(null, Playing(
         players = room.players.plus(player2).plus(player3),
         possibleThreats = room.possibleThreats,
+        version = 1,
+        roundLengthInSeconds = 10L,
         forbiddenRoles = emptyMap(),
+        playedPlayerRoles = emptyMap(),
+        playerEmojis = emptyMap(),
+        playerEmojisHistory = emptyMap(),
         lastFailedThreats = emptyList(),
         openThreats = listOf(possibleThreatShooter),
         roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
@@ -127,13 +138,104 @@ import javax.ws.rs.NotFoundException
     )))
   }
 
-  // TODO(nik) sendEmojis
-  // TODO(nik) setRole
+  @Test fun sendEmojisNotStarted() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player2, "eggplant")
+    }.hasMessage("Game hasn't started")
+  }
+
+  @Test fun sendEmojisWrongRoom() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.startRoom(room.name, player1)
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player2, "eggplant")
+    }.hasMessage("You are not part of the room with the name: ${room.name.name}")
+  }
+
+  @Test fun sendEmojisTooFew() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.startRoom(room.name, player1)
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player1, "")
+    }.hasMessage("You must send between one and two Emojis :(")
+  }
+
+  @Test fun sendEmojisTooMany() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.startRoom(room.name, player1)
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player1, "eggplant,apple,foot")
+    }.hasMessage("You must send between one and two Emojis :(")
+  }
+
+  @Test fun sendEmojis() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.joinRoom(room.name, player2)
+    val information = gameApi.startRoom(room.name, player1)
+
+    assertThat(gameApi.sendEmojis(room.name, player1, "eggplant")).isEqualTo(information.copy(playing = information.playing!!.copy(
+        version = 2,
+        playerEmojis = mapOf(player1 to listOf(Emoji("eggplant")))
+    )))
+
+    assertThat(gameApi.sendEmojis(room.name, player2, "eggplant,apple")).isEqualTo(information.copy(playing = information.playing!!.copy(
+        version = 3,
+        playerEmojis = mapOf(player1 to listOf(Emoji("eggplant")), player2 to listOf(Emoji("eggplant"), Emoji("apple")))
+    )))
+  }
+
+  @Test fun setRoleNotStarted() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+
+    assertThrows<ClientErrorException> {
+      gameApi.setRole(room.name, player2, possibleThreatShooter)
+    }.hasMessage("Game hasn't started")
+  }
+
+  @Test fun setRoleWrongRoom() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.startRoom(room.name, player1)
+
+    assertThrows<ClientErrorException> {
+      gameApi.setRole(room.name, player2, possibleThreatShooter)
+    }.hasMessage("You are not part of the room with the name: ${room.name.name}")
+  }
+
+  @Test fun doubleSetRole() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.startRoom(room.name, player1)
+
+    gameApi.setRole(room.name, player1, possibleThreatShooter)
+    assertThrows<ClientErrorException> {
+      gameApi.setRole(room.name, player1, possibleThreatShooter)
+    }.hasMessage("Already set a role for this round")
+  }
+
+  @Test fun setRole() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.joinRoom(room.name, player2)
+    val information = gameApi.startRoom(room.name, player1)
+
+    assertThat(gameApi.setRole(room.name, player1, possibleThreatShooter)).isEqualTo(information.copy(playing = information.playing!!.copy(
+        version = 2,
+        playedPlayerRoles = mapOf(player1 to possibleThreatShooter)
+    )))
+
+    assertThat(gameApi.setRole(room.name, player2, possibleThreatLazy)).isEqualTo(information.copy(playing = information.playing!!.copy(
+        version = 3,
+        playedPlayerRoles = mapOf(player1 to possibleThreatShooter, player2 to possibleThreatLazy)
+    )))
+  }
 
   // TODO(us) should we allow players joining while the game has already started?
 
   private fun createRoom(possibleThreats: String): Room {
-    val room = gameApi.createRoom(player1, possibleThreats, seed = 30L)
+    val room = gameApi.createRoom(player1, possibleThreats, roundLengthInSeconds = 10L, seed = 30L)
 
     assertThat(room).isEqualTo(Room(
         listOf(player1),
@@ -141,6 +243,7 @@ import javax.ws.rs.NotFoundException
             possibleThreatShooter, possibleThreatEngineer, possibleThreatPilot,
             possibleThreatLazy, possibleThreatMusician
         ),
+        10L,
         RoomName("Jim Laucher"),
         player1
     ))
