@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GeneratedServerAPI;
 using HalfBlind.ScriptableVariables;
 using UnityEditor;
@@ -14,7 +15,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onPlayerCountChanged;
         public ScriptableGameEvent onEmojisChanged;
         public ScriptableGameEvent onSelectableRoleDisabledChanged;
-        public ScriptableGameEvent onFailedThreatsChanged;
+        //public ScriptableGameEvent onFailedThreatsChanged;
         public ScriptableGameEvent onThreatsChanged;
         public ScriptableGameEvent onTurnChanged;
         public ScriptableGameEvent onGameWon;
@@ -22,7 +23,18 @@ namespace GGJ19.Scripts.GameLogic
 
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
-        
+
+        [Header("Threats")]
+        public ScriptableVariable threat1;
+        public ScriptableVariable threat2;
+        public ScriptableVariable threat3;
+        public ScriptableVariable threat4;
+        public ScriptableVariable threat5;
+        public ScriptableVariable threat6;
+
+        public RoleThreat[] allThreats;
+        // public List<RoleThreat> easyThreats;  // Add difficulty later
+
         [Header("Room Variables")]
         public GlobalString serverRoomName;
         public GlobalString myPlayerId;
@@ -37,6 +49,14 @@ namespace GGJ19.Scripts.GameLogic
         private void Awake()
         {
             myPlayerId.Value = PlayerId;
+            allThreats = new RoleThreat[6] {
+                (RoleThreat)threat1.GetValue(),
+                (RoleThreat)threat2.GetValue(),
+                (RoleThreat)threat3.GetValue(),
+                (RoleThreat)threat4.GetValue(),
+                (RoleThreat)threat5.GetValue(),
+                (RoleThreat)threat5.GetValue()
+            };
         }
 
         public void UpdateGameState(Playing playingState, Room roomState)
@@ -50,7 +70,7 @@ namespace GGJ19.Scripts.GameLogic
 
                 lastVersionReceived = playingState.Version;
             }
-            
+
             previousPlayingState = currentPlayingState;
             currentPlayingState = playingState;
 
@@ -63,13 +83,13 @@ namespace GGJ19.Scripts.GameLogic
                 onPlayerCountChanged.SendEvent();
                 onEmojisChanged.SendEvent();
                 onSelectableRoleDisabledChanged.SendEvent();
-                onFailedThreatsChanged.SendEvent();
+                //onFailedThreatsChanged.SendEvent();
                 onThreatsChanged.SendEvent();
                 onTurnChanged.SendEvent();
                 onGameWon.SendEvent();
                 onGameLost.SendEvent();
             }
-            
+
             if (previousRoomState != currentRoomState
                 || previousRoomState.Name != currentRoomState.Name
                 || previousRoomState.Owner != currentRoomState.Name
