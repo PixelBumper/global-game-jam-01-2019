@@ -28,9 +28,7 @@ public class ServerApiPlayground: MonoBehaviour
     IEnumerator DispatchRequests()
     {
         var serverApi = ServerApi.Instance;
-        var body2 = new Body2();
-        body2.PlayerId = "wapow";
-        var request = serverApi.CreateRoomPuaszbgAsync(body2);
+        var request = serverApi.CreateRoomAsync("name");
         var awaiter = request.GetAwaiter();
         Debug.Log(awaiter.GetResult().ToJson());
         yield return null;

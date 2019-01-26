@@ -42,28 +42,34 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> StartRoomN1QGQS0Async(Body body)
+        public System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string playerId, string roomName)
         {
-            return StartRoomN1QGQS0Async(body, System.Threading.CancellationToken.None);
+            return StartRoomAsync(playerId, roomName, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> StartRoomN1QGQS0Async(Body body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string playerId, string roomName, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/start-room");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/start-room?");
+            if (playerId != null) 
+            {
+                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (roomName != null) 
+            {
+                urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
     
             var client_ = _httpClient;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -112,28 +118,30 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomPuaszbgAsync(Body2 body)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId)
         {
-            return CreateRoomPuaszbgAsync(body, System.Threading.CancellationToken.None);
+            return CreateRoomAsync(playerId, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomPuaszbgAsync(Body2 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/create-room");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/create-room?");
+            if (playerId != null) 
+            {
+                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
     
             var client_ = _httpClient;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -182,28 +190,34 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> JoinRoomN1QGQS0Async(Body3 body)
+        public System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string playerId, string roomName)
         {
-            return JoinRoomN1QGQS0Async(body, System.Threading.CancellationToken.None);
+            return JoinRoomAsync(playerId, roomName, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomN1QGQS0Async(Body3 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string playerId, string roomName, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/join-room");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/join-room?");
+            if (playerId != null) 
+            {
+                urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (roomName != null) 
+            {
+                urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
     
             var client_ = _httpClient;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -252,15 +266,15 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> RoomInformationKdv5NI0Async(string roomName)
+        public System.Threading.Tasks.Task<RoomInformation> RoomInformationAsync(string roomName)
         {
-            return RoomInformationKdv5NI0Async(roomName, System.Threading.CancellationToken.None);
+            return RoomInformationAsync(roomName, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> RoomInformationKdv5NI0Async(string roomName, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> RoomInformationAsync(string roomName, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/room-information?");
@@ -443,66 +457,6 @@ namespace GeneratedServerAPI
         public static RoomInformation FromJson(string data)
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<RoomInformation>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Body 
-    {
-        [Newtonsoft.Json.JsonProperty("playerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PlayerId { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("roomName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RoomName { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static Body FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Body2 
-    {
-        [Newtonsoft.Json.JsonProperty("playerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PlayerId { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static Body2 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body2>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Body3 
-    {
-        [Newtonsoft.Json.JsonProperty("playerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PlayerId { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("roomName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RoomName { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static Body3 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body3>(data);
         }
     
     }
