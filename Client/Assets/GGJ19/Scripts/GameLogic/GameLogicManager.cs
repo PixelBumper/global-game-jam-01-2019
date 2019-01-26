@@ -1,4 +1,3 @@
-using System.Collections.Specialized;
 using GeneratedServerAPI;
 using HalfBlind.ScriptableVariables;
 using UnityEditor;
@@ -11,6 +10,7 @@ namespace GGJ19.Scripts.GameLogic
     {
         public string PlayerId => SystemInfo.deviceUniqueIdentifier;
 
+        [Header("Game Events")]
         public ScriptableGameEvent onPlayerCountChanged;
         public ScriptableGameEvent onEmojisChanged;
         public ScriptableGameEvent onSelectableRoleDisabledChanged;
@@ -20,12 +20,22 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
 
+        [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
+        
+        [Header("Room Variables")]
+        public GlobalString serverRoomName;
+        public GlobalString myPlayerId;
 
         private Playing previousPlayingState;
         private Room previousRoomState;
         private Playing currentPlayingState;
         private Room currentRoomState;
+
+        private void Awake()
+        {
+            myPlayerId.Value = PlayerId;
+        }
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
@@ -53,6 +63,7 @@ namespace GGJ19.Scripts.GameLogic
                 || previousRoomState.Players.Count != currentRoomState.Players.Count
                 || previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
             {
+                serverRoomName.Value = currentRoomState.Name;
                 onRoomInfoChanged.SendEvent();
             }
         }
