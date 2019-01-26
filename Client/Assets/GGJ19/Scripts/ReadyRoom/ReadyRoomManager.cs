@@ -88,7 +88,12 @@ public class ReadyRoomManager : MonoBehaviour
 
     }
 
-    private void roomInformationResponse()
+    private async void SendRoomInfoRequest()
+    {
+
+    }
+
+        private void roomInformationResponse()
     {
 
         // Dispatch Updates

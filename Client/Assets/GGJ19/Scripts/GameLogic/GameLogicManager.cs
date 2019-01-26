@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using GeneratedServerAPI;
+using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
 using UnityEditor;
 using UnityEngine;
@@ -70,7 +70,7 @@ namespace GGJ19.Scripts.GameLogic
         public void UpdateGameState(Playing playingState, Room roomState)
         {
            
-            Debug.Log("Game State Updating!");
+            Debug.Log("Updating Game State");
             if (playingState != null)
             {
                 if (playingState.Version < lastVersionReceived)
@@ -110,6 +110,7 @@ namespace GGJ19.Scripts.GameLogic
                 || previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
             {
                 serverRoomName.Value = currentRoomState.Name;
+                Debug.Log("Sending Room Update Notification");
                 onRoomInfoChanged.SendEvent();
             }
         }
@@ -121,8 +122,15 @@ namespace GGJ19.Scripts.GameLogic
             emojiIconPlayer3.Value = null;
             emojiIconPlayer4.Value = null;
 
+
+            if(currentPlayingState == null)
+            {
+                // Gmae Not Started Yet.
+                return;
+            }
+
             ICollection<Emoji> emojiCollection;
-            if (player1Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player1Id.Value, out emojiCollection) && emojiCollection.Count > 0)
+            if (player1Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue( player1Id.Value, out emojiCollection) && emojiCollection.Count > 0)
             {
                 foreach (var emoji in emojiCollection)
                 {
@@ -181,6 +189,29 @@ namespace GGJ19.Scripts.GameLogic
                 currentTurn.Value = currentPlayingState.CurrentRoundNumber;
                 onTurnChanged.SendEvent();
             }
+        }
+
+        public async void SendRoomInfoRequest()
+        {
+            string roomId = serverRoomName.Value;
+            if (!string.IsNullOrEmpty(roomId))
+            {
+                try
+                {
+                    var serverApi = ServerApi.Instance;
+                    RoomInformation roomInfoAsync = await serverApi.RoomInformationAsync(roomId);
+                    UpdateGameState(roomInfoAsync.Playing, roomInfoAsync.Waiting);
+                }
+                catch (Exception e)
+                {
+                    LogException(e);
+                }
+            }
+        }
+
+        public void LogException(Exception e)
+        {
+            Debug.Log(string.Format("Caught Error: {0} : {1}", e.Message, e.StackTrace));
         }
     }
 }
