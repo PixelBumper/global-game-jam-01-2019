@@ -8,7 +8,8 @@ namespace Events.UnityNative {
         // Use this for initialization
         protected override void Init() {
             base.Init();
-            MyButton?.onClick.AddListener(OnMyButtonClicked);
+            var thebutton = GetInputValue(nameof(MyButton), MyButton);
+            thebutton?.onClick.AddListener(OnMyButtonClicked);
         }
 
         private void OnMyButtonClicked() {
@@ -16,7 +17,8 @@ namespace Events.UnityNative {
         }
 
         private void OnDestroy() {
-            MyButton?.onClick.RemoveListener(OnMyButtonClicked);
+            var thebutton = GetInputValue(nameof(MyButton), MyButton);
+            thebutton?.onClick.RemoveListener(OnMyButtonClicked);
         }
 
         public override object GetValue(NodePort port) {
