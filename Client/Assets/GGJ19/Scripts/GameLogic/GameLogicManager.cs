@@ -14,6 +14,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onPlayerCountChanged;
         public ScriptableGameEvent onEmojisChanged;
         public ScriptableGameEvent onSelectableRoleDisabledChanged;
+        public ScriptableGameEvent onFailedThreatsChanged;
         public ScriptableGameEvent onThreatsChanged;
         public ScriptableGameEvent onTurnChanged;
         public ScriptableGameEvent onGameWon;
@@ -39,6 +40,7 @@ namespace GGJ19.Scripts.GameLogic
                 onPlayerCountChanged.SendEvent();
                 onEmojisChanged.SendEvent();
                 onSelectableRoleDisabledChanged.SendEvent();
+                onFailedThreatsChanged.SendEvent();
                 onThreatsChanged.SendEvent();
                 onTurnChanged.SendEvent();
                 onGameWon.SendEvent();
