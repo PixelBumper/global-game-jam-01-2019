@@ -1343,7 +1343,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-12
+  emojiKey: communication-13
 --- !u!114 &6368257759810111544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,7 +1392,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-11
+  emojiKey: communication-12
 --- !u!114 &1937396566651310912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,7 +1441,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-10
+  emojiKey: communication-11
 --- !u!114 &8946878859501039582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,7 +1490,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-09
+  emojiKey: communication-10
 --- !u!114 &1151876816879124848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,7 +1539,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-08
+  emojiKey: communication-09
 --- !u!114 &2205005230242771073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-07
+  emojiKey: communication-08
 --- !u!114 &7611271916948994622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,7 +1637,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: communication-13
+  emojiKey: communication-14
 --- !u!1 &4728713445614542029
 GameObject:
   m_ObjectHideFlags: 0

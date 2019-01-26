@@ -6,6 +6,7 @@ using GGJ19.Scripts.Server_Api;
 using UnityEngine;
 using XNode;
 
+[CreateNodeMenu(nameof(SendChoosenEmojiMessage), "Send", "Chosen", "Emoji")]
 public class SendChoosenEmojiMessage : FlowNode
 {
     [Input]
@@ -19,10 +20,10 @@ public class SendChoosenEmojiMessage : FlowNode
     public override void ExecuteNode()
     {
         var inputValue = GetInputValue(nameof(emojiKey), emojiKey);
-        sendEmojis(emojiKey);
+        sendEmojis(inputValue);
     }
 
-    private async void sendEmojis(String emojis)
+    private async void sendEmojis(string emojis)
     {
         var gameLogicManager = GameLogicManager.instance;
         Debug.Log("dispatch request");
