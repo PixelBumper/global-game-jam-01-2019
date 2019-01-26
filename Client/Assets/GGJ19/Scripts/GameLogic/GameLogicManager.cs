@@ -26,6 +26,8 @@ namespace GGJ19.Scripts.GameLogic
         public GlobalString player2Id;
         public GlobalString player3Id;
         public GlobalString player4Id;
+        public GlobalFloat lengthOfTurnInSeconds;
+        public GlobalFloat amountOfTurns;
 
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
