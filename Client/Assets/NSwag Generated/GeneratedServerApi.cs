@@ -615,9 +615,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("roundEndingTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long RoundEndingTime { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("currentRoundState", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("currentPhase", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PlayingCurrentRoundState CurrentRoundState { get; set; }
+        public PlayingCurrentPhase CurrentPhase { get; set; }
     
         [Newtonsoft.Json.JsonProperty("currentRoundNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int CurrentRoundNumber { get; set; }
@@ -707,16 +707,16 @@ namespace GeneratedServerAPI
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public enum PlayingCurrentRoundState
+    public enum PlayingCurrentPhase
     {
-        [System.Runtime.Serialization.EnumMember(Value = @"COMMUNICATION_PHASE")]
-        COMMUNICATION_PHASE = 0,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_EMOJIS")]
+        PHASE_EMOJIS = 0,
     
-        [System.Runtime.Serialization.EnumMember(Value = @"PLAYOUT_PHASE")]
-        PLAYOUT_PHASE = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_ROLE")]
+        PHASE_ROLE = 1,
     
-        [System.Runtime.Serialization.EnumMember(Value = @"DOOMED_PHASE")]
-        DOOMED_PHASE = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_DOOMED")]
+        PHASE_DOOMED = 2,
     
     }
 
