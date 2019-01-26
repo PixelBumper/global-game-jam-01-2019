@@ -171,7 +171,7 @@ namespace XNodeEditor {
 
         public static void OpenWithGraph(XNode.INodeGraph nodeGraph) {
             if (nodeGraph != null) {
-                NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "xNode", true) as NodeEditorWindow;
+                NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "xNode", false) as NodeEditorWindow;
                 w.wantsMouseMove = true;
                 w.graph = nodeGraph;
             }

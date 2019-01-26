@@ -314,6 +314,451 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1900061246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6590493132050594357, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1900061247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: 472}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061247}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061247}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061253}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061247}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji8
+--- !u!114 &1900061248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: 360}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061248}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061248}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061254}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061248}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji7
+--- !u!114 &1900061249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: -200}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061249}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061249}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061251}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061249}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji2
+--- !u!114 &1900061250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: -88}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061250}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061250}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061257}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061250}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji3
+--- !u!114 &1900061251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2744244011122145912, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6274115376633260398, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4298903526408754613, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3352268706814331679, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7608703578698052312, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3425112595572090982, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8049771883989295966, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4462237790366137506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900061259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: 136}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061259}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061259}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061256}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061259}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji5
+--- !u!114 &1900061260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: 248}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061260}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061260}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061252}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061260}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji6
+--- !u!114 &1900061261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900061246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1900061258}
+  position: {x: 56, y: 24}
+  ports:
+    keys:
+    - emojiKey
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: emojiKey
+      _node: {fileID: 1900061261}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1900061261}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1900061255}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1900061261}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Choosen Emoji Message
+  emojiKey: emoji4
 --- !u!1 &2069889175
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,90 +825,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1533964806899353431
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8611086497173468824, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_Name
-      value: SpaceShipInterior
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630839893397279826, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361687437622097259, guid: f4e1f75ef695947029f1a8209d9d51cc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f4e1f75ef695947029f1a8209d9d51cc, type: 3}
 --- !u!1001 &4462237790366137506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,86 +1102,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7164798772287501104, guid: 66e92f30b9b0c463ba13ba871690c4d9,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -981,5 +1262,141 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[9]
+      value: 
+      objectReference: {fileID: 1900061261}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[10]
+      value: 
+      objectReference: {fileID: 1900061260}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[11]
+      value: 
+      objectReference: {fileID: 1900061259}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[12]
+      value: 
+      objectReference: {fileID: 1900061250}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[13]
+      value: 
+      objectReference: {fileID: 1900061249}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[14]
+      value: 
+      objectReference: {fileID: 1900061248}
+    - target: {fileID: 2980576220709185319, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: nodes.Array.data[15]
+      value: 
+      objectReference: {fileID: 1900061247}
+    - target: {fileID: 5444140159196493077, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: emojiKey
+      value: emoji1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051012155119891713, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: position.x
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051012155119891713, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: position.y
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733401538315002742, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127412790753837148, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39668477796376562, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626465141443122834, guid: 66e92f30b9b0c463ba13ba871690c4d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2051012155119891713, guid: 66e92f30b9b0c463ba13ba871690c4d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66e92f30b9b0c463ba13ba871690c4d9, type: 3}
