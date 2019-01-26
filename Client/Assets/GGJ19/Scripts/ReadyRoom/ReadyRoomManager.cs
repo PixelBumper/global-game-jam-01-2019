@@ -16,6 +16,7 @@ public class ReadyRoomManager : MonoBehaviour
     // Global Variables
     public GlobalString _serverRoomName;
     public GlobalString _myPlayerId;
+    public GlobalFloat _readyRoomPollTime;
 
     // Internal
     [SerializeField]
@@ -24,16 +25,15 @@ public class ReadyRoomManager : MonoBehaviour
     // From Server
     private string[] _knownPlayerIds;
 
-
     private void Awake()
     {
         // Set Room Text
-        roomIdDisplay.text = "Room ID: " + _serverRoomName.GetValue();
+        roomIdDisplay.text = "Room ID: " + _serverRoomName.Value;
         initKnownPlayers();
         initPlayerDisplays();
 
         FAKE_SetVarsFromServer();
-
+//        Invoke(roomInformationRequest, _readyRoomPollTime.Value);
     }
 
     private void Update()

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5020702424510b44aa4e08d5c06039db, type: 3}
   m_Name: MyPlayerId
   m_EditorClassIdentifier: 
-  _initialValue: 
+  _initialValue: DEFAULT

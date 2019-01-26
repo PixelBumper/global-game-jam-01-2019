@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5020702424510b44aa4e08d5c06039db, type: 3}
-  m_Name: ServerRoomName
+  m_Name: ServerURL
   m_EditorClassIdentifier: 
-  _initialValue: TestRoom
+  _initialValue: https://ggj19.herokuapp.com

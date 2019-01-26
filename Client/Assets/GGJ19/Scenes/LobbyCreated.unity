@@ -173,7 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomIdDisplay: {fileID: 1011770379}
   playerDisplayContianer: {fileID: 1886508143}
-  serverRoomId: H6jS9
+  _serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
+  _myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
+  _readyRoomPollTime: {fileID: 0}
   playerDisplays: []
 --- !u!4 &844979787
 Transform:
