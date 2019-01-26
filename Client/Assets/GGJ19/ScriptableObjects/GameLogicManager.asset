@@ -42,6 +42,13 @@ MonoBehaviour:
   threat4: {fileID: 11400000, guid: 00307ee5c048949d683b95f411078cb1, type: 2}
   threat5: {fileID: 11400000, guid: a926a0b287a344bd69cee4461a2ad57f, type: 2}
   threat6: {fileID: 11400000, guid: e9cf655fe808c4447b8adae71416fc4f, type: 2}
+  currentThreat1: {fileID: 11400000, guid: 2ef7ec18b532d47449a388cda0591816, type: 2}
+  currentThreat2: {fileID: 11400000, guid: 71c0de98faab1b84bbb527426329205e, type: 2}
+  currentThreat3: {fileID: 11400000, guid: bee612274d050a74ca468c70f9022c1d, type: 2}
+  currentThreat4: {fileID: 11400000, guid: 4475e25e2949d8a4bb5f24685654088d, type: 2}
+  currentThreat5: {fileID: 11400000, guid: 2be04a6e218eac2479393a5836bc0478, type: 2}
+  currentThreat6: {fileID: 11400000, guid: 644672af4d8b5d2478d6a43c797fd990, type: 2}
+  currentThreat7: {fileID: 11400000, guid: 8e8459cfa1058fd4f9b0fafc40be30a9, type: 2}
   serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
   myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
   serverPollTimeMs: {fileID: 11400000, guid: 1fdae13632c924b2580ac2a41be92ae3, type: 2}
