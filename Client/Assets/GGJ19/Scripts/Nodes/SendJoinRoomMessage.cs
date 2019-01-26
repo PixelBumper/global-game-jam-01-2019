@@ -2,6 +2,7 @@
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
+using UnityEngine;
 using UnityEngine.UI;
 using XNode;
 
@@ -9,8 +10,9 @@ using XNode;
 public class SendJoinRoomMessage : FlowNode
 {
     [Input]
-    public InputField roomNameInputField;
-    public GlobalString myPlayerId;
+    public string roomName;
+    [Input]
+    public string myPlayerId;
 
     public override object GetValue(NodePort port)
     {
@@ -19,18 +21,17 @@ public class SendJoinRoomMessage : FlowNode
 
     public override void ExecuteNode()
     {
-        var roomNameInput = GetInputValue(nameof(roomNameInputField.text), "");
-        var playerIdInput = GetInputValue(nameof(myPlayerId.Value), "");
-        if(roomNameInput != "" && playerIdInput != "")
-        {
+        Debug.Log("Execute Node");
+        var roomNameInput = GetInputValue(nameof(roomName), roomName);
+        var playerIdInput = GetInputValue(nameof(myPlayerId), myPlayerId);
             SendServerRequest(roomNameInput, playerIdInput);
-        }
     }
 
     private async void SendServerRequest(string roomNameInput, string playerIdInput)
     {
+        Debug.Log("Sending Join Request:");
         var serverApi = ServerApi.Instance;
         RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomNameInput, playerIdInput);
-        GameLogicManager.instance.JoinReadyRoom(joinRoomAsync);
+        GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
     }
 }

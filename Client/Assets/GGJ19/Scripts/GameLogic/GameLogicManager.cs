@@ -68,13 +68,5 @@ namespace GGJ19.Scripts.GameLogic
                 onRoomInfoChanged.SendEvent();
             }
         }
-
-        public void JoinReadyRoom(RoomInformation roomInfo)
-        {
-            Playing  playing = roomInfo.Playing;
-            Room room = roomInfo.Waiting;
-        }
-
-
     }
 }
