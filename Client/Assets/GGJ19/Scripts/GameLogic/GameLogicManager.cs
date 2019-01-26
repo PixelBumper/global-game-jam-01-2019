@@ -48,6 +48,15 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableVariable threat5;
         public ScriptableVariable threat6;
 
+        [Header("CurrentThreats")]
+        public GlobalString currentThreat1;
+        public GlobalString currentThreat2;
+        public GlobalString currentThreat3;
+        public GlobalString currentThreat4;
+        public GlobalString currentThreat5;
+        public GlobalString currentThreat6;
+        public GlobalString currentThreat7;
+
         [Header("Room Variables")]
         public GlobalString serverRoomName;
         public GlobalString myPlayerId;
@@ -69,7 +78,6 @@ namespace GGJ19.Scripts.GameLogic
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
-           
             Debug.Log("Updating Game State");
             if (playingState != null)
             {
@@ -93,6 +101,7 @@ namespace GGJ19.Scripts.GameLogic
             {
                 UpdatePlayers();
                 UpdateEmojiIcons();
+                UpdateThreats();
                 onSelectableRoleDisabledChanged.SendEvent();
                 onFailedThreatsChanged.SendEvent();
                 onThreatsChanged.SendEvent();
@@ -113,6 +122,21 @@ namespace GGJ19.Scripts.GameLogic
                 Debug.Log("Sending Room Update Notification");
                 onRoomInfoChanged.SendEvent();
             }
+        }
+
+        private void UpdateThreats() {
+            var threatsList = new List<string>(currentPlayingState.PossibleThreats.Count);
+            foreach (RoleThreat threat in currentPlayingState.PossibleThreats) {
+                threatsList.Add(threat.Value);
+            }
+
+            currentThreat1.Value = threatsList.Count > 0 ? threatsList[0] : string.Empty;
+            currentThreat2.Value = threatsList.Count > 1 ? threatsList[1] : string.Empty;
+            currentThreat3.Value = threatsList.Count > 2 ? threatsList[2] : string.Empty;
+            currentThreat4.Value = threatsList.Count > 3 ? threatsList[3] : string.Empty;
+            currentThreat5.Value = threatsList.Count > 4 ? threatsList[4] : string.Empty;
+            currentThreat6.Value = threatsList.Count > 5 ? threatsList[5] : string.Empty;
+            currentThreat7.Value = threatsList.Count > 6 ? threatsList[6] : string.Empty;
         }
 
         private void UpdateEmojiIcons()
