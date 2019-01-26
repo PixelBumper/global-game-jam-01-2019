@@ -5,13 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: fe7ca7f704ec746e98fa4d4543ee1af6
+  - enabled: 1
+    path: Assets/GGJ19/Scenes/LoadingScene.unity
+    guid: 6880a11dc3b484aa4b4cdd72201018eb
+  - enabled: 1
+    path: Assets/GGJ19/Scenes/GameLost.unity
+    guid: 2d85410e2c5a6408bbe7a32c76888e87
+  - enabled: 1
+    path: Assets/GGJ19/Scenes/LobbyCreated.unity
+    guid: 445fa91d249de4185b5a1bcb46dfe200
+  - enabled: 1
+    path: Assets/GGJ19/Scenes/LobbyJoin.unity
+    guid: 62597c9de2ef749a09ede15e94e5f1d1
   - enabled: 1
     path: Assets/GGJ19/Scenes/Main.unity
     guid: 76863385db0114b2d85025ec33576566
+  - enabled: 1
+    path: Assets/GGJ19/Scenes/GameWon.unity
+    guid: 0c15418b0cbae44028418fe1adf5777b
   m_configObjects: {}
