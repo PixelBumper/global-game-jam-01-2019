@@ -171,10 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56f1a556c51d42e79e7c4bffd3010cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIdDisplay: {fileID: 1011770379}
+  roomIdDisplayField: {fileID: 1011770379}
   playerDisplayContianer: {fileID: 1886508143}
-  _serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
-  _myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
   _readyRoomPollTime: {fileID: 11400000, guid: 1fdae13632c924b2580ac2a41be92ae3, type: 2}
   playerDisplays: []
 --- !u!4 &844979787
@@ -706,6 +704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294752371438850821, guid: 5d989d3a7193246369f73cfabe779858,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d989d3a7193246369f73cfabe779858, type: 3}
