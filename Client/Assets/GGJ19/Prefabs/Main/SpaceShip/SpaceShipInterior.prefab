@@ -1,5 +1,1193 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &688530998545214187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222566626605974848}
+  - component: {fileID: 3963754063599214672}
+  - component: {fileID: 284472287193456050}
+  - component: {fileID: 4704312533485405776}
+  - component: {fileID: 6385459028240998941}
+  - component: {fileID: 9087240125170468928}
+  - component: {fileID: 3502280803423617152}
+  - component: {fileID: 2902542990412967618}
+  - component: {fileID: 6950983921542277693}
+  - component: {fileID: 8277968719350433411}
+  - component: {fileID: 4960030412225208452}
+  - component: {fileID: 1426868709001680099}
+  - component: {fileID: 368326217929657305}
+  - component: {fileID: 2022608273322241455}
+  - component: {fileID: 5311455519150864510}
+  - component: {fileID: 7028222328686501296}
+  - component: {fileID: 9095567833442349296}
+  - component: {fileID: 2700450393336220177}
+  - component: {fileID: 955001310835569289}
+  - component: {fileID: 1052584625154393571}
+  - component: {fileID: 843644348812948479}
+  - component: {fileID: 3812892772136286281}
+  - component: {fileID: 8291599538027029839}
+  - component: {fileID: 4577002855557424209}
+  - component: {fileID: 2554637493328782079}
+  - component: {fileID: 5071621458488729641}
+  m_Layer: 0
+  m_Name: CharacterCountController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222566626605974848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0501709, y: -1.0654907, z: -0.032645013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2630839893397279826}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3963754063599214672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 284472287193456050}
+  - {fileID: 4704312533485405776}
+  - {fileID: 6385459028240998941}
+  - {fileID: 9087240125170468928}
+  - {fileID: 3502280803423617152}
+  - {fileID: 2902542990412967618}
+  - {fileID: 6950983921542277693}
+  - {fileID: 8277968719350433411}
+  - {fileID: 4960030412225208452}
+  - {fileID: 1426868709001680099}
+  - {fileID: 368326217929657305}
+  - {fileID: 2022608273322241455}
+  - {fileID: 5311455519150864510}
+  - {fileID: 7028222328686501296}
+  - {fileID: 9095567833442349296}
+  - {fileID: 2700450393336220177}
+  - {fileID: 955001310835569289}
+  - {fileID: 1052584625154393571}
+  - {fileID: 843644348812948479}
+  - {fileID: 3812892772136286281}
+  - {fileID: 8291599538027029839}
+  - {fileID: 4577002855557424209}
+  - {fileID: 2554637493328782079}
+  - {fileID: 5071621458488729641}
+--- !u!114 &284472287193456050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: -392}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 284472287193456050}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 9087240125170468928}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72, type: 2}
+--- !u!114 &4704312533485405776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c761b645ff44a5896ca3509e9103d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: -296}
+  ports:
+    keys:
+    - inputString
+    - isNull
+    values:
+    - _fieldName: inputString
+      _node: {fileID: 4704312533485405776}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Output
+        node: {fileID: 6385459028240998941}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: isNull
+      _node: {fileID: 4704312533485405776}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Bool
+        node: {fileID: 9087240125170468928}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Is String Null Or Empty
+  inputString: 
+  isNull: 0
+--- !u!114 &6385459028240998941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e46162c5c633e1479b0b6e8a548be51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -248, y: -296}
+  ports:
+    keys:
+    - Output
+    values:
+    - _fieldName: Output
+      _node: {fileID: 6385459028240998941}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: inputString
+        node: {fileID: 4704312533485405776}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Global String To String
+  Input: {fileID: 11400000, guid: 000c04a07d08a418b96afadc95365b53, type: 2}
+  Output: 
+--- !u!114 &9087240125170468928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2231c8872ca6840814173ecf7c4792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 280, y: -312}
+  ports:
+    keys:
+    - Bool
+    - FalseOutput
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Bool
+      _node: {fileID: 9087240125170468928}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: isNull
+        node: {fileID: 4704312533485405776}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FalseOutput
+      _node: {fileID: 9087240125170468928}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2902542990412967618}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 9087240125170468928}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 284472287193456050}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 9087240125170468928}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 3502280803423617152}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Bool Branch
+  Bool: 0
+--- !u!114 &3502280803423617152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: -440}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 3502280803423617152}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 3502280803423617152}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 9087240125170468928}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 3502280803423617152}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 6390175446803716186}
+  Options: 1
+--- !u!114 &2902542990412967618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: -312}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 2902542990412967618}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2902542990412967618}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FalseOutput
+        node: {fileID: 9087240125170468928}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2902542990412967618}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 6390175446803716186}
+  Options: 0
+--- !u!114 &6950983921542277693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: -120}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 6950983921542277693}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 1426868709001680099}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72, type: 2}
+--- !u!114 &8277968719350433411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c761b645ff44a5896ca3509e9103d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: -24}
+  ports:
+    keys:
+    - inputString
+    - isNull
+    values:
+    - _fieldName: inputString
+      _node: {fileID: 8277968719350433411}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Output
+        node: {fileID: 4960030412225208452}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: isNull
+      _node: {fileID: 8277968719350433411}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Bool
+        node: {fileID: 1426868709001680099}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Is String Null Or Empty
+  inputString: 
+  isNull: 0
+--- !u!114 &4960030412225208452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e46162c5c633e1479b0b6e8a548be51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -248, y: -24}
+  ports:
+    keys:
+    - Output
+    values:
+    - _fieldName: Output
+      _node: {fileID: 4960030412225208452}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: inputString
+        node: {fileID: 8277968719350433411}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Global String To String
+  Input: {fileID: 11400000, guid: 38d64fb050e264779862007447babc0a, type: 2}
+  Output: 
+--- !u!114 &1426868709001680099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2231c8872ca6840814173ecf7c4792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 280, y: -40}
+  ports:
+    keys:
+    - Bool
+    - FalseOutput
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Bool
+      _node: {fileID: 1426868709001680099}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: isNull
+        node: {fileID: 8277968719350433411}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FalseOutput
+      _node: {fileID: 1426868709001680099}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2022608273322241455}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1426868709001680099}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 6950983921542277693}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1426868709001680099}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 368326217929657305}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Bool Branch
+  Bool: 0
+--- !u!114 &368326217929657305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: -168}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 368326217929657305}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 368326217929657305}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1426868709001680099}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 368326217929657305}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 4263043833362292012}
+  Options: 1
+--- !u!114 &2022608273322241455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: -40}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 2022608273322241455}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2022608273322241455}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FalseOutput
+        node: {fileID: 1426868709001680099}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2022608273322241455}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 4263043833362292012}
+  Options: 0
+--- !u!114 &5311455519150864510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: 152}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 5311455519150864510}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2700450393336220177}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72, type: 2}
+--- !u!114 &7028222328686501296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c761b645ff44a5896ca3509e9103d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: 248}
+  ports:
+    keys:
+    - inputString
+    - isNull
+    values:
+    - _fieldName: inputString
+      _node: {fileID: 7028222328686501296}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Output
+        node: {fileID: 9095567833442349296}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: isNull
+      _node: {fileID: 7028222328686501296}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Bool
+        node: {fileID: 2700450393336220177}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Is String Null Or Empty
+  inputString: 
+  isNull: 0
+--- !u!114 &9095567833442349296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e46162c5c633e1479b0b6e8a548be51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -248, y: 248}
+  ports:
+    keys:
+    - Output
+    values:
+    - _fieldName: Output
+      _node: {fileID: 9095567833442349296}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: inputString
+        node: {fileID: 7028222328686501296}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Global String To String
+  Input: {fileID: 11400000, guid: 70d682553436e4f5b8032ed4b27a4a5e, type: 2}
+  Output: 
+--- !u!114 &2700450393336220177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2231c8872ca6840814173ecf7c4792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 280, y: 232}
+  ports:
+    keys:
+    - Bool
+    - FalseOutput
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Bool
+      _node: {fileID: 2700450393336220177}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: isNull
+        node: {fileID: 7028222328686501296}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FalseOutput
+      _node: {fileID: 2700450393336220177}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 1052584625154393571}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2700450393336220177}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 5311455519150864510}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2700450393336220177}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 955001310835569289}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Bool Branch
+  Bool: 0
+--- !u!114 &955001310835569289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: 104}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 955001310835569289}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 955001310835569289}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 2700450393336220177}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 955001310835569289}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 1209790705321356478}
+  Options: 1
+--- !u!114 &1052584625154393571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: 232}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 1052584625154393571}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1052584625154393571}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FalseOutput
+        node: {fileID: 2700450393336220177}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1052584625154393571}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 1209790705321356478}
+  Options: 0
+--- !u!114 &843644348812948479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: 408}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 843644348812948479}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 4577002855557424209}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72, type: 2}
+--- !u!114 &3812892772136286281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c761b645ff44a5896ca3509e9103d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -8, y: 504}
+  ports:
+    keys:
+    - inputString
+    - isNull
+    values:
+    - _fieldName: inputString
+      _node: {fileID: 3812892772136286281}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Output
+        node: {fileID: 8291599538027029839}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: isNull
+      _node: {fileID: 3812892772136286281}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Bool
+        node: {fileID: 4577002855557424209}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Is String Null Or Empty
+  inputString: 
+  isNull: 0
+--- !u!114 &8291599538027029839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e46162c5c633e1479b0b6e8a548be51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -248, y: 504}
+  ports:
+    keys:
+    - Output
+    values:
+    - _fieldName: Output
+      _node: {fileID: 8291599538027029839}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: inputString
+        node: {fileID: 3812892772136286281}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Global String To String
+  Input: {fileID: 11400000, guid: 8dd048412d67a44f1bf3d3ad71f18754, type: 2}
+  Output: 
+--- !u!114 &4577002855557424209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2231c8872ca6840814173ecf7c4792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 280, y: 488}
+  ports:
+    keys:
+    - Bool
+    - FalseOutput
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Bool
+      _node: {fileID: 4577002855557424209}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: isNull
+        node: {fileID: 3812892772136286281}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FalseOutput
+      _node: {fileID: 4577002855557424209}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 5071621458488729641}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 4577002855557424209}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 843644348812948479}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 4577002855557424209}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2554637493328782079}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Bool Branch
+  Bool: 0
+--- !u!114 &2554637493328782079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: 360}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 2554637493328782079}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2554637493328782079}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 4577002855557424209}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2554637493328782079}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 7187474560683562520}
+  Options: 1
+--- !u!114 &5071621458488729641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2a072ea8abac41b4f51a182043ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: 536, y: 488}
+  ports:
+    keys:
+    - Target
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 5071621458488729641}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 5071621458488729641}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FalseOutput
+        node: {fileID: 4577002855557424209}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 5071621458488729641}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Active
+  Target: {fileID: 7187474560683562520}
+  Options: 0
 --- !u!1 &7161856324565931536
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +1295,335 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8433862669015900640}
+  - {fileID: 4018650987221647362}
+  - {fileID: 6071473204135495028}
+  - {fileID: 9196738898305856742}
+  - {fileID: 924470998437547584}
+  - {fileID: 1222566626605974848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &952254902599364715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2630839893397279826}
+    m_Modifications:
+    - target: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_Name
+      value: Character2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!4 &6071473204135495028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4263043833362292012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2797935154210406905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2630839893397279826}
+    m_Modifications:
+    - target: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_Name
+      value: Character3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!4 &9196738898305856742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209790705321356478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6170286659499129695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2630839893397279826}
+    m_Modifications:
+    - target: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_Name
+      value: Character4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!4 &924470998437547584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7187474560683562520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7975944999971665181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2630839893397279826}
+    m_Modifications:
+    - target: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_Name
+      value: Character1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!4 &4018650987221647362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7975944999971665181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6390175446803716186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7975944999971665181}
+  m_PrefabAsset: {fileID: 0}

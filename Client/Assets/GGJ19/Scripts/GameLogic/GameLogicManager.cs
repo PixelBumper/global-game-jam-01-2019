@@ -20,6 +20,12 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
 
+        [Header("Game Variables")] 
+        public GlobalString player1Id;
+        public GlobalString player2Id;
+        public GlobalString player3Id;
+        public GlobalString player4Id;
+
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
         
