@@ -45,7 +45,8 @@ namespace GGJ19.Scripts.GameLogic
             previousRoomState = currentRoomState;
             currentRoomState = roomState;
 
-            if (previousPlayingState == null)
+            // TODO (slumley): We should actually check what changed, for now we just reload everything
+            if (/*previousPlayingState == null*/ true)
             {
                 onPlayerCountChanged.SendEvent();
                 onEmojisChanged.SendEvent();
