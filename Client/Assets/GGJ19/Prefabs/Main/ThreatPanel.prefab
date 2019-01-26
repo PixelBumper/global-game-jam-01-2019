@@ -84,11 +84,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6613112516873550694}
-  - component: {fileID: 3574472231007442412}
-  - component: {fileID: 2478728393785790618}
-  - component: {fileID: 682870271746516460}
-  - component: {fileID: 3785557706954453495}
-  - component: {fileID: 6662186214081967895}
+  - component: {fileID: 6994953537236029574}
+  - component: {fileID: 9035651724962656702}
+  - component: {fileID: 4987632838767132313}
+  - component: {fileID: 4399635411261853789}
+  - component: {fileID: 5452334124595486918}
+  - component: {fileID: 7903666795486543363}
+  - component: {fileID: 1086906871591878793}
+  - component: {fileID: 714533153339767915}
+  - component: {fileID: 4650656174878613174}
   m_Layer: 5
   m_Name: ThreatPanelController
   m_TagString: Untagged
@@ -115,7 +119,7 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3574472231007442412
+--- !u!114 &6994953537236029574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 2478728393785790618}
-  - {fileID: 682870271746516460}
-  - {fileID: 3785557706954453495}
-  - {fileID: 6662186214081967895}
---- !u!114 &2478728393785790618
+  - {fileID: 9035651724962656702}
+  - {fileID: 4987632838767132313}
+  - {fileID: 4399635411261853789}
+  - {fileID: 5452334124595486918}
+  - {fileID: 7903666795486543363}
+  - {fileID: 1086906871591878793}
+  - {fileID: 714533153339767915}
+  - {fileID: 4650656174878613174}
+--- !u!114 &9035651724962656702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,25 +152,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897a00302aa0b0a41af82c93fa1b7cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 3574472231007442412}
-  position: {x: -808, y: 40}
+  graph: {fileID: 6994953537236029574}
+  position: {x: -664, y: -72}
   ports:
     keys:
     - FlowOutput
     values:
     - _fieldName: FlowOutput
-      _node: {fileID: 2478728393785790618}
+      _node: {fileID: 9035651724962656702}
       _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowInput
-        node: {fileID: 3785557706954453495}
+        node: {fileID: 4399635411261853789}
+        reroutePoints: []
+      - fieldName: FlowInput
+        node: {fileID: 1086906871591878793}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _dynamic: 0
   _name: On Start
---- !u!114 &682870271746516460
+--- !u!114 &4987632838767132313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,19 +185,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e46162c5c633e1479b0b6e8a548be51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 3574472231007442412}
-  position: {x: -808, y: 120}
+  graph: {fileID: 6994953537236029574}
+  position: {x: -664, y: 40}
   ports:
     keys:
     - Output
     values:
     - _fieldName: Output
-      _node: {fileID: 682870271746516460}
+      _node: {fileID: 4987632838767132313}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: First
-        node: {fileID: 3785557706954453495}
+        node: {fileID: 4399635411261853789}
+        reroutePoints: []
+      - fieldName: First
+        node: {fileID: 1086906871591878793}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -194,7 +208,7 @@ MonoBehaviour:
   _name: Global String To String
   Input: {fileID: 11400000, guid: 2ef7ec18b532d47449a388cda0591816, type: 2}
   Output: 
---- !u!114 &3785557706954453495
+--- !u!114 &4399635411261853789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b87eba1314b20c489de3c67fcd45ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 3574472231007442412}
-  position: {x: -472, y: 56}
+  graph: {fileID: 6994953537236029574}
+  position: {x: -360, y: -56}
   ports:
     keys:
     - First
@@ -217,18 +231,18 @@ MonoBehaviour:
     - FlowOutput
     values:
     - _fieldName: First
-      _node: {fileID: 3785557706954453495}
+      _node: {fileID: 4399635411261853789}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Output
-        node: {fileID: 682870271746516460}
+        node: {fileID: 4987632838767132313}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
     - _fieldName: Second
-      _node: {fileID: 3785557706954453495}
+      _node: {fileID: 4399635411261853789}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -236,34 +250,34 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
     - _fieldName: Result
-      _node: {fileID: 3785557706954453495}
+      _node: {fileID: 4399635411261853789}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: SpriteName
-        node: {fileID: 0}
+        node: {fileID: 5452334124595486918}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _dynamic: 0
     - _fieldName: FlowInput
-      _node: {fileID: 3785557706954453495}
+      _node: {fileID: 4399635411261853789}
       _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowOutput
-        node: {fileID: 2478728393785790618}
+        node: {fileID: 9035651724962656702}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
     - _fieldName: FlowOutput
-      _node: {fileID: 3785557706954453495}
+      _node: {fileID: 4399635411261853789}
       _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowInput
-        node: {fileID: 0}
+        node: {fileID: 5452334124595486918}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -272,7 +286,75 @@ MonoBehaviour:
   First: 
   Second: _threat
   Result: 
---- !u!114 &6662186214081967895
+--- !u!114 &5452334124595486918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928564118660119024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea616c2ff1dbe74d8d937d105d1d690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6994953537236029574}
+  position: {x: -104, y: -56}
+  ports:
+    keys:
+    - SpriteName
+    - Result
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: SpriteName
+      _node: {fileID: 5452334124595486918}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Result
+        node: {fileID: 4399635411261853789}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Result
+      _node: {fileID: 5452334124595486918}
+      _typeQualifiedName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: MySprite
+        node: {fileID: 7903666795486543363}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 5452334124595486918}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 4399635411261853789}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 5452334124595486918}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 7903666795486543363}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Load Sprite Resource
+  SpriteName: 
+  Result: {fileID: 0}
+--- !u!114 &7903666795486543363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,8 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45899aabf19d4dc4e90524661ac232e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 3574472231007442412}
-  position: {x: 56, y: 56}
+  graph: {fileID: 6994953537236029574}
+  position: {x: 168, y: -56}
   ports:
     keys:
     - Target
@@ -294,7 +376,7 @@ MonoBehaviour:
     - FlowOutput
     values:
     - _fieldName: Target
-      _node: {fileID: 6662186214081967895}
+      _node: {fileID: 7903666795486543363}
       _typeQualifiedName: UnityEngine.UI.Image, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -302,29 +384,29 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
     - _fieldName: MySprite
-      _node: {fileID: 6662186214081967895}
+      _node: {fileID: 7903666795486543363}
       _typeQualifiedName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: Result
-        node: {fileID: 0}
+        node: {fileID: 5452334124595486918}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
     - _fieldName: FlowInput
-      _node: {fileID: 6662186214081967895}
+      _node: {fileID: 7903666795486543363}
       _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowOutput
-        node: {fileID: 0}
+        node: {fileID: 5452334124595486918}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
     - _fieldName: FlowOutput
-      _node: {fileID: 6662186214081967895}
+      _node: {fileID: 7903666795486543363}
       _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -333,6 +415,214 @@ MonoBehaviour:
       _dynamic: 0
   _name: Set Image
   Target: {fileID: 1034523149761065888}
+  MySprite: {fileID: 0}
+--- !u!114 &1086906871591878793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928564118660119024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b87eba1314b20c489de3c67fcd45ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6994953537236029574}
+  position: {x: -344, y: 136}
+  ports:
+    keys:
+    - First
+    - Second
+    - Result
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: First
+      _node: {fileID: 1086906871591878793}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Output
+        node: {fileID: 4987632838767132313}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Second
+      _node: {fileID: 1086906871591878793}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Result
+      _node: {fileID: 1086906871591878793}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: SpriteName
+        node: {fileID: 714533153339767915}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 1086906871591878793}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 9035651724962656702}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1086906871591878793}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 714533153339767915}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Concat String
+  First: 
+  Second: _icon
+  Result: 
+--- !u!114 &714533153339767915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928564118660119024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea616c2ff1dbe74d8d937d105d1d690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6994953537236029574}
+  position: {x: -104, y: 152}
+  ports:
+    keys:
+    - SpriteName
+    - Result
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: SpriteName
+      _node: {fileID: 714533153339767915}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Result
+        node: {fileID: 1086906871591878793}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Result
+      _node: {fileID: 714533153339767915}
+      _typeQualifiedName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: MySprite
+        node: {fileID: 4650656174878613174}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 714533153339767915}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 1086906871591878793}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 714533153339767915}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 4650656174878613174}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Load Sprite Resource
+  SpriteName: 
+  Result: {fileID: 0}
+--- !u!114 &4650656174878613174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928564118660119024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45899aabf19d4dc4e90524661ac232e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6994953537236029574}
+  position: {x: 168, y: 152}
+  ports:
+    keys:
+    - Target
+    - MySprite
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 4650656174878613174}
+      _typeQualifiedName: UnityEngine.UI.Image, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: MySprite
+      _node: {fileID: 4650656174878613174}
+      _typeQualifiedName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Result
+        node: {fileID: 714533153339767915}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 4650656174878613174}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 714533153339767915}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 4650656174878613174}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Set Image
+  Target: {fileID: 1195280274302615380}
   MySprite: {fileID: 0}
 --- !u!1 &1654841853805572728
 GameObject:
