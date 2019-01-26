@@ -49,6 +49,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableVariable threat6;
 
         [Header("CurrentThreats")]
+        public GlobalFloat currentTheatsAmount;
         public GlobalString currentThreat1;
         public GlobalString currentThreat2;
         public GlobalString currentThreat3;
@@ -128,7 +129,7 @@ namespace GGJ19.Scripts.GameLogic
             if(currentPlayingState == null || currentPlayingState.PossibleThreats == null) {
                 return;
             }
-
+            currentTheatsAmount.Value = currentPlayingState.PossibleThreats.Count;
             var threatsList = new List<string>(currentPlayingState.PossibleThreats.Count);
             foreach (RoleThreat threat in currentPlayingState.PossibleThreats) {
                 threatsList.Add(threat.Value);
