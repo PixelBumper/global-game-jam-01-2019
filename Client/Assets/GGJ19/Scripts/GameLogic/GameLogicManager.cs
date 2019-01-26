@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using GeneratedServerAPI;
 using HalfBlind.ScriptableVariables;
 using UnityEditor;
@@ -30,6 +31,11 @@ namespace GGJ19.Scripts.GameLogic
         public GlobalFloat lengthOfTurnInSeconds;
         public GlobalFloat amountOfTurns;
         public GlobalFloat currentTurn;
+
+        public GlobalString emojiIconPlayer1;
+        public GlobalString emojiIconPlayer2;
+        public GlobalString emojiIconPlayer3;
+        public GlobalString emojiIconPlayer4;
 
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
@@ -91,7 +97,7 @@ namespace GGJ19.Scripts.GameLogic
             if (/*previousPlayingState == null*/ true)
             {
                 UpdatePlayers();
-                onEmojisChanged.SendEvent();
+                UpdateEmojiIcons();
                 onSelectableRoleDisabledChanged.SendEvent();
                 onFailedThreatsChanged.SendEvent();
                 onThreatsChanged.SendEvent();
@@ -111,6 +117,53 @@ namespace GGJ19.Scripts.GameLogic
                 serverRoomName.Value = currentRoomState.Name;
                 onRoomInfoChanged.SendEvent();
             }
+        }
+
+        private void UpdateEmojiIcons()
+        {
+            emojiIconPlayer1.Value = null;
+            emojiIconPlayer2.Value = null;
+            emojiIconPlayer3.Value = null;
+            emojiIconPlayer4.Value = null;
+
+            ICollection<Emoji> emojiCollection;
+            if (player1Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player1Id.Value, out emojiCollection) && emojiCollection.Count > 0)
+            {
+                foreach (var emoji in emojiCollection)
+                {
+                    emojiIconPlayer1.Value = emoji.Emoji1;
+                    break;
+                }
+            }
+            
+            if (player2Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player2Id.Value, out emojiCollection) && emojiCollection.Count > 0)
+            {
+                foreach (var emoji in emojiCollection)
+                {
+                    emojiIconPlayer2.Value = emoji.Emoji1;
+                    break;
+                }
+            }
+            
+            if (player3Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player3Id.Value, out emojiCollection) && emojiCollection.Count > 0)
+            {
+                foreach (var emoji in emojiCollection)
+                {
+                    emojiIconPlayer3.Value = emoji.Emoji1;
+                    break;
+                }
+            }
+            
+            if (player4Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player4Id.Value, out emojiCollection) && emojiCollection.Count > 0)
+            {
+                foreach (var emoji in emojiCollection)
+                {
+                    emojiIconPlayer4.Value = emoji.Emoji1;
+                    break;
+                }
+            }
+
+            onEmojisChanged.SendEvent();
         }
 
         private void UpdatePlayers()
