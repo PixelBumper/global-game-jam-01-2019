@@ -95,7 +95,7 @@ namespace GGJ19.Scripts.GameLogic
             currentRoomState = roomState;
 
             // TODO (slumley): We should actually check what changed, for now we just reload everything
-            if (/*previousPlayingState == null*/ true)
+            if (/*previousPlayingState == null*/ currentPlayingState != null)
             {
                 UpdatePlayers();
                 UpdateEmojiIcons();
@@ -105,9 +105,18 @@ namespace GGJ19.Scripts.GameLogic
                 onThreatsChanged.SendEvent();
 
                 UpdateTurn();
-                
-                onGameWon.SendEvent();
-                onGameLost.SendEvent();
+            }
+            
+            if (currentPlayingState != null)
+            {
+                if (currentPlayingState.CurrentRoundNumber >= currentPlayingState.MaxRoundNumber)
+                {
+                    onGameWon.SendEvent();
+                }
+                else if (currentPlayingState.OpenThreats.Count >= currentPlayingState.MaximumThreats)
+                {
+                    onGameLost.SendEvent();
+                }
             }
 
             if (previousRoomState != currentRoomState
