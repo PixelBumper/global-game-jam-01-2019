@@ -19,8 +19,8 @@ public class ReadyRoomPlayerDisplay : MonoBehaviour
 
     public void setPlayerId(string value, bool isMyPlayer)
     {
-        visual_absent.SetActive(value == "");
-        visual_present.SetActive(value != "");
+        visual_absent.SetActive(string.IsNullOrEmpty(value));
+        visual_present.SetActive(!string.IsNullOrEmpty(value));
         visual_myCharacter.SetActive(isMyPlayer);
     }
 }

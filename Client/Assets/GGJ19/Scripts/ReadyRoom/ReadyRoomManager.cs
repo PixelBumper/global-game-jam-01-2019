@@ -62,6 +62,15 @@ public class ReadyRoomManager : MonoBehaviour
         _knownPlayerIds[1] = GameLogicManager.instance.player2Id.Value;
         _knownPlayerIds[2] = GameLogicManager.instance.player3Id.Value;
         _knownPlayerIds[3] = GameLogicManager.instance.player4Id.Value;
+
+        for(int i = 0; i < _knownPlayerIds.Length; i++)
+        {
+
+            bool isMyPlayer = GameLogicManager.instance.PlayerId != null && 
+                GameLogicManager.instance.PlayerId == _knownPlayerIds[i];
+
+            playerDisplays[i].setPlayerId(_knownPlayerIds[i], isMyPlayer);
+        }
     }
 
     private void checkForGameStart()

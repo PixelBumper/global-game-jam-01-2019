@@ -14,13 +14,11 @@ namespace GeneratedServerAPI
         partial void PrepareRequest(HttpClient client, HttpRequestMessage request, string url)
         {
             var requestInfo = $"{request.Method} {request.RequestUri}\n";
-            Debug.Log(requestInfo);
         }
 
         partial void PrepareRequest(HttpClient client, HttpRequestMessage request, StringBuilder urlBuilder)
         {
             var requestInfo = $"{request.Method} {request.RequestUri}\n";
-            Debug.Log(requestInfo);
         }
 
         partial void ProcessResponse(HttpClient client, HttpResponseMessage response)

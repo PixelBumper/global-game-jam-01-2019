@@ -59,7 +59,7 @@ namespace GGJ19.Scripts.GameLogic
 
         [Header("Room Variables")]
         public GlobalString serverRoomName;
-        public GlobalString myPlayerId;
+        //public GlobalString myPlayerId;  // I think this is broken (Andy)
 
         [Header("Server Variables")]
         public GlobalFloat serverPollTimeMs; // How many ms between server requests
@@ -71,14 +71,13 @@ namespace GGJ19.Scripts.GameLogic
 
         private long lastVersionReceived = long.MinValue;
 
-        private void Awake()
+        private void Start()
         {
-            myPlayerId.Value = PlayerId;
+            //myPlayerId.Value = PlayerId;
         }
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
-            Debug.Log("Updating Game State");
             if (playingState != null)
             {
                 if (playingState.Version < lastVersionReceived)
@@ -95,7 +94,6 @@ namespace GGJ19.Scripts.GameLogic
             previousRoomState = currentRoomState;
             currentRoomState = roomState;
 
-            Debug.Log("RoomState Name:" + roomState.Name);
             // TODO (slumley): We should actually check what changed, for now we just reload everything
             if (/*previousPlayingState == null*/ true)
             {
@@ -119,7 +117,6 @@ namespace GGJ19.Scripts.GameLogic
                 || previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
             {
                 serverRoomName.Value = currentRoomState.Name;
-                Debug.Log("Sending Room Update Notification");
                 onRoomInfoChanged.SendEvent();
             }
         }
