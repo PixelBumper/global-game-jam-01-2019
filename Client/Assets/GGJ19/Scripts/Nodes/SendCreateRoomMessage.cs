@@ -49,7 +49,7 @@ public class SendCreateRoomMessage : FlowNode
             {
                 Debug.Log("Yes!");
                 var serverApi = ServerApi.Instance;
-                Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, threatString, null, null);
+                Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, threatString, null, null, null);
                 GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
             }
         }
