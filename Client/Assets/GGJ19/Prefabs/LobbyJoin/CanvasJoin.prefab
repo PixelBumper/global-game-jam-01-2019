@@ -813,8 +813,7 @@ GameObject:
   - component: {fileID: 4433777498648172668}
   - component: {fileID: 1695748598184005722}
   - component: {fileID: 5232211310387140670}
-  - component: {fileID: 1016215828280897906}
-  - component: {fileID: 5585005340238565546}
+  - component: {fileID: 3699987322561465100}
   m_Layer: 0
   m_Name: UiController
   m_TagString: Untagged
@@ -854,8 +853,7 @@ MonoBehaviour:
   - {fileID: 4433777498648172668}
   - {fileID: 1695748598184005722}
   - {fileID: 5232211310387140670}
-  - {fileID: 1016215828280897906}
-  - {fileID: 5585005340238565546}
+  - {fileID: 3699987322561465100}
 --- !u!114 &1716937850911927827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,29 +999,29 @@ MonoBehaviour:
   position: {x: 88, y: 8}
   ports:
     keys:
-    - roomName
-    - myPlayerId
+    - playerIdInput
+    - roomInput
     - FlowInput
     - FlowOutput
     values:
-    - _fieldName: roomName
-      _node: {fileID: 1695748598184005722}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: validString
-        node: {fileID: 1016215828280897906}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: myPlayerId
+    - _fieldName: playerIdInput
       _node: {fileID: 1695748598184005722}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: deviceId
         node: {fileID: 5232211310387140670}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: roomInput
+      _node: {fileID: 1695748598184005722}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: fieldText
+        node: {fileID: 3699987322561465100}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1048,8 +1046,8 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Join Room Message
-  roomName: 
-  myPlayerId: 
+  roomInput: 
+  playerIdInput: 
 --- !u!114 &5232211310387140670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,43 +1061,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 8433870634367148626}
-  position: {x: -200, y: 248}
+  position: {x: -264, y: 216}
   ports:
     keys:
     - deviceId
-    - FlowInput
-    - FlowOutput
     values:
     - _fieldName: deviceId
       _node: {fileID: 5232211310387140670}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: myPlayerId
+      - fieldName: playerIdInput
         node: {fileID: 1695748598184005722}
         reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 5232211310387140670}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 5232211310387140670}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
       _direction: 1
       _connectionType: 0
       _dynamic: 0
   _name: Get Unique Device Identifier
   deviceId: DefaultDeviceId
---- !u!114 &1016215828280897906
+--- !u!114 &3699987322561465100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1108,121 +1088,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6114930595089229434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13461d46f3fa410280d53e484890868, type: 3}
+  m_Script: {fileID: 11500000, guid: 82b187e0e4d44414dbd47eda9438c68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 8433870634367148626}
-  position: {x: -216, y: 88}
-  ports:
-    keys:
-    - inputString
-    - validString
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: inputString
-      _node: {fileID: 1016215828280897906}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: inputFieldText
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: inputFieldText
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: inputFieldText
-        node: {fileID: 0}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: validString
-      _node: {fileID: 1016215828280897906}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: roomName
-        node: {fileID: 1695748598184005722}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 1016215828280897906}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 1016215828280897906}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Check Null String
-  inputString: 
-  validString: 
---- !u!114 &5585005340238565546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6114930595089229434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79aed89a206ed48a78b35d004408bd2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 8433870634367148626}
-  position: {x: -504, y: 136}
+  position: {x: -520, y: 120}
   ports:
     keys:
     - inputField
-    - inputFieldText
-    - FlowInput
-    - FlowOutput
+    - fieldText
     values:
     - _fieldName: inputField
-      _node: {fileID: 5585005340238565546}
+      _node: {fileID: 3699987322561465100}
       _typeQualifiedName: UnityEngine.UI.InputField, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
       _dynamic: 0
-    - _fieldName: inputFieldText
-      _node: {fileID: 5585005340238565546}
+    - _fieldName: fieldText
+      _node: {fileID: 3699987322561465100}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: roomInput
+        node: {fileID: 1695748598184005722}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 5585005340238565546}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 5585005340238565546}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: 
+  _name: Read Input Field Text
   inputField: {fileID: 1871088987}
-  inputFieldText: 
+  fieldText: 
 --- !u!1 &7144214701763478801
 GameObject:
   m_ObjectHideFlags: 0
