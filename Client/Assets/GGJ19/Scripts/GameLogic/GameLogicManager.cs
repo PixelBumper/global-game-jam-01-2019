@@ -46,6 +46,9 @@ namespace GGJ19.Scripts.GameLogic
         public GlobalString serverRoomName;
         public GlobalString myPlayerId;
 
+        [Header("Server Variables")]
+        public GlobalFloat serverPollTimeMs; // How many ms between server requests
+
         private Playing previousPlayingState;
         private Room previousRoomState;
         private Playing currentPlayingState;
@@ -78,6 +81,7 @@ namespace GGJ19.Scripts.GameLogic
             previousRoomState = currentRoomState;
             currentRoomState = roomState;
 
+            Debug.Log("RoomState Name:" + roomState.Name);
             // TODO (slumley): We should actually check what changed, for now we just reload everything
             if (/*previousPlayingState == null*/ true)
             {
@@ -119,8 +123,11 @@ namespace GGJ19.Scripts.GameLogic
 
         private void UpdateTurn()
         {
-            currentTurn.Value = currentPlayingState.CurrentRoundNumber;
-            onTurnChanged.SendEvent();
+            if(currentPlayingState != null)
+            {
+                currentTurn.Value = currentPlayingState.CurrentRoundNumber;
+                onTurnChanged.SendEvent();
+            }
         }
     }
 }

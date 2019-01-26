@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4aa92c77e3c435bb85cffa12ba8d3a7, type: 3}
   m_Name: GameLogicManager
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   onPlayerCountChanged: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72,
     type: 2}
   onEmojisChanged: {fileID: 11400000, guid: d5c127dbe4f3a49049f038eb8e417dc7, type: 2}
@@ -30,6 +30,7 @@ MonoBehaviour:
   lengthOfTurnInSeconds: {fileID: 11400000, guid: 0f0f32ce4977b46edb3cfd5cebfec55e,
     type: 2}
   amountOfTurns: {fileID: 11400000, guid: ddc856121055d45548ca10f74f48f82a, type: 2}
+  currentTurn: {fileID: 11400000, guid: 37dcfbe83956d4133bbc4439b0d515a6, type: 2}
   onRoomInfoChanged: {fileID: 11400000, guid: 7e9702d846771458291603862cde1a33, type: 2}
   threat1: {fileID: 11400000, guid: 140528c7cf99542b28c1e8a400a35185, type: 2}
   threat2: {fileID: 11400000, guid: 7f7d17f02073d4a95a3a298e7eaa490c, type: 2}
@@ -39,3 +40,4 @@ MonoBehaviour:
   threat6: {fileID: 11400000, guid: e9cf655fe808c4447b8adae71416fc4f, type: 2}
   serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
   myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
+  serverPollTimeMs: {fileID: 11400000, guid: 1fdae13632c924b2580ac2a41be92ae3, type: 2}

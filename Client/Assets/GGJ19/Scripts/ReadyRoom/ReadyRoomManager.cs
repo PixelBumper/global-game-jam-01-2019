@@ -9,7 +9,7 @@ public class ReadyRoomManager : MonoBehaviour
     // Constantly query the server : Do we have 4 players?
 
     // Public Objects
-    public Text roomIdDisplay;
+    public Text roomIdDisplayField;
     public GameObject playerDisplayContianer;
 
     // Global Variables
@@ -25,12 +25,12 @@ public class ReadyRoomManager : MonoBehaviour
     private void Awake()
     {
         // Set Room Text
-        roomIdDisplay.text = "Room ID: ";
+        roomIdDisplayField.text = "Room ID: " + GameLogicManager.instance.serverRoomName.Value;
         initKnownPlayers();
         initPlayerDisplays();
 
         FAKE_SetVarsFromServer();
-        Invoke("roomInformationRequest", (float)_readyRoomPollTime.Value);
+        requestRoomInformation();
     }
 
     private void Update()
@@ -53,22 +53,37 @@ public class ReadyRoomManager : MonoBehaviour
 
     private void initKnownPlayers()
     {
-        _knownPlayerIds = new string[4] { "", "", "", "" };
+        _knownPlayerIds = new string[4];
     }
 
 
     // Update Internal
-    private void updatePlayerIds()
+    private void updateKnownPlayers()
     {
-        for (int i = 0; i < playerDisplays.Length; i++)
+        _knownPlayerIds[0] = GameLogicManager.instance.player1Id.Value;
+        _knownPlayerIds[1] = GameLogicManager.instance.player2Id.Value;
+        _knownPlayerIds[2] = GameLogicManager.instance.player3Id.Value;
+        _knownPlayerIds[3] = GameLogicManager.instance.player4Id.Value;
+    }
+
+    private void checkForGameStart()
+    {
+        foreach (string id in _knownPlayerIds)
         {
-            playerDisplays[i].setPlayerId(_knownPlayerIds[i], _knownPlayerIds[i] == GameLogicManager.instance.PlayerId);
+            if (string.IsNullOrEmpty(id))
+            {
+                Invoke("requestRoomInformation", GameLogicManager.instance.serverPollTimeMs.Value);
+                return;
+            }
         }
+
+        // ALL PLAYERS FOUND! READY TO START!!!
+        Invoke("StartGame", 2000);
     }
 
     // Client-Server Communication
 
-    private void roomInformationRequest()
+    private void requestRoomInformation()
     {
 
     }
@@ -77,7 +92,8 @@ public class ReadyRoomManager : MonoBehaviour
     {
 
         // Dispatch Updates
-        updatePlayerIds();
+        updateKnownPlayers();
+        checkForGameStart();
     }
 
     private void startGame()
