@@ -17,7 +17,7 @@ public class SendCreateRoomMessage : FlowNode
     {
         SendServerRequest();
     }
-    
+
     private async void SendServerRequest()
     {
         try
