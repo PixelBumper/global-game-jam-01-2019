@@ -13,6 +13,11 @@ namespace HalfBlind.Nodes {
             var spriteName = GetInputValue(nameof(SpriteName), SpriteName);
             ImageTarget.sprite = Resources.Load<Sprite>(spriteName.ToLower()+"_threat");
             IconImageTarget.sprite = Resources.Load<Sprite>(spriteName.ToLower()+"_icon");
+            if(ImageTarget.sprite == null) {
+                Sprite transparent = Resources.Load<Sprite>("transparent");
+                ImageTarget.sprite = transparent;
+                IconImageTarget.sprite = transparent;
+            }
         }
 
         // Return the correct value of an output port when requested

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4aa92c77e3c435bb85cffa12ba8d3a7, type: 3}
   m_Name: GameLogicManager
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   onPlayerCountChanged: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72,
     type: 2}
   onEmojisChanged: {fileID: 11400000, guid: d5c127dbe4f3a49049f038eb8e417dc7, type: 2}
@@ -42,6 +42,8 @@ MonoBehaviour:
   threat4: {fileID: 11400000, guid: 00307ee5c048949d683b95f411078cb1, type: 2}
   threat5: {fileID: 11400000, guid: a926a0b287a344bd69cee4461a2ad57f, type: 2}
   threat6: {fileID: 11400000, guid: e9cf655fe808c4447b8adae71416fc4f, type: 2}
+  currentTheatsAmount: {fileID: 11400000, guid: 636a618d78073674894bfdb8f73c0214,
+    type: 2}
   currentThreat1: {fileID: 11400000, guid: 2ef7ec18b532d47449a388cda0591816, type: 2}
   currentThreat2: {fileID: 11400000, guid: 71c0de98faab1b84bbb527426329205e, type: 2}
   currentThreat3: {fileID: 11400000, guid: bee612274d050a74ca468c70f9022c1d, type: 2}
