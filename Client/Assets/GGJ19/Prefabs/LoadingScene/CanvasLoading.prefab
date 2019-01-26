@@ -191,9 +191,9 @@ GameObject:
   - component: {fileID: 6741810674460591845}
   - component: {fileID: 8945219808408625700}
   - component: {fileID: 3523916545610911777}
-  - component: {fileID: 5048193178951123336}
   - component: {fileID: 3402969142436923449}
   - component: {fileID: 8424133773206664412}
+  - component: {fileID: 7027544483058251512}
   m_Layer: 0
   m_Name: UiController
   m_TagString: Untagged
@@ -229,9 +229,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 3523916545610911777}
-  - {fileID: 5048193178951123336}
   - {fileID: 3402969142436923449}
   - {fileID: 8424133773206664412}
+  - {fileID: 7027544483058251512}
 --- !u!114 &3523916545610911777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,62 +265,13 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowInput
-        node: {fileID: 5048193178951123336}
+        node: {fileID: 7027544483058251512}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _dynamic: 0
   _name: On Button Clicked
   MyButton: {fileID: 2755199834886129311}
---- !u!114 &5048193178951123336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458257206186354269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6985b35646584ecd80fd395138d8751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 8945219808408625700}
-  position: {x: 120, y: 8}
-  ports:
-    keys:
-    - sceneName
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: sceneName
-      _node: {fileID: 5048193178951123336}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 5048193178951123336}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 3523916545610911777}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 5048193178951123336}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Change Scene By Name
-  sceneName: LobbyCreated
 --- !u!114 &3402969142436923449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +361,45 @@ MonoBehaviour:
       _dynamic: 0
   _name: On Button Clicked
   MyButton: {fileID: 721661896326096165}
+--- !u!114 &7027544483058251512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458257206186354269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a484b8296594b00a490689109d48da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8945219808408625700}
+  position: {x: 136, y: 8}
+  ports:
+    keys:
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: FlowInput
+      _node: {fileID: 7027544483058251512}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 3523916545610911777}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 7027544483058251512}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Create Room Message
 --- !u!1 &2518556567277419985
 GameObject:
   m_ObjectHideFlags: 0

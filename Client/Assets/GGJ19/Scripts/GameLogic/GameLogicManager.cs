@@ -39,9 +39,6 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableVariable threat5;
         public ScriptableVariable threat6;
 
-        public RoleThreat[] allThreats;
-        // public List<RoleThreat> easyThreats;  // Add difficulty later
-
         [Header("Room Variables")]
         public GlobalString serverRoomName;
         public GlobalString myPlayerId;
@@ -56,18 +53,12 @@ namespace GGJ19.Scripts.GameLogic
         private void Awake()
         {
             myPlayerId.Value = PlayerId;
-            allThreats = new[] {
-                (RoleThreat)threat1.GetValue(),
-                (RoleThreat)threat2.GetValue(),
-                (RoleThreat)threat3.GetValue(),
-                (RoleThreat)threat4.GetValue(),
-                (RoleThreat)threat5.GetValue(),
-                (RoleThreat)threat6.GetValue()
-            };
         }
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
+           
+            Debug.Log("Game State Updating!");
             if (playingState != null)
             {
                 if (playingState.Version < lastVersionReceived)

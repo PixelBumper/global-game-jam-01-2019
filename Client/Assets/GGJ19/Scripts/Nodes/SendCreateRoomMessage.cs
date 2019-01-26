@@ -1,4 +1,5 @@
-﻿using GeneratedServerAPI;
+﻿using System;
+using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
 using UnityEngine;
@@ -16,16 +17,45 @@ public class SendCreateRoomMessage : FlowNode
     {
         SendServerRequest();
     }
-
+    
     private async void SendServerRequest()
     {
-        string allThreats = GameLogicManager.instance.allThreats.ToString();
-        string playerId = GameLogicManager.instance.PlayerId;
-        if (string.IsNullOrEmpty(allThreats) && string.IsNullOrEmpty(playerId))
+        try
         {
-            var serverApi = ServerApi.Instance;
-            Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, allThreats, null, null);
-            GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
+            GameLogicManager logicManager = GameLogicManager.instance;
+            string[] allThreats = new string[]{
+                logicManager.threat1.GetValue().ToString(),
+                logicManager.threat2.GetValue().ToString(),
+                logicManager.threat3.GetValue().ToString(),
+                logicManager.threat4.GetValue().ToString(),
+                logicManager.threat5.GetValue().ToString(),
+                logicManager.threat6.GetValue().ToString()
+             };
+            string threatString = "";
+            for (int i = 0; i < allThreats.Length; i++)
+            {
+                threatString = threatString + allThreats[i];
+                if (i < allThreats.Length - 1)
+                {
+                    threatString = threatString + ", ";
+                }
+            }
+
+            string playerId = logicManager.PlayerId;
+
+            Debug.Log(threatString);
+            Debug.Log(playerId);
+            if (!string.IsNullOrEmpty(threatString) && !string.IsNullOrEmpty(playerId))
+            {
+                Debug.Log("Yes!");
+                var serverApi = ServerApi.Instance;
+                Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, threatString, null, null);
+                GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(string.Format("Caught Error: {0} : {1}", e.Message, e.StackTrace));
         }
     }
 }
