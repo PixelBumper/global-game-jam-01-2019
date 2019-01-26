@@ -118,15 +118,15 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, long? seed)
         {
-            return CreateRoomAsync(playerId, possibleThreats, roundLengthInSeconds, seed, System.Threading.CancellationToken.None);
+            return CreateRoomAsync(playerId, possibleThreats, numberOfRounds, roundLengthInSeconds, seed, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
         {
             if (playerId == null)
                 throw new System.ArgumentNullException("playerId");
@@ -138,6 +138,10 @@ namespace GeneratedServerAPI
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/create-room?");
             urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append("possibleThreats=").Append(System.Uri.EscapeDataString(ConvertToString(possibleThreats, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            if (numberOfRounds != null) 
+            {
+                urlBuilder_.Append("numberOfRounds=").Append(System.Uri.EscapeDataString(ConvertToString(numberOfRounds, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
             if (roundLengthInSeconds != null) 
             {
                 urlBuilder_.Append("roundLengthInSeconds=").Append(System.Uri.EscapeDataString(ConvertToString(roundLengthInSeconds, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -672,6 +676,9 @@ namespace GeneratedServerAPI
     
         [Newtonsoft.Json.JsonProperty("owner", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Owner { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("numberOfRounds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int NumberOfRounds { get; set; }
     
         public string ToJson() 
         {

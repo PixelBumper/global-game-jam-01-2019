@@ -24,7 +24,7 @@ public class SendCreateRoomMessage : FlowNode
         if (string.IsNullOrEmpty(allThreats) && string.IsNullOrEmpty(playerId))
         {
             var serverApi = ServerApi.Instance;
-            Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, allThreats, null, null);
+            Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, allThreats, null,null, null);
             GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
         }
     }
