@@ -11,8 +11,7 @@ namespace GGJ19.Scripts.Nodes
         
         public override object GetValue(NodePort port)
         {
-            return GameLogicManager.instance.PlayerId != null ? GameLogicManager.instance.PlayerId : null;
+            return port.fieldName == nameof(deviceId) ? GameLogicManager.instance.PlayerId : null;
         }
-
     }
 }
