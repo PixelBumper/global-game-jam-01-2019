@@ -33,7 +33,7 @@ public class ReadyRoomManager : MonoBehaviour
         initPlayerDisplays();
 
         FAKE_SetVarsFromServer();
-//        Invoke(roomInformationRequest, _readyRoomPollTime.Value);
+        Invoke("roomInformationRequest", (float)_readyRoomPollTime.Value);
     }
 
     private void Update()
@@ -67,7 +67,7 @@ public class ReadyRoomManager : MonoBehaviour
     {
         for (int i = 0; i < playerDisplays.Length; i++)
         {
-            playerDisplays[i].setPlayerId(_knownPlayerIds[i], _knownPlayerIds[i] == _myPlayerId.Value);
+            playerDisplays[i].setPlayerId(_knownPlayerIds[i], _knownPlayerIds[i].Equals(_myPlayerId.Value));
         }
     }
 
