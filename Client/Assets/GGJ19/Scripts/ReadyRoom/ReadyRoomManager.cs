@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System.Collections.Generic;
+﻿using GGJ19.Scripts.GameLogic;
 using HalfBlind.ScriptableVariables;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ReadyRoomManager : MonoBehaviour
 {
@@ -14,8 +13,6 @@ public class ReadyRoomManager : MonoBehaviour
     public GameObject playerDisplayContianer;
 
     // Global Variables
-    public GlobalString _serverRoomName;
-    public GlobalString _myPlayerId;
     public GlobalFloat _readyRoomPollTime;
 
     // Internal
@@ -28,7 +25,7 @@ public class ReadyRoomManager : MonoBehaviour
     private void Awake()
     {
         // Set Room Text
-        roomIdDisplay.text = "Room ID: " + _serverRoomName.Value;
+        roomIdDisplay.text = "Room ID: ";
         initKnownPlayers();
         initPlayerDisplays();
 
@@ -46,8 +43,6 @@ public class ReadyRoomManager : MonoBehaviour
 
     private void FAKE_SetVarsFromServer()
     {
-        _myPlayerId.Value = "Andy";
-        _serverRoomName.Value = "Ga4CxP";
         _knownPlayerIds = new string[] { "", "Andy", "", "Frank" };
     }
 
@@ -67,7 +62,7 @@ public class ReadyRoomManager : MonoBehaviour
     {
         for (int i = 0; i < playerDisplays.Length; i++)
         {
-            playerDisplays[i].setPlayerId(_knownPlayerIds[i], _knownPlayerIds[i].Equals(_myPlayerId.Value));
+            playerDisplays[i].setPlayerId(_knownPlayerIds[i], _knownPlayerIds[i] == GameLogicManager.instance.PlayerId);
         }
     }
 

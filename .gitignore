@@ -42,3 +42,11 @@ ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
 Client/.vs/
+
+# Android Studio / IntelliJ.
+.idea
+.gradle
+build/
+*.iml
+captures/
+local.properties

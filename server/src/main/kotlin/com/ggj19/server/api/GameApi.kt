@@ -1,5 +1,6 @@
 package com.ggj19.server.api
 
+import com.ggj19.server.clock.Clock
 import com.ggj19.server.dtos.PlayerId
 import com.ggj19.server.dtos.RoleThreat
 import com.ggj19.server.dtos.RoomInformation
@@ -15,13 +16,11 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.info.Info
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.stereotype.Component
-import java.time.Instant
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 import javax.validation.constraints.NotNull
 import javax.ws.rs.ClientErrorException
 import javax.ws.rs.GET
-import javax.ws.rs.NotAllowedException
 import javax.ws.rs.NotFoundException
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
@@ -33,7 +32,9 @@ import javax.ws.rs.core.MediaType.APPLICATION_JSON
 @Component
 @OpenAPIDefinition(info = Info(title = "Game Server", version = "1.0.0"))
 @Tag(name = "GameApi")
-class GameApi {
+class GameApi(
+  private val clock: Clock
+) {
   private val rooms = HashMap<RoomName, RoomState>()
   private val randomGenerators = ConcurrentHashMap<RoomName, RandomGenerator>()
 
@@ -45,33 +46,39 @@ class GameApi {
     @NotNull @QueryParam("playerId") playerId: PlayerId
   ): RoomInformation {
     val room = getRoom(roomName)
+    val newRoom: RoomState
 
     when (room) {
-      is Playing -> throw NotAllowedException("Game has already started")
+      is Playing -> throw ClientErrorException("Game has already started", 422)
       is Room -> {
         if (room.owner != playerId) {
-          throw NotAllowedException("You're not the owner of the room and hence can't start the room")
+          throw ClientErrorException("You're not the owner of the room and hence can't start the room", 422)
         }
 
         val randomGenerator = randomGenerators.getValue(roomName)
 
+        val maxPossibleAmount = minOf(room.players.size, room.possibleThreats.size)
+        val numberOfThreats = maxOf(1, randomGenerator.nextInt(maxPossibleAmount))
+
+        newRoom = Playing(
+            players = room.players,
+            possibleThreats = room.possibleThreats,
+            forbiddenRoles = emptyMap(),
+            lastFailedThreats = emptyList(),
+            openThreats = randomGenerator.randomElements(room.possibleThreats, numberOfThreats),
+            roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
+            currentRoundState = COMMUNICATION_PHASE,
+            currentRoundNumber = 0,
+            maxRoundNumber = 5 + randomGenerator.nextInt(10)
+        )
+
         synchronized(rooms) {
-          rooms[roomName] = Playing(
-              players = room.players,
-              possibleThreats = room.possibleThreats,
-              forbiddenRoles = emptyMap(),
-              lastFailedThreats = emptyList(),
-              openThreats = randomGenerator.randomElements(room.possibleThreats, minOf(minOf(minOf(1, room.players.size * 2 / 3), room.players.size), room.possibleThreats.size)),
-              roundEndingTime = Instant.now().plusMillis(TimeUnit.SECONDS.toMillis(10)),
-              currentRoundState = COMMUNICATION_PHASE,
-              currentRoundNumber = 0,
-              maxRoundNumber = 5 + randomGenerator.nextInt(10)
-          )
+          rooms[roomName] = newRoom
         }
       }
     }
 
-    return room.asRoomInformation()
+    return newRoom.asRoomInformation()
   }
 
   @GET
@@ -80,11 +87,14 @@ class GameApi {
   fun createRoom(
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("possibleThreats") possibleThreats: String,
+    @QueryParam("roundLengthInSeconds") roundLengthInSeconds: Int?,
     @QueryParam("seed") seed: Long?
   ): Room {
     val encodedPossibleThreats = possibleThreats.split(',')
         .map { RoleThreat(it.trim()) }
     if (encodedPossibleThreats.size < 5) throw ClientErrorException("Not allowed to create a room with less than 5 possible threats", 422)
+
+    // TODO roundLengthInSeconds ?: 10
 
     // For the Game Jam we will assume we won't clash and override a room with the same name.
     val randomGenerator: RandomGenerator = DefaultRandomGenerator(seed)
@@ -135,6 +145,8 @@ class GameApi {
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("emojis") emojis: String
   ) {
+    // Fill playerEmojis. Between [1 & 2]
+
     getRoom(roomName) { if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422) }
 
     val encodedEmojis = emojis.split(',').map { it.trim() }
@@ -150,6 +162,8 @@ class GameApi {
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("role") role: String
   ) {
+    // Fill playedPlayerRoles.
+
     getRoom(roomName) { if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422) }
   }
 
