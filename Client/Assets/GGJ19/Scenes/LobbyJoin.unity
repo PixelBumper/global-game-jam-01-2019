@@ -238,18 +238,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1871088987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1871088987, guid: 8683fb0af194b43dcb049c825905eba7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6776031372300480986}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 575553740, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2037295141
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,74 +320,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6114930595089229434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6114930595089229434, guid: 8683fb0af194b43dcb049c825905eba7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6776031372300480986}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6114930595089229435 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2958808059752256909, guid: 8683fb0af194b43dcb049c825905eba7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6776031372300480986}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6114930595089229434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a3106e87198dfe4d9e7832a1fb7d3b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6114930595089229436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6114930595089229434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff31ff0be51a447981e6ac66de3bc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 8433870634367148626}
-  position: {x: 24, y: 40}
-  ports:
-    keys:
-    - roomNameInputField
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: roomNameInputField
-      _node: {fileID: 6114930595089229436}
-      _typeQualifiedName: UnityEngine.UI.InputField, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 6114930595089229436}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 6114930595089229435}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 6114930595089229436}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Join Room Message
-  roomNameInputField: {fileID: 1871088987}
-  myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
 --- !u!1001 &6776031372300480986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -517,27 +437,5 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8433870634367148626, guid: 8683fb0af194b43dcb049c825905eba7,
-        type: 3}
-      propertyPath: nodes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433870634367148626, guid: 8683fb0af194b43dcb049c825905eba7,
-        type: 3}
-      propertyPath: nodes.Array.data[3]
-      value: 
-      objectReference: {fileID: 6114930595089229436}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8683fb0af194b43dcb049c825905eba7, type: 3}
---- !u!114 &8433870634367148626 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8433870634367148626, guid: 8683fb0af194b43dcb049c825905eba7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6776031372300480986}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6114930595089229434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
