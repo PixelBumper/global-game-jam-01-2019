@@ -14,15 +14,34 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onPlayerCountChanged;
         public ScriptableGameEvent onEmojisChanged;
         public ScriptableGameEvent onSelectableRoleDisabledChanged;
-        public ScriptableGameEvent onFailedThreatsChanged;
+        //public ScriptableGameEvent onFailedThreatsChanged;
         public ScriptableGameEvent onThreatsChanged;
         public ScriptableGameEvent onTurnChanged;
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
 
+        [Header("Game Variables")] 
+        public GlobalString player1Id;
+        public GlobalString player2Id;
+        public GlobalString player3Id;
+        public GlobalString player4Id;
+        public GlobalFloat lengthOfTurnInSeconds;
+        public GlobalFloat amountOfTurns;
+
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
-        
+
+        [Header("Threats")]
+        public ScriptableVariable threat1;
+        public ScriptableVariable threat2;
+        public ScriptableVariable threat3;
+        public ScriptableVariable threat4;
+        public ScriptableVariable threat5;
+        public ScriptableVariable threat6;
+
+        public RoleThreat[] allThreats;
+        // public List<RoleThreat> easyThreats;  // Add difficulty later
+
         [Header("Room Variables")]
         public GlobalString serverRoomName;
         public GlobalString myPlayerId;
@@ -32,13 +51,33 @@ namespace GGJ19.Scripts.GameLogic
         private Playing currentPlayingState;
         private Room currentRoomState;
 
+        private long lastVersionReceived = long.MinValue;
+
         private void Awake()
         {
             myPlayerId.Value = PlayerId;
+            allThreats = new[] {
+                (RoleThreat)threat1.GetValue(),
+                (RoleThreat)threat2.GetValue(),
+                (RoleThreat)threat3.GetValue(),
+                (RoleThreat)threat4.GetValue(),
+                (RoleThreat)threat5.GetValue(),
+                (RoleThreat)threat6.GetValue()
+            };
         }
 
         public void UpdateGameState(Playing playingState, Room roomState)
         {
+            if (playingState != null)
+            {
+                if (playingState.Version < lastVersionReceived)
+                {
+                    return;
+                }
+
+                lastVersionReceived = playingState.Version;
+            }
+
             previousPlayingState = currentPlayingState;
             currentPlayingState = playingState;
 
@@ -51,13 +90,13 @@ namespace GGJ19.Scripts.GameLogic
                 onPlayerCountChanged.SendEvent();
                 onEmojisChanged.SendEvent();
                 onSelectableRoleDisabledChanged.SendEvent();
-                onFailedThreatsChanged.SendEvent();
+                //onFailedThreatsChanged.SendEvent();
                 onThreatsChanged.SendEvent();
                 onTurnChanged.SendEvent();
                 onGameWon.SendEvent();
                 onGameLost.SendEvent();
             }
-            
+
             if (previousRoomState != currentRoomState
                 || previousRoomState.Name != currentRoomState.Name
                 || previousRoomState.Owner != currentRoomState.Name
@@ -68,13 +107,5 @@ namespace GGJ19.Scripts.GameLogic
                 onRoomInfoChanged.SendEvent();
             }
         }
-
-        public void JoinReadyRoom(RoomInformation roomInfo)
-        {
-            Playing  playing = roomInfo.Playing;
-            Room room = roomInfo.Waiting;
-        }
-
-
     }
 }

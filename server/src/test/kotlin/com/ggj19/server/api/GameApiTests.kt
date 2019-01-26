@@ -2,13 +2,15 @@ package com.ggj19.server.api
 
 import com.ggj19.server.clock.TestingClock
 import com.ggj19.server.dtos.Emoji
+import com.ggj19.server.dtos.Phase.PHASE_DOOMED
+import com.ggj19.server.dtos.Phase.PHASE_EMOJIS
+import com.ggj19.server.dtos.Phase.PHASE_ROLE
 import com.ggj19.server.dtos.PlayerId
 import com.ggj19.server.dtos.RoleThreat
 import com.ggj19.server.dtos.RoomInformation
 import com.ggj19.server.dtos.RoomName
 import com.ggj19.server.dtos.RoomState.Playing
 import com.ggj19.server.dtos.RoomState.Room
-import com.ggj19.server.dtos.RoundState.COMMUNICATION_PHASE
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -98,9 +100,9 @@ import javax.ws.rs.NotFoundException
         playerEmojis = emptyMap(),
         playerEmojisHistory = emptyMap(),
         lastFailedThreats = emptyList(),
-        openThreats = listOf(possibleThreatShooter),
-        roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
-        currentRoundState = COMMUNICATION_PHASE,
+        openThreats = listOf(possibleThreatLazy),
+        roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(room.roundLengthInSeconds)),
+        currentPhase = PHASE_EMOJIS,
         currentRoundNumber = 0,
         maxRoundNumber = 9
     )))
@@ -130,9 +132,9 @@ import javax.ws.rs.NotFoundException
         playerEmojis = emptyMap(),
         playerEmojisHistory = emptyMap(),
         lastFailedThreats = emptyList(),
-        openThreats = listOf(possibleThreatShooter),
-        roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
-        currentRoundState = COMMUNICATION_PHASE,
+        openThreats = listOf(possibleThreatLazy, possibleThreatShooter, possibleThreatMusician),
+        roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(room.roundLengthInSeconds)),
+        currentPhase = PHASE_EMOJIS,
         currentRoundNumber = 0,
         maxRoundNumber = 9
     )))
@@ -189,6 +191,22 @@ import javax.ws.rs.NotFoundException
     )))
   }
 
+  @Test fun sendEmojisWrongPhase() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.joinRoom(room.name, player2)
+    gameApi.startRoom(room.name, player1)
+    gameApi.changePhase(room.name, PHASE_ROLE)
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player1, "Game is not in emoji phase")
+    }
+    gameApi.changePhase(room.name, PHASE_DOOMED)
+
+    assertThrows<ClientErrorException> {
+      gameApi.sendEmojis(room.name, player1, "Game is not in emoji phase")
+    }
+  }
+
   @Test fun setRoleNotStarted() {
     val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
 
@@ -206,20 +224,11 @@ import javax.ws.rs.NotFoundException
     }.hasMessage("You are not part of the room with the name: ${room.name.name}")
   }
 
-  @Test fun doubleSetRole() {
-    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
-    gameApi.startRoom(room.name, player1)
-
-    gameApi.setRole(room.name, player1, possibleThreatShooter)
-    assertThrows<ClientErrorException> {
-      gameApi.setRole(room.name, player1, possibleThreatShooter)
-    }.hasMessage("Already set a role for this round")
-  }
-
   @Test fun setRole() {
     val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
     gameApi.joinRoom(room.name, player2)
-    val information = gameApi.startRoom(room.name, player1)
+    gameApi.startRoom(room.name, player1)
+    val information = gameApi.changePhase(room.name, PHASE_ROLE)
 
     assertThat(gameApi.setRole(room.name, player1, possibleThreatShooter)).isEqualTo(information.copy(playing = information.playing!!.copy(
         version = 2,
@@ -232,10 +241,28 @@ import javax.ws.rs.NotFoundException
     )))
   }
 
+  @Test fun setRoleWrongPhase() {
+    val room = createRoom("SHOOTER, ENGINEER, PILOT, LAZY, MUSICIAN")
+    gameApi.joinRoom(room.name, player2)
+    gameApi.startRoom(room.name, player1)
+
+    gameApi.changePhase(room.name, PHASE_EMOJIS)
+
+    assertThrows<ClientErrorException> {
+      gameApi.setRole(room.name, player1, possibleThreatShooter)
+    }.hasMessage("Game is not in role phase")
+
+    gameApi.changePhase(room.name, PHASE_DOOMED)
+
+    assertThrows<ClientErrorException> {
+      gameApi.setRole(room.name, player1, possibleThreatShooter)
+    }.hasMessage("Game is not in role phase")
+  }
+
   // TODO(us) should we allow players joining while the game has already started?
 
   private fun createRoom(possibleThreats: String): Room {
-    val room = gameApi.createRoom(player1, possibleThreats, roundLengthInSeconds = 10L, seed = 30L)
+    val room = gameApi.createRoom(player1, possibleThreats, roundLengthInSeconds = 10L, numberOfRounds = 9, seed = 30L)
 
     assertThat(room).isEqualTo(Room(
         listOf(player1),
@@ -243,9 +270,10 @@ import javax.ws.rs.NotFoundException
             possibleThreatShooter, possibleThreatEngineer, possibleThreatPilot,
             possibleThreatLazy, possibleThreatMusician
         ),
-        10L,
         RoomName("Jim Laucher"),
-        player1
+        player1,
+        10L,
+        9
     ))
 
     return room

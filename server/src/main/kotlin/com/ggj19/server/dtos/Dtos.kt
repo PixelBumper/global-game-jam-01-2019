@@ -19,9 +19,10 @@ sealed class RoomState {
   data class Room(
     override val players: List<PlayerId>,
     override val possibleThreats: List<RoleThreat>,
-    @JsonIgnore override val roundLengthInSeconds: Long,
     val name: RoomName,
-    val owner: PlayerId
+    val owner: PlayerId,
+    @JsonIgnore override val roundLengthInSeconds: Long,
+    val numberOfRounds: Int
   ) : RoomState() {
     override fun copyJoining(playerId: PlayerId) = copy(players = players.plus(playerId))
   }
@@ -38,7 +39,7 @@ sealed class RoomState {
     val lastFailedThreats: List<RoleThreat>,
     val openThreats: List<RoleThreat>,
     val roundEndingTime: Instant,
-    val currentRoundState: RoundState,
+    val currentPhase: Phase,
     val currentRoundNumber: Int,
     val maxRoundNumber: Int,
     val gameWon: Boolean = currentRoundNumber == maxRoundNumber
@@ -46,13 +47,14 @@ sealed class RoomState {
     override fun copyJoining(playerId: PlayerId) = copy(players = players.plus(playerId), version = version + 1)
   }
 
+  fun maxPossibleAmountOfThreats() = minOf(players.size, possibleThreats.size)
   fun asRoomInformation() = RoomInformation(this as? Room, this as? Playing)
 }
 
-enum class RoundState {
-  COMMUNICATION_PHASE,
-  PLAYOUT_PHASE,
-  DOOMED_PHASE
+enum class Phase {
+  PHASE_EMOJIS,
+  PHASE_ROLE,
+  PHASE_DOOMED
 }
 
 data class RoomInformation(

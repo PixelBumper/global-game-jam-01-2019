@@ -2,6 +2,10 @@ package com.ggj19.server.api
 
 import com.ggj19.server.clock.Clock
 import com.ggj19.server.dtos.Emoji
+import com.ggj19.server.dtos.Phase
+import com.ggj19.server.dtos.Phase.PHASE_DOOMED
+import com.ggj19.server.dtos.Phase.PHASE_EMOJIS
+import com.ggj19.server.dtos.Phase.PHASE_ROLE
 import com.ggj19.server.dtos.PlayerId
 import com.ggj19.server.dtos.RoleThreat
 import com.ggj19.server.dtos.RoomInformation
@@ -9,9 +13,9 @@ import com.ggj19.server.dtos.RoomName
 import com.ggj19.server.dtos.RoomState
 import com.ggj19.server.dtos.RoomState.Playing
 import com.ggj19.server.dtos.RoomState.Room
-import com.ggj19.server.dtos.RoundState.COMMUNICATION_PHASE
 import com.ggj19.server.random.DefaultRandomGenerator
 import com.ggj19.server.random.RandomGenerator
+import com.google.common.annotations.VisibleForTesting
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.info.Info
@@ -57,9 +61,6 @@ class GameApi(
 
         val randomGenerator = randomGenerators.getValue(roomName)
 
-        val maxPossibleAmount = minOf(room.players.size, room.possibleThreats.size)
-        val numberOfThreats = maxOf(1, randomGenerator.nextInt(maxPossibleAmount))
-
         val newRoom = Playing(
             players = room.players,
             possibleThreats = room.possibleThreats,
@@ -70,11 +71,11 @@ class GameApi(
             playerEmojis = emptyMap(),
             playerEmojisHistory = emptyMap(),
             lastFailedThreats = emptyList(),
-            openThreats = randomGenerator.randomElements(room.possibleThreats, numberOfThreats),
-            roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(10)),
-            currentRoundState = COMMUNICATION_PHASE,
+            openThreats = randomGenerator.randomElements(room.possibleThreats, room.maxPossibleAmountOfThreats()),
+            roundEndingTime = clock.time().plusMillis(TimeUnit.SECONDS.toMillis(room.roundLengthInSeconds)),
+            currentPhase = PHASE_EMOJIS,
             currentRoundNumber = 0,
-            maxRoundNumber = 5 + randomGenerator.nextInt(10)
+            maxRoundNumber = room.numberOfRounds
         )
 
         synchronized(rooms) {
@@ -92,6 +93,7 @@ class GameApi(
   fun createRoom(
     @NotNull @QueryParam("playerId") playerId: PlayerId,
     @NotNull @QueryParam("possibleThreats") possibleThreats: String,
+    @QueryParam("numberOfRounds") numberOfRounds: Int?,
     @QueryParam("roundLengthInSeconds") roundLengthInSeconds: Long?,
     @QueryParam("seed") seed: Long?
   ): Room {
@@ -105,8 +107,8 @@ class GameApi(
     val roomName = RoomName(randomGenerator.generateRoomName())
     randomGenerators[roomName] = randomGenerator
 
-    val nonNullRoundLengthInSeconds = roundLengthInSeconds ?: 10L
-    val room = RoomState.Room(listOf(playerId), encodedPossibleThreats, nonNullRoundLengthInSeconds, roomName, playerId)
+    val room = RoomState.Room(listOf(playerId), encodedPossibleThreats, roomName, playerId,
+        roundLengthInSeconds = roundLengthInSeconds ?: 10L, numberOfRounds = numberOfRounds ?: 5 + randomGenerator.nextInt(10))
 
     synchronized(rooms) {
       rooms[roomName] = room
@@ -136,7 +138,45 @@ class GameApi(
   fun roomInformation(
     @NotNull @QueryParam("roomName") roomName: RoomName
   ): RoomInformation {
-    return getRoom(roomName).asRoomInformation()
+    val room = getRoom(roomName)
+
+    return when (room) {
+      is Room -> room.asRoomInformation()
+      is Playing -> {
+        val isRoundDue = room.roundEndingTime >= clock.time()
+
+        if (isRoundDue) {
+          val currentPhase = room.currentPhase
+          val randomGenerator = randomGenerators.getValue(roomName)
+
+          val newRoom = when (currentPhase) {
+            PHASE_EMOJIS -> room.copy(
+                version = room.version + 1,
+                roundEndingTime = clock.time().plusMillis(room.roundLengthInSeconds),
+                currentPhase = PHASE_ROLE
+            )
+            PHASE_ROLE -> room.copy(
+                version = room.version + 1,
+                forbiddenRoles = room.playedPlayerRoles,
+                playedPlayerRoles = emptyMap(),
+                playerEmojis = emptyMap(),
+                playerEmojisHistory = room.players.map { playerId -> playerId to room.playerEmojisHistory.getOrDefault(playerId, listOf()) + listOf(room.playerEmojis[playerId] ?: emptyList()) }.toMap(),
+                lastFailedThreats = room.openThreats, // TODO(nik) ask GameDesign which way they want to have it here.
+                openThreats = randomGenerator.randomElements(room.possibleThreats, room.maxPossibleAmountOfThreats()),
+                roundEndingTime = clock.time().plusMillis(room.roundLengthInSeconds),
+                currentPhase = PHASE_EMOJIS,
+                currentRoundNumber = room.currentRoundNumber + 1
+            )
+            PHASE_DOOMED -> room // Forward the current state.
+          }
+
+          synchronized(rooms) { rooms[roomName] = newRoom }
+          newRoom.asRoomInformation()
+        } else {
+          room.asRoomInformation()
+        }
+      }
+    }
   }
 
   @GET
@@ -150,6 +190,7 @@ class GameApi(
     val room = getRoom(roomName) {
       if (it is Room) throw ClientErrorException("Game hasn't started", 422)
       if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422)
+      if (it is Playing && it.currentPhase != PHASE_EMOJIS) throw ClientErrorException("Game is not in emoji phase", 422)
     }
 
     val encodedEmojis = emojis.split(',')
@@ -176,12 +217,11 @@ class GameApi(
     val room = getRoom(roomName) {
       if (it is Room) throw ClientErrorException("Game hasn't started", 422)
       if (!it.players.contains(playerId)) throw ClientErrorException("You are not part of the room with the name: ${roomName.name}", 422)
+      if (it is Playing && it.currentPhase != PHASE_ROLE) throw ClientErrorException("Game is not in role phase", 422)
     }
 
-    if ((room as Playing).playedPlayerRoles.containsKey(playerId)) throw ClientErrorException("Already set a role for this round", 422)
-
     synchronized(rooms) {
-      val new = room.copy(version = room.version + 1, playedPlayerRoles = room.playedPlayerRoles.plus(playerId to role))
+      val new = (room as Playing).copy(version = room.version + 1, playedPlayerRoles = room.playedPlayerRoles.plus(playerId to role))
       rooms[roomName] = new
       return new.asRoomInformation()
     }
@@ -194,6 +234,16 @@ class GameApi(
       room = rooms[roomName] ?: throw NotFoundException("Can't find a room with the name: ${roomName.name}")
       validation.invoke(room)
       return room
+    }
+  }
+
+  @VisibleForTesting fun changePhase(roomName: RoomName, phase: Phase): RoomInformation {
+    val room = getRoom(roomName)
+
+    synchronized(rooms) {
+      val new = (room as Playing).copy(currentPhase = phase)
+      rooms[roomName] = new
+      return new.asRoomInformation()
     }
   }
 }

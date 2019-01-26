@@ -1,16 +1,17 @@
 ﻿using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
-using HalfBlind.ScriptableVariables;
-using UnityEngine.UI;
+using UnityEngine;
 using XNode;
 
 [CreateNodeMenu(nameof(SendJoinRoomMessage), "Request", "Send", "Room", "Join")]
 public class SendJoinRoomMessage : FlowNode
 {
     [Input]
-    public InputField roomNameInputField;
-    public GlobalString myPlayerId;
+    public string roomInput;
+
+    [Input]
+    public string playerIdInput;
 
     public override object GetValue(NodePort port)
     {
@@ -19,18 +20,22 @@ public class SendJoinRoomMessage : FlowNode
 
     public override void ExecuteNode()
     {
-        var roomNameInput = GetInputValue(nameof(roomNameInputField.text), "");
-        var playerIdInput = GetInputValue(nameof(myPlayerId.Value), "");
-        if(roomNameInput != "" && playerIdInput != "")
-        {
-            SendServerRequest(roomNameInput, playerIdInput);
-        }
+        string roomName = GetInputValue(nameof(roomInput), roomInput);
+        string playerId = GetInputValue(nameof(playerIdInput), playerIdInput);
+        SendServerRequest(roomName, playerId);
     }
 
-    private async void SendServerRequest(string roomNameInput, string playerIdInput)
+    private async void SendServerRequest(string roomName, string playerId)
     {
-        var serverApi = ServerApi.Instance;
-        RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomNameInput, playerIdInput);
-        GameLogicManager.instance.JoinReadyRoom(joinRoomAsync);
+        Debug.Log("Sending Join Request: " + roomName + " : " + playerId);
+        if (!string.IsNullOrEmpty(roomName) && !string.IsNullOrEmpty(playerId))
+        {
+            // No Nulls in request room!
+            Debug.Log("Valid. Sent.");
+
+            var serverApi = ServerApi.Instance;
+            RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomName, playerId);
+            GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+        }
     }
 }

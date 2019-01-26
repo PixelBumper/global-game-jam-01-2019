@@ -118,7 +118,7 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? roundLengthInSeconds, long? seed)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed)
         {
             return CreateRoomAsync(playerId, possibleThreats, roundLengthInSeconds, seed, System.Threading.CancellationToken.None);
         }
@@ -126,7 +126,7 @@ namespace GeneratedServerAPI
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, long? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
         {
             if (playerId == null)
                 throw new System.ArgumentNullException("playerId");
@@ -591,6 +591,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Version { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("forbiddenRoles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.IDictionary<string, RoleThreat> ForbiddenRoles { get; set; }
     
@@ -598,10 +601,10 @@ namespace GeneratedServerAPI
         public System.Collections.Generic.IDictionary<string, RoleThreat> PlayedPlayerRoles { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojis", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, Emoji> PlayerEmojis { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<Emoji>> PlayerEmojis { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojisHistory", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<Emoji>> PlayerEmojisHistory { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<System.Collections.Generic.ICollection<Emoji>>> PlayerEmojisHistory { get; set; }
     
         [Newtonsoft.Json.JsonProperty("lastFailedThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> LastFailedThreats { get; set; }
@@ -612,9 +615,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("roundEndingTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long RoundEndingTime { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("currentRoundState", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("currentPhase", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PlayingCurrentRoundState CurrentRoundState { get; set; }
+        public PlayingCurrentPhase CurrentPhase { get; set; }
     
         [Newtonsoft.Json.JsonProperty("currentRoundNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int CurrentRoundNumber { get; set; }
@@ -704,16 +707,16 @@ namespace GeneratedServerAPI
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public enum PlayingCurrentRoundState
+    public enum PlayingCurrentPhase
     {
-        [System.Runtime.Serialization.EnumMember(Value = @"COMMUNICATION_PHASE")]
-        COMMUNICATION_PHASE = 0,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_EMOJIS")]
+        PHASE_EMOJIS = 0,
     
-        [System.Runtime.Serialization.EnumMember(Value = @"PLAYOUT_PHASE")]
-        PLAYOUT_PHASE = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_ROLE")]
+        PHASE_ROLE = 1,
     
-        [System.Runtime.Serialization.EnumMember(Value = @"DOOMED_PHASE")]
-        DOOMED_PHASE = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"PHASE_DOOMED")]
+        PHASE_DOOMED = 2,
     
     }
 
