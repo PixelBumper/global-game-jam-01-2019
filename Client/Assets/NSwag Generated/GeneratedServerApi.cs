@@ -118,15 +118,15 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, long? seed)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, int? maximumThreats, long? seed)
         {
-            return CreateRoomAsync(playerId, possibleThreats, numberOfRounds, roundLengthInSeconds, seed, System.Threading.CancellationToken.None);
+            return CreateRoomAsync(playerId, possibleThreats, numberOfRounds, roundLengthInSeconds, maximumThreats, seed, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, long? seed, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, int? numberOfRounds, long? roundLengthInSeconds, int? maximumThreats, long? seed, System.Threading.CancellationToken cancellationToken)
         {
             if (playerId == null)
                 throw new System.ArgumentNullException("playerId");
@@ -145,6 +145,10 @@ namespace GeneratedServerAPI
             if (roundLengthInSeconds != null) 
             {
                 urlBuilder_.Append("roundLengthInSeconds=").Append(System.Uri.EscapeDataString(ConvertToString(roundLengthInSeconds, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (maximumThreats != null) 
+            {
+                urlBuilder_.Append("maximumThreats=").Append(System.Uri.EscapeDataString(ConvertToString(maximumThreats, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (seed != null) 
             {
@@ -595,6 +599,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("maximumThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int MaximumThreats { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int Version { get; set; }
     
@@ -679,6 +686,9 @@ namespace GeneratedServerAPI
     
         [Newtonsoft.Json.JsonProperty("numberOfRounds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int NumberOfRounds { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("maximumThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int MaximumThreats { get; set; }
     
         public string ToJson() 
         {

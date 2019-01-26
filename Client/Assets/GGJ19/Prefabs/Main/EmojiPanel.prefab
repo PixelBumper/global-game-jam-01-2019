@@ -871,13 +871,6 @@ GameObject:
   - component: {fileID: 1151876816879124848}
   - component: {fileID: 2205005230242771073}
   - component: {fileID: 7611271916948994622}
-  - component: {fileID: 2537672763487787923}
-  - component: {fileID: 3897162387581287726}
-  - component: {fileID: 143705666880652288}
-  - component: {fileID: 6531882483993143237}
-  - component: {fileID: 6664046117860735536}
-  - component: {fileID: 6644365009046177986}
-  - component: {fileID: 12647893306082587}
   m_Layer: 5
   m_Name: EmojiPanelController
   m_TagString: Untagged
@@ -933,13 +926,6 @@ MonoBehaviour:
   - {fileID: 1151876816879124848}
   - {fileID: 2205005230242771073}
   - {fileID: 7611271916948994622}
-  - {fileID: 2537672763487787923}
-  - {fileID: 3897162387581287726}
-  - {fileID: 143705666880652288}
-  - {fileID: 6531882483993143237}
-  - {fileID: 6664046117860735536}
-  - {fileID: 6644365009046177986}
-  - {fileID: 12647893306082587}
 --- !u!114 &458221828243524952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: -120}
+  position: {x: -232, y: -72}
   ports:
     keys:
     - MyButton
@@ -993,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: 72}
+  position: {x: -232, y: 120}
   ports:
     keys:
     - MyButton
@@ -1033,7 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: -24}
+  position: {x: -232, y: 24}
   ports:
     keys:
     - MyButton
@@ -1073,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: 264}
+  position: {x: -232, y: 312}
   ports:
     keys:
     - MyButton
@@ -1113,7 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: 360}
+  position: {x: -232, y: 408}
   ports:
     keys:
     - MyButton
@@ -1153,7 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: 168}
+  position: {x: -232, y: 216}
   ports:
     keys:
     - MyButton
@@ -1193,7 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4661301437102950689}
-  position: {x: -232, y: -216}
+  position: {x: -232, y: -168}
   ports:
     keys:
     - MyButton
@@ -1308,7 +1294,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji1
+  emojiKey: communication-07
 --- !u!114 &1167610590338638575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,7 +1343,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji7
+  emojiKey: communication-12
 --- !u!114 &6368257759810111544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1392,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji6
+  emojiKey: communication-11
 --- !u!114 &1937396566651310912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,7 +1441,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji5
+  emojiKey: communication-10
 --- !u!114 &8946878859501039582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,7 +1490,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji4
+  emojiKey: communication-09
 --- !u!114 &1151876816879124848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,7 +1539,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji3
+  emojiKey: communication-08
 --- !u!114 &2205005230242771073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1588,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji2
+  emojiKey: communication-07
 --- !u!114 &7611271916948994622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,350 +1637,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Send Choosen Emoji Message
-  emojiKey: emoji8
---- !u!114 &2537672763487787923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: -88}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 2537672763487787923}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 2537672763487787923}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 458221828243524952}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 2537672763487787923}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji3
---- !u!114 &3897162387581287726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: 472}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 3897162387581287726}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 3897162387581287726}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 5928324019497892787}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 3897162387581287726}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji8
---- !u!114 &143705666880652288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: 360}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 143705666880652288}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 143705666880652288}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 5145573760052585753}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 143705666880652288}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji7
---- !u!114 &6531882483993143237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: -200}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 6531882483993143237}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 6531882483993143237}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 5762608410159699070}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 6531882483993143237}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji2
---- !u!114 &6664046117860735536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: 136}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 6664046117860735536}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 6664046117860735536}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 5072486325208778336}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 6664046117860735536}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji5
---- !u!114 &6644365009046177986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: 248}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 6644365009046177986}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 6644365009046177986}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 4539421732055304040}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 6644365009046177986}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji6
---- !u!114 &12647893306082587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3646583261311013939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa1a369de554d4bb90b17b29ec03d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 4661301437102950689}
-  position: {x: 56, y: 24}
-  ports:
-    keys:
-    - emojiKey
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: emojiKey
-      _node: {fileID: 12647893306082587}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 12647893306082587}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 34600693169429726}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 12647893306082587}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Send Choosen Emoji Message
-  emojiKey: emoji4
+  emojiKey: communication-13
 --- !u!1 &4728713445614542029
 GameObject:
   m_ObjectHideFlags: 0
