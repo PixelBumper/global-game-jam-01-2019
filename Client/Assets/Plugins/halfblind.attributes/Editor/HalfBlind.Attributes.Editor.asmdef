@@ -1,0 +1,16 @@
+{
+    "name": "HalfBlind.Attributes.Editor",
+    "references": [
+        "HalfBlind.Attributes"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

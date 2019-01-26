@@ -1,0 +1,15 @@
+{
+    "name": "halfblind.scriptablevariables",
+    "references": [
+        "halfblind.saveutils",
+        "HalfBlind.Attributes"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
