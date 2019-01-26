@@ -159,7 +159,11 @@ namespace XNodeEditor {
         [MenuItem("Window/XNode/OpenGraph with Selected")]
         public static void OpenSelectedObject() {
             if(Selection.activeGameObject != null) {
-                OpenWithGraph(Selection.activeGameObject.GetComponent<XNode.INodeGraph>());
+                var graph = Selection.activeGameObject.GetComponent<XNode.INodeGraph>();
+                if(graph == null) {
+                    graph = Selection.activeGameObject.GetComponentInParent<XNode.INodeGraph>();
+                }
+                OpenWithGraph(graph);
             } else {
                 OpenWithGraph(Selection.activeObject as XNode.INodeGraph);
             }

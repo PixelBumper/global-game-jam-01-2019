@@ -118,21 +118,25 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId)
+        public System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats)
         {
-            return CreateRoomAsync(playerId, System.Threading.CancellationToken.None);
+            return CreateRoomAsync(playerId, possibleThreats, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Room> CreateRoomAsync(string playerId, string possibleThreats, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/create-room?");
             if (playerId != null) 
             {
                 urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (possibleThreats != null) 
+            {
+                urlBuilder_.Append("possibleThreats=").Append(System.Uri.EscapeDataString(ConvertToString(possibleThreats, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
     
@@ -377,8 +381,8 @@ namespace GeneratedServerAPI
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class PlayerId 
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
     
         public string ToJson() 
         {
@@ -398,11 +402,33 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<PlayerId> Players { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("foo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Foo { get; set; }
+        [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("bar", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Bar { get; set; }
+        [Newtonsoft.Json.JsonProperty("forbiddenRoles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.IDictionary<string, RoleThreat> ForbiddenRoles { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("lastFailedThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RoleThreat> LastFailedThreats { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("openThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RoleThreat> OpenThreats { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("roundEndingTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long RoundEndingTime { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("currentRoundState", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public PlayingCurrentRoundState CurrentRoundState { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("currentRoundNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int CurrentRoundNumber { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("maxRoundNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int MaxRoundNumber { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("gameWon", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool GameWon { get; set; }
     
         public string ToJson() 
         {
@@ -417,16 +443,37 @@ namespace GeneratedServerAPI
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
+    public partial class RoleThreat 
+    {
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Value { get; set; }
+    
+        public string ToJson() 
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+    
+        public static RoleThreat FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<RoleThreat>(data);
+        }
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Room 
     {
+        [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<PlayerId> Players { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         [Newtonsoft.Json.JsonProperty("owner", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Owner { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<PlayerId> Players { get; set; }
     
         public string ToJson() 
         {
@@ -458,6 +505,20 @@ namespace GeneratedServerAPI
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<RoomInformation>(data);
         }
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
+    public enum PlayingCurrentRoundState
+    {
+        [System.Runtime.Serialization.EnumMember(Value = @"COMMUNICATION_PHASE")]
+        COMMUNICATION_PHASE = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"PLAYOUT_PHASE")]
+        PLAYOUT_PHASE = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DOOMED_PHASE")]
+        DOOMED_PHASE = 2,
     
     }
 
