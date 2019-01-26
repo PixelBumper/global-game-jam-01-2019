@@ -22,7 +22,7 @@ public class SendRoleChosenMessage : FlowNode
     private async void SendServerRequest(string currentRoleChosen)
     {
         var serverApi = ServerApi.Instance;
-        // var joinRoomAsync = await serverApi.SetRoleAsync(GameLogicManager.instance.serverRoomName.Value, GameLogicManager.instance.PlayerId, currentRoleChosen);
-        // GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+        var joinRoomAsync = await serverApi.SetRoleAsync(GameLogicManager.instance.serverRoomName.Value, GameLogicManager.instance.PlayerId, currentRoleChosen);
+        GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
     }
 }
