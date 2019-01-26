@@ -22,7 +22,7 @@ public class SendChoosenEmojiMessage : FlowNode
         sendEmojis(emojiKey);
     }
 
-    public async void sendEmojis(String emojis)
+    private async void sendEmojis(String emojis)
     {
         var gameLogicManager = GameLogicManager.instance;
         var roomInformation = await ServerApi.Instance.SendEmojisAsync(gameLogicManager.serverRoomName.name, gameLogicManager.PlayerId, emojis);
