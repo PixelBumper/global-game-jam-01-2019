@@ -1,20 +1,28 @@
-﻿using UnityEngine.SceneManagement;
+﻿using GGJ19.Scripts.GameLogic;
+using UnityEngine;
+using UnityEngine.UI;
 using XNode;
 
-[CreateNodeMenu(nameof(ChangeSceneByName), "Scene", "Change", "Load")]
-public class ChangeSceneByName : FlowNode
+namespace GGJ19.Scripts.Nodes
 {
-    [Input]
-    public string sceneName;
-
-    public override object GetValue(NodePort port)
+    [CreateNodeMenu(nameof(ReadInputFieldText), "Unique", "Identifier")]
+    public class ReadInputFieldText  : MonoNode
     {
-        return null;
-    }
+        [Input]
+        public InputField inputField;
 
-    public override void ExecuteNode()
-    {
-        var inputSceneName = GetInputValue(nameof(sceneName), sceneName);
-        SceneManager.LoadScene(inputSceneName);
+        [Output]
+        public string fieldText;
+
+        public override object GetValue(NodePort port)
+        {
+            if(inputField != null)
+            {
+                return inputField.text;
+            }
+
+            return "";
+        }
+
     }
 }

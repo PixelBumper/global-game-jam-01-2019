@@ -1,18 +1,17 @@
 ﻿using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
-using HalfBlind.ScriptableVariables;
 using UnityEngine;
-using UnityEngine.UI;
 using XNode;
 
 [CreateNodeMenu(nameof(SendJoinRoomMessage), "Request", "Send", "Room", "Join")]
 public class SendJoinRoomMessage : FlowNode
 {
     [Input]
-    public string roomName;
+    public string roomInput;
+
     [Input]
-    public string myPlayerId;
+    public string playerIdInput;
 
     public override object GetValue(NodePort port)
     {
@@ -21,17 +20,22 @@ public class SendJoinRoomMessage : FlowNode
 
     public override void ExecuteNode()
     {
-        Debug.Log("Execute Node");
-        var roomNameInput = GetInputValue(nameof(roomName), roomName);
-        var playerIdInput = GetInputValue(nameof(myPlayerId), myPlayerId);
-            SendServerRequest(roomNameInput, playerIdInput);
+        string roomName = GetInputValue(nameof(roomInput), roomInput);
+        string playerId = GetInputValue(nameof(playerIdInput), playerIdInput);
+        SendServerRequest(roomName, playerId);
     }
 
-    private async void SendServerRequest(string roomNameInput, string playerIdInput)
+    private async void SendServerRequest(string roomName, string playerId)
     {
-        Debug.Log("Sending Join Request:");
-        var serverApi = ServerApi.Instance;
-        RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomNameInput, playerIdInput);
-        GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+        Debug.Log("Sending Join Request: " + roomName + " : " + playerId);
+        if (!string.IsNullOrEmpty(roomName) && !string.IsNullOrEmpty(playerId))
+        {
+            // No Nulls in request room!
+            Debug.Log("Valid. Sent.");
+
+            var serverApi = ServerApi.Instance;
+            RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomName, playerId);
+            GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+        }
     }
 }
