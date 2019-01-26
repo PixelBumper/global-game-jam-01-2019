@@ -162,7 +162,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Change Scene By Name
-  sceneName: OnGameWon
+  sceneName: GameWon
 --- !u!114 &3249296412864892941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,4 +211,4 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Change Scene By Name
-  sceneName: OnGameLost
+  sceneName: GameLost
