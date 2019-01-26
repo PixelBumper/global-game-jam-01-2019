@@ -17,6 +17,8 @@ MonoBehaviour:
   onEmojisChanged: {fileID: 11400000, guid: d5c127dbe4f3a49049f038eb8e417dc7, type: 2}
   onSelectableRoleDisabledChanged: {fileID: 11400000, guid: 0a9d5eabe14924db9ba2d3b6183174c8,
     type: 2}
+  onFailedThreatsChanged: {fileID: 11400000, guid: e43d9c7a66ed3429cbacb0051f691c07,
+    type: 2}
   onThreatsChanged: {fileID: 11400000, guid: e8b4aa66c7c8f43109c2ae3ff1455637, type: 2}
   onTurnChanged: {fileID: 11400000, guid: f98759b72b47d4dccb7a481cdfca786b, type: 2}
   onGameWon: {fileID: 11400000, guid: 5342016a276d64cfbb5d676e7f2a2a87, type: 2}
