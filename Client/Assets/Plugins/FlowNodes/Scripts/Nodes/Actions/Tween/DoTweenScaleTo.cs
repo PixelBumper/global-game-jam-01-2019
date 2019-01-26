@@ -10,6 +10,7 @@ namespace HalfBlind.FlowNodes {
         [Input] public int Duration;
         public bool IsLoop;
         public LoopType Loop;
+        public Ease Easing;
 
         private Tweener tween;
 
@@ -26,7 +27,8 @@ namespace HalfBlind.FlowNodes {
                 var target = GetInputValue(nameof(Target), Target);
                 var duration = GetInputValue(nameof(Duration), Duration);
 
-                tween = target.transform.DOMove(targetValue, duration);
+                tween = target.transform.DOScale(targetValue, duration);
+                tween.SetEase(Easing);
                 tween.onUpdate += OnUpdateTween;
                 tween.onComplete += OnTweenComplete;
             }
