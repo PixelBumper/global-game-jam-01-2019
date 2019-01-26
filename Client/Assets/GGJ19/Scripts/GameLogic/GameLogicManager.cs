@@ -125,6 +125,10 @@ namespace GGJ19.Scripts.GameLogic
         }
 
         private void UpdateThreats() {
+            if(currentPlayingState == null || currentPlayingState.PossibleThreats == null) {
+                return;
+            }
+
             var threatsList = new List<string>(currentPlayingState.PossibleThreats.Count);
             foreach (RoleThreat threat in currentPlayingState.PossibleThreats) {
                 threatsList.Add(threat.Value);
