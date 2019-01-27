@@ -35,8 +35,9 @@ public class SendJoinRoomMessage : FlowNode
             Debug.Log("Valid. Sent.");
 
             var serverApi = ServerApi.Instance;
-            RoomInformation joinRoomAsync = await serverApi.JoinRoomAsync(roomName, playerId);
-            GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+            RoomInformation joinRoomResponse = await serverApi.JoinRoomAsync(roomName, playerId);
+            Debug.Log($"{nameof(joinRoomResponse)}:{joinRoomResponse.ToJson()}");
+            GameLogicManager.instance.UpdateGameState(joinRoomResponse.Playing, joinRoomResponse.Waiting);
         }
     }
 }
