@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using GeneratedServerAPI;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
@@ -67,8 +68,8 @@ namespace GGJ19.Scripts.GameLogic
         [Header("Server Variables")]
         public GlobalFloat serverPollTimeMs; // How many ms between server requests
 
-        private Playing previousPlayingState;
-        private Room previousRoomState;
+        [CanBeNull] private Playing previousPlayingState;
+        [CanBeNull] private Room previousRoomState;
         private Playing currentPlayingState;
         private Room currentRoomState;
 
@@ -133,15 +134,19 @@ namespace GGJ19.Scripts.GameLogic
                 }
             }
 
-
-            if (previousRoomState != currentRoomState
-                || previousRoomState.Name != currentRoomState.Name
-                || previousRoomState.Owner != currentRoomState.Owner
-                || previousRoomState.Players.Count != currentRoomState.Players.Count
-                || previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
+            
+            if (previousRoomState == null || 
+                previousRoomState != currentRoomState ||
+                previousRoomState.Name != currentRoomState.Name || 
+                previousRoomState.Owner != currentRoomState.Owner ||
+                previousRoomState.Players.Count != currentRoomState.Players.Count ||
+                previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
             {
-                serverRoomName.Value = currentRoomState.Name;
-                serverOwnerId.Value = currentRoomState.Owner;
+                if (currentRoomState != null)
+                {
+                    serverRoomName.Value = currentRoomState.Name;
+                    serverOwnerId.Value = currentRoomState.Owner;
+                }
 
                 // TODO : Make this check work. Currently too much noise between waiting/playing/game start
                 checkForGameStart();
