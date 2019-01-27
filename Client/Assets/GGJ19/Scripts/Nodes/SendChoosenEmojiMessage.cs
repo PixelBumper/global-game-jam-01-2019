@@ -32,6 +32,7 @@ public class SendChoosenEmojiMessage : FlowNode
         {
             var roomInformation = await ServerApi.Instance.SendEmojisAsync(gameLogicManager.serverRoomName.Value,
                 gameLogicManager.PlayerId, emojis);
+            Debug.Log($"{nameof(roomInformation)}:{roomInformation.ToJson()}");
 
             gameLogicManager.UpdateGameState(roomInformation.Playing, roomInformation.Waiting);
         }
@@ -39,7 +40,5 @@ public class SendChoosenEmojiMessage : FlowNode
         {
             Debug.LogError(e.Message);
         } 
-
-        
     }
 }
