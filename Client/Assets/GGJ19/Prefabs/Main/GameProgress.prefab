@@ -534,6 +534,7 @@ MonoBehaviour:
   Duration: 10
   IsLoop: 1
   Loop: 2
+  Easing: 1
 --- !u!114 &3807233827315123506
 MonoBehaviour:
   m_ObjectHideFlags: 0
