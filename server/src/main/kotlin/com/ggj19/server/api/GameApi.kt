@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.TimeUnit
 import javax.validation.constraints.NotNull
 import javax.ws.rs.ClientErrorException
 import javax.ws.rs.GET
@@ -41,7 +42,7 @@ import javax.ws.rs.core.MediaType.APPLICATION_JSON
 class GameApi(
   private val clock: Clock
 ) {
-  private val rooms = HashMap<RoomName, RoomState>()
+  private val rooms = ConcurrentHashMap<RoomName, RoomState>()
   private val randomGenerators = ConcurrentHashMap<RoomName, RandomGenerator>()
 
   @GET
@@ -153,15 +154,15 @@ class GameApi(
         val time = clock.time()
         val isRoundDue = Instant.ofEpochMilli(room.roundEndingTime) >= time
 
-        if (isRoundDue) {
+        val newRoom = if (isRoundDue) {
           val currentPhase = room.currentPhase
           val randomGenerator = randomGenerators.getValue(roomName)
 
-          var newRoom = when (currentPhase) {
+          var nextRoomState = when (currentPhase) {
             PHASE_EMOJIS -> room.copy(
                 version = room.version + 1,
                 currentTime = time.toEpochMilli(),
-                roundEndingTime = time.plusSeconds(room.roundLengthInSeconds).toEpochMilli(),
+                roundEndingTime = room.roundEndingTime + TimeUnit.SECONDS.toMillis(room.roundLengthInSeconds),
                 currentPhase = PHASE_ROLE
             )
             PHASE_ROLE -> room.copy(
@@ -173,22 +174,27 @@ class GameApi(
                 lastFailedThreats = room.lastFailedThreats + room.openThreats.selectiveMinus(room.playedPlayerRoles.values),
                 openThreats = randomGenerator.randomElements(room.possibleThreats, room.maxPossibleAmountOfThreats()),
                 currentTime = time.toEpochMilli(),
-                roundEndingTime = time.plusSeconds(room.roundLengthInSeconds).toEpochMilli(),
+                roundEndingTime = room.roundEndingTime + TimeUnit.SECONDS.toMillis(room.roundLengthInSeconds),
                 currentPhase = PHASE_EMOJIS,
                 currentRoundNumber = room.currentRoundNumber + 1
             )
             PHASE_DOOMED -> room // Forward the current state.
           }
 
-          if (newRoom.lastFailedThreats.size + newRoom.openThreats.size >= room.maximumThreats) {
-            newRoom = newRoom.copy(currentPhase = PHASE_DOOMED)
+          if (nextRoomState.lastFailedThreats.size + nextRoomState.openThreats.size >= room.maximumThreats) {
+            nextRoomState = nextRoomState.copy(currentPhase = PHASE_DOOMED)
           }
 
-          synchronized(rooms) { rooms[roomName] = newRoom }
-          newRoom.asRoomInformation()
+          nextRoomState
         } else {
-          room.asRoomInformation()
+          room.copy(
+              version = room.version + 1,
+              currentTime = time.toEpochMilli()
+          )
         }
+
+        synchronized(rooms) { rooms[roomName] = newRoom }
+        newRoom.asRoomInformation()
       }
     }
   }

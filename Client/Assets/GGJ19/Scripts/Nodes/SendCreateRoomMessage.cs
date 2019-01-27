@@ -50,7 +50,7 @@ public class SendCreateRoomMessage : FlowNode
             {
                 Debug.Log("Sending Create Room Request");
                 var serverApi = ServerApi.Instance;
-                Room createRoomResponse = await serverApi.CreateRoomAsync(playerId, threatString, 5, 15, 6, null);
+                Room createRoomResponse = await serverApi.CreateRoomAsync(playerId, threatString, 5, 30L, 6, null);
                 Debug.Log($"{nameof(createRoomResponse)}:{createRoomResponse.ToJson()}");
                 GameLogicManager.instance.UpdateGameState(null, createRoomResponse);
             }

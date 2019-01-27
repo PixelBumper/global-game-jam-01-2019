@@ -41,6 +41,8 @@ MonoBehaviour:
   emojiIconPlayer2: {fileID: 11400000, guid: 284861698a28f46cfa9093783212a8f3, type: 2}
   emojiIconPlayer3: {fileID: 11400000, guid: 3c09b66ca09b2491fa9a0b1a38672287, type: 2}
   emojiIconPlayer4: {fileID: 11400000, guid: 813c8eba0e7fe4f73a1559a6369745ac, type: 2}
+  CurrentPhaseRemainingTimeInSeconds: {fileID: 11400000, guid: 7520595eefec66c4cada207c9ed1157c,
+    type: 2}
   onRoomInfoChanged: {fileID: 11400000, guid: 7e9702d846771458291603862cde1a33, type: 2}
   threat1: {fileID: 11400000, guid: 140528c7cf99542b28c1e8a400a35185, type: 2}
   threat2: {fileID: 11400000, guid: 7f7d17f02073d4a95a3a298e7eaa490c, type: 2}
