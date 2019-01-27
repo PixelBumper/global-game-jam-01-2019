@@ -30,6 +30,8 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onGamePhaseChanged;
         public ScriptableGameEvent OnEmojiPhaseStarted;
         public ScriptableGameEvent OnEmojiPhaseEnded;
+        public ScriptableGameEvent OnRolePhaseStarted;
+        public ScriptableGameEvent OnRolePhaseEnded;
 
         [Header("Game Variables")] 
         public GlobalString player1Id;
@@ -196,20 +198,26 @@ namespace GGJ19.Scripts.GameLogic
             Debug.Log($"[{DateTime.Now:HH:mm:ss}]Game will finish in {remainingMilliseconds*.001f}s at {RoundEndingTimeMilliseconds} were NOW: {serverCurrentMilliseconds}");
         }
 
-        private void UpdateGamePhase()
-        {
+        private void UpdateGamePhase() {
             var previousValue = currentGamePhase.Value;
             currentGamePhase.Value = currentPlayingState.CurrentPhase.ToString();
-            if (string.IsNullOrEmpty(previousValue) || previousValue == "NOT_STARTED") {
-                if(currentGamePhase.Value == "PHASE_EMOJIS") {
-                    OnEmojiPhaseStarted.SendEvent();
-                }
-            }
 
             if (!string.IsNullOrEmpty(previousValue) && previousValue == "PHASE_EMOJIS") {
                 OnEmojiPhaseEnded.SendEvent();
             }
-            
+
+            if (currentGamePhase.Value == "PHASE_EMOJIS") {
+                OnEmojiPhaseStarted.SendEvent();
+            }
+
+            if (currentGamePhase.Value == "PHASE_ROLE") {
+                OnRolePhaseStarted.SendEvent();
+            }
+
+            if (!string.IsNullOrEmpty(previousValue) && previousValue == "PHASE_ROLE") {
+                OnRolePhaseEnded.SendEvent();
+            }
+
             onGamePhaseChanged.SendEvent();
         }
 
@@ -285,7 +293,7 @@ namespace GGJ19.Scripts.GameLogic
 
         private void UpdateTurn()
         {
-            if(currentPlayingState != null)
+            if(currentPlayingState != null && currentTurn != null && currentTurn.Value != currentPlayingState.CurrentRoundNumber)
             {
                 currentTurn.Value = currentPlayingState.CurrentRoundNumber;
                 onTurnChanged.SendEvent();

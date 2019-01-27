@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 4373749694598431500}
-  position: {x: -1064, y: -344}
+  position: {x: -1096, y: -472}
   ports:
     keys:
     - FlowOutput
@@ -1024,7 +1024,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: On Global Event
-  GameEvent: {fileID: 11400000, guid: a7c56548c61159a41b2e5ce7d89c0c1a, type: 2}
+  GameEvent: {fileID: 11400000, guid: 539113ebd17a2a243b2527eb20f5a8cb, type: 2}
 --- !u!114 &3769579560750228943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2452,7 +2452,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: On Global Event
-  GameEvent: {fileID: 11400000, guid: 539113ebd17a2a243b2527eb20f5a8cb, type: 2}
+  GameEvent: {fileID: 11400000, guid: 9eee55d28c671d94ca7b7dc56988952e, type: 2}
 --- !u!114 &4166967530913734247
 MonoBehaviour:
   m_ObjectHideFlags: 0
