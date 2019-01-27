@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 4577002855557424209}
   - component: {fileID: 2554637493328782079}
   - component: {fileID: 5071621458488729641}
+  - component: {fileID: 329893722166023322}
   m_Layer: 0
   m_Name: CharacterCountController
   m_TagString: Untagged
@@ -92,6 +93,7 @@ MonoBehaviour:
   - {fileID: 4577002855557424209}
   - {fileID: 2554637493328782079}
   - {fileID: 5071621458488729641}
+  - {fileID: 329893722166023322}
 --- !u!114 &284472287193456050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: -392}
+  position: {x: -456, y: -280}
   ports:
     keys:
     - FlowOutput
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: -296}
+  position: {x: -472, y: -184}
   ports:
     keys:
     - inputString
@@ -180,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -248, y: -296}
+  position: {x: -696, y: -184}
   ports:
     keys:
     - Output
@@ -212,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 280, y: -312}
+  position: {x: -184, y: -200}
   ports:
     keys:
     - Bool
@@ -279,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: -440}
+  position: {x: 88, y: -328}
   ports:
     keys:
     - Target
@@ -329,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: -312}
+  position: {x: 88, y: -200}
   ports:
     keys:
     - Target
@@ -379,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: -120}
+  position: {x: -456, y: -8}
   ports:
     keys:
     - FlowOutput
@@ -410,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: -24}
+  position: {x: -456, y: 88}
   ports:
     keys:
     - inputString
@@ -454,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -248, y: -24}
+  position: {x: -696, y: 88}
   ports:
     keys:
     - Output
@@ -486,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 280, y: -40}
+  position: {x: -168, y: 72}
   ports:
     keys:
     - Bool
@@ -553,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: -168}
+  position: {x: 88, y: -56}
   ports:
     keys:
     - Target
@@ -603,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: -40}
+  position: {x: 88, y: 72}
   ports:
     keys:
     - Target
@@ -653,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: 152}
+  position: {x: -456, y: 264}
   ports:
     keys:
     - FlowOutput
@@ -684,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: 248}
+  position: {x: -456, y: 360}
   ports:
     keys:
     - inputString
@@ -728,7 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -248, y: 248}
+  position: {x: -696, y: 360}
   ports:
     keys:
     - Output
@@ -760,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 280, y: 232}
+  position: {x: -168, y: 344}
   ports:
     keys:
     - Bool
@@ -827,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: 104}
+  position: {x: 88, y: 216}
   ports:
     keys:
     - Target
@@ -877,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: 232}
+  position: {x: 88, y: 344}
   ports:
     keys:
     - Target
@@ -927,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: 408}
+  position: {x: -456, y: 520}
   ports:
     keys:
     - FlowOutput
@@ -958,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -8, y: 504}
+  position: {x: -456, y: 616}
   ports:
     keys:
     - inputString
@@ -1002,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: -248, y: 504}
+  position: {x: -696, y: 616}
   ports:
     keys:
     - Output
@@ -1034,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 280, y: 488}
+  position: {x: -168, y: 600}
   ports:
     keys:
     - Bool
@@ -1101,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: 360}
+  position: {x: 88, y: 472}
   ports:
     keys:
     - Target
@@ -1151,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 3963754063599214672}
-  position: {x: 536, y: 488}
+  position: {x: 88, y: 600}
   ports:
     keys:
     - Target
@@ -1188,6 +1190,34 @@ MonoBehaviour:
   _name: Set Active
   Target: {fileID: 7187474560683562520}
   Options: 0
+--- !u!114 &329893722166023322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688530998545214187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fe3cc4c36f85b4cbcb56baaaca48f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 3963754063599214672}
+  position: {x: -456, y: 104}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 329893722166023322}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Update
+  Milliseconds: 0
 --- !u!1 &1188845929399705864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +1905,355 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7535612131195112593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6836106440660112326}
+  - component: {fileID: 6688268134164474273}
+  - component: {fileID: 7468661667578544843}
+  - component: {fileID: 7446622405791571722}
+  - component: {fileID: 2018693075521617088}
+  - component: {fileID: 8725564679229333782}
+  - component: {fileID: 2022821791453933337}
+  - component: {fileID: 9158916909851462824}
+  m_Layer: 0
+  m_Name: ShipController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6836106440660112326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0501709, y: -1.0654907, z: -0.032645013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2630839893397279826}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6688268134164474273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 7468661667578544843}
+  - {fileID: 7446622405791571722}
+  - {fileID: 2018693075521617088}
+  - {fileID: 8725564679229333782}
+  - {fileID: 2022821791453933337}
+  - {fileID: 9158916909851462824}
+--- !u!114 &7468661667578544843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e108e6ab82f5c74f8c839bafc9966f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 792, y: -296}
+  ports:
+    keys:
+    - Target
+    - StateName
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 7468661667578544843}
+      _typeQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: StateName
+      _node: {fileID: 7468661667578544843}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 7468661667578544843}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 7446622405791571722}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 7468661667578544843}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Play Animation
+  Target: {fileID: 4685424216770828011}
+  StateName: Spaceship@ComingIn
+--- !u!114 &7446622405791571722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897a00302aa0b0a41af82c93fa1b7cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 520, y: -280}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 7446622405791571722}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 7468661667578544843}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Start
+--- !u!114 &2018693075521617088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 488, y: -120}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 2018693075521617088}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 8725564679229333782}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: f98759b72b47d4dccb7a481cdfca786b, type: 2}
+--- !u!114 &8725564679229333782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e108e6ab82f5c74f8c839bafc9966f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 776, y: -104}
+  ports:
+    keys:
+    - Target
+    - StateName
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 8725564679229333782}
+      _typeQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: StateName
+      _node: {fileID: 8725564679229333782}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 8725564679229333782}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 2018693075521617088}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 8725564679229333782}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 9158916909851462824}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Play Animation
+  Target: {fileID: 4685424216770828011}
+  StateName: Spaceship@GoingOut
+--- !u!114 &2022821791453933337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e108e6ab82f5c74f8c839bafc9966f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 1256, y: -104}
+  ports:
+    keys:
+    - Target
+    - StateName
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 2022821791453933337}
+      _typeQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: StateName
+      _node: {fileID: 2022821791453933337}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2022821791453933337}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 9158916909851462824}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2022821791453933337}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Play Animation
+  Target: {fileID: 4685424216770828011}
+  StateName: Spaceship@ComingIn
+--- !u!114 &9158916909851462824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535612131195112593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b12a2a0cc728444bca38470440e619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 6688268134164474273}
+  position: {x: 1016, y: -104}
+  ports:
+    keys:
+    - WaitSeconds
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: WaitSeconds
+      _node: {fileID: 9158916909851462824}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 9158916909851462824}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 8725564679229333782}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 9158916909851462824}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2022821791453933337}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Wait
+  WaitSeconds: 1
 --- !u!1 &8382481508670414706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2368,7 @@ Transform:
   - {fileID: 924470998437547584}
   - {fileID: 1222566626605974848}
   - {fileID: 1218358843377760697}
+  - {fileID: 6836106440660112326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2351,6 +2731,30 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!1 &4263043833362292012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6071473204135495028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3821284157588733128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5651919692658467412 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 952254902599364715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8730974027915720070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8367037571508520429, guid: 72ca1b707b91946259ef285d53102b7f,
@@ -2363,30 +2767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ee28ffd9f4477b9bce741a66f2f7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &5651919692658467412 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 952254902599364715}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3821284157588733128 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 952254902599364715}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6071473204135495028 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 952254902599364715}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4263043833362292012 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 952254902599364715}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8640991151806532750 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8853480254773656805, guid: 72ca1b707b91946259ef285d53102b7f,
@@ -2650,30 +3030,6 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
---- !u!4 &9196738898305856742 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2797935154210406905}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1209790705321356478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2797935154210406905}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2226106747026820442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2797935154210406905}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &7317490645121389510 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2797935154210406905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5965566799152333844 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8367037571508520429, guid: 72ca1b707b91946259ef285d53102b7f,
@@ -2698,6 +3054,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2226106747026820442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9196738898305856742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209790705321356478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7317490645121389510 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2797935154210406905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6170286659499129695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2974,6 +3354,30 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ca1b707b91946259ef285d53102b7f, type: 3}
+--- !u!4 &924470998437547584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7187474560683562520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7895294474911135740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1655621298089929056 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6170286659499129695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3421788368322758586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8853480254773656805, guid: 72ca1b707b91946259ef285d53102b7f,
@@ -2998,30 +3402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ee28ffd9f4477b9bce741a66f2f7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &924470998437547584 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6170286659499129695}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7895294474911135740 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4049012558288932003, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6170286659499129695}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1655621298089929056 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4852824079884767807, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6170286659499129695}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7187474560683562520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3899634652909251911, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6170286659499129695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7975944999971665181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3268,6 +3648,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7975944999971665181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1472077682663148024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8853480254773656805, guid: 72ca1b707b91946259ef285d53102b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7975944999971665181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4018650987221647362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6446096374512727327, guid: 72ca1b707b91946259ef285d53102b7f,
@@ -3286,18 +3678,6 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 7975944999971665181}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1472077682663148024 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8853480254773656805, guid: 72ca1b707b91946259ef285d53102b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7975944999971665181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eb01a099c629748b4b5134ff954189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1922350874080964848 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8367037571508520429, guid: 72ca1b707b91946259ef285d53102b7f,
