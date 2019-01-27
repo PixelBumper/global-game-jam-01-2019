@@ -9,6 +9,7 @@ namespace HalfBlind.Nodes {
 
         public override void ExecuteNode() {
             var spriteName = GetInputValue(nameof(SpriteName), SpriteName);
+            Debug.Log($"Loading from resources {spriteName.ToLower()}");
             Result = Resources.Load<Sprite>(spriteName.ToLower());
         }
 
