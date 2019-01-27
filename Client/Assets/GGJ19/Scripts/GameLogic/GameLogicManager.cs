@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GeneratedServerAPI;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
@@ -50,6 +51,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableVariable threat6;
 
         [Header("CurrentThreats")]
+        public GlobalFloat currentTheatsAmount;
         public GlobalString currentThreat1;
         public GlobalString currentThreat2;
         public GlobalString currentThreat3;
@@ -166,7 +168,7 @@ namespace GGJ19.Scripts.GameLogic
             if(currentPlayingState == null || currentPlayingState.PossibleThreats == null) {
                 return;
             }
-
+            currentTheatsAmount.Value = currentPlayingState.PossibleThreats.Count;
             var threatsList = new List<string>(currentPlayingState.PossibleThreats.Count);
             foreach (RoleThreat threat in currentPlayingState.PossibleThreats) {
                 threatsList.Add(threat.Value);
@@ -237,6 +239,10 @@ namespace GGJ19.Scripts.GameLogic
 
         private void UpdatePlayers()
         {
+            if(currentRoomState == null) {
+                return;
+            }
+
             Debug.Log("UPDATING PLAYERS");
             var playerList = new List<PlayerId>(currentRoomState.Players);
             playerList.Sort((left, right) => string.Compare(left.Name, right.Name, StringComparison.Ordinal));
@@ -258,7 +264,7 @@ namespace GGJ19.Scripts.GameLogic
             }
         }
 
-        public async void SendRoomInfoRequest()
+        public async Task SendRoomInfoRequest()
         {
             string roomId = serverRoomName.Value;
             if (!string.IsNullOrEmpty(roomId))

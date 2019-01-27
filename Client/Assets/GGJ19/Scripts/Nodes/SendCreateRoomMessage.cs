@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
@@ -18,7 +19,7 @@ public class SendCreateRoomMessage : FlowNode
         SendServerRequest();
     }
 
-    private async void SendServerRequest()
+    private async Task SendServerRequest()
     {
         try
         {
