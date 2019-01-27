@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System.Threading.Tasks;
 using UnityEngine;
 using XNode;
 
@@ -7,7 +8,8 @@ namespace HalfBlind.FlowNodes {
     public class DoTweenScaleTo : FlowNode {
         [Input] public GameObject Target;
         [Input] public Vector3 TargetValue;
-        [Input] public int Duration;
+        [Input] public float Duration;
+        [Input] public float DelaySeconds;
         public bool IsLoop;
         public LoopType Loop;
         public Ease Easing;
@@ -22,11 +24,11 @@ namespace HalfBlind.FlowNodes {
             StartTween(GetInputValue(nameof(TargetValue), TargetValue));
         }
 
-        public void StartTween(Vector3 targetValue) {
+        public async Task StartTween(Vector3 targetValue) {
             if (tween == null) {
                 var target = GetInputValue(nameof(Target), Target);
                 var duration = GetInputValue(nameof(Duration), Duration);
-
+                await Task.Delay((int)(DelaySeconds * 1000));
                 tween = target.transform.DOScale(targetValue, duration);
                 tween.SetEase(Easing);
                 tween.onUpdate += OnUpdateTween;
