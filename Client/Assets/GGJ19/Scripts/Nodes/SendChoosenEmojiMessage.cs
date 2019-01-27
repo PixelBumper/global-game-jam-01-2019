@@ -30,11 +30,11 @@ public class SendChoosenEmojiMessage : FlowNode
         Debug.Log("dispatch request");
         try
         {
-            var roomInformation = await ServerApi.Instance.SendEmojisAsync(gameLogicManager.serverRoomName.Value,
+            var sendEmojisResponse = await ServerApi.Instance.SendEmojisAsync(gameLogicManager.serverRoomName.Value,
                 gameLogicManager.MyPlayerId, emojis);
-            Debug.Log($"{nameof(roomInformation)}:{roomInformation.ToJson()}");
+            Debug.Log($"{nameof(sendEmojisResponse)}:{sendEmojisResponse.ToJson()}");
 
-            gameLogicManager.UpdateGameState(roomInformation.Playing, roomInformation.Waiting);
+            gameLogicManager.UpdateGameState(sendEmojisResponse.Playing, sendEmojisResponse.Waiting);
         }
         catch (Exception e)
         {
