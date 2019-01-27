@@ -179,7 +179,7 @@ namespace GGJ19.Scripts.GameLogic
             var serverCurrentMilliseconds = currentPlayingState.CurrentTime;
             var remainingMilliseconds = RoundEndingTimeMilliseconds - serverCurrentMilliseconds;
             CurrentPhaseRemainingTimeInSeconds.Value = remainingMilliseconds * 0.001f;
-            Debug.Log($"[{DateTime.Now:HH:mm:ss}]Game will finish in {remainingMilliseconds}ms at {RoundEndingTimeMilliseconds} were NOW: {serverCurrentMilliseconds}");
+            Debug.Log($"[{DateTime.Now:HH:mm:ss}]Game will finish in {remainingMilliseconds*.001f}s at {RoundEndingTimeMilliseconds} were NOW: {serverCurrentMilliseconds}");
         }
 
         private void UpdateGamePhase()
