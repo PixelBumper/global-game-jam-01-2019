@@ -88,6 +88,8 @@ namespace GGJ19.Scripts.GameLogic
             player2Id.Value = null;
             player3Id.Value = null;
             player4Id.Value = null;
+            currentGamePhase.Value = string.Empty;
+            lastVersionReceived = -1;
 
             serverRoomName.Value = null;
             serverOwnerId.Value = null;
@@ -307,6 +309,7 @@ namespace GGJ19.Scripts.GameLogic
                 try
                 {
                     var serverApi = ServerApi.Instance;
+                    Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(SendRoomInfoRequest)}");
                     RoomInformation roomInfoResponse = await serverApi.RoomInformationAsync(roomId);
                     Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(roomInfoResponse)}:{roomInfoResponse.ToJson()}");
                     UpdateGameState(roomInfoResponse.Playing, roomInfoResponse.Waiting);

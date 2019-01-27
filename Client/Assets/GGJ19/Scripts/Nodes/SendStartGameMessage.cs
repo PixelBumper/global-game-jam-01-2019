@@ -31,8 +31,8 @@ public class SendStartGameMessage : FlowNode {
             var serverApi = ServerApi.Instance;
             var startRoomResponse = await serverApi.StartRoomAsync(roomName, playerId);
             Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(startRoomResponse)}:{startRoomResponse.ToJson()}");
-            GameLogicManager.instance.UpdateGameState(startRoomResponse.Playing, startRoomResponse.Waiting);
             base.TriggerFlow();
+            GameLogicManager.instance.UpdateGameState(startRoomResponse.Playing, startRoomResponse.Waiting);
         }
     }
 }
