@@ -42,15 +42,95 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId)
+        public System.Threading.Tasks.Task<RoomInformation> SetRoleAsync(string roomName, string playerId, string role)
         {
-            return StartRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
+            return SetRoleAsync(roomName, playerId, role, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> SetRoleAsync(string roomName, string playerId, string role, System.Threading.CancellationToken cancellationToken)
+        {
+            if (roomName == null)
+                throw new System.ArgumentNullException("roomName");
+    
+            if (playerId == null)
+                throw new System.ArgumentNullException("playerId");
+    
+            if (role == null)
+                throw new System.ArgumentNullException("role");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/set-role?");
+            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append("role=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            var result_ = default(RoomInformation); 
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<RoomInformation>(responseData_, _settings.Value);
+                                return result_; 
+                            } 
+                            catch (System.Exception exception_) 
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId)
+        {
+            return JoinRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
+        }
+    
+        /// <returns>default response</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
         {
             if (roomName == null)
                 throw new System.ArgumentNullException("roomName");
@@ -59,7 +139,7 @@ namespace GeneratedServerAPI
                 throw new System.ArgumentNullException("playerId");
     
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/start-room?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/join-room?");
             urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
@@ -188,82 +268,6 @@ namespace GeneratedServerAPI
                             try
                             {
                                 result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Room>(responseData_, _settings.Value);
-                                return result_; 
-                            } 
-                            catch (System.Exception exception_) 
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-            }
-        }
-    
-        /// <returns>default response</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId)
-        {
-            return JoinRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
-        }
-    
-        /// <returns>default response</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> JoinRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
-        {
-            if (roomName == null)
-                throw new System.ArgumentNullException("roomName");
-    
-            if (playerId == null)
-                throw new System.ArgumentNullException("playerId");
-    
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/join-room?");
-            urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Length--;
-    
-            var client_ = _httpClient;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-    
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-    
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-    
-                        ProcessResponse(client_, response_);
-    
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            var result_ = default(RoomInformation); 
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<RoomInformation>(responseData_, _settings.Value);
                                 return result_; 
                             } 
                             catch (System.Exception exception_) 
@@ -438,15 +442,15 @@ namespace GeneratedServerAPI
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RoomInformation> SetRoleAsync(string roomName, string playerId, string role)
+        public System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId)
         {
-            return SetRoleAsync(roomName, playerId, role, System.Threading.CancellationToken.None);
+            return StartRoomAsync(roomName, playerId, System.Threading.CancellationToken.None);
         }
     
         /// <returns>default response</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<RoomInformation> SetRoleAsync(string roomName, string playerId, string role, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<RoomInformation> StartRoomAsync(string roomName, string playerId, System.Threading.CancellationToken cancellationToken)
         {
             if (roomName == null)
                 throw new System.ArgumentNullException("roomName");
@@ -454,14 +458,10 @@ namespace GeneratedServerAPI
             if (playerId == null)
                 throw new System.ArgumentNullException("playerId");
     
-            if (role == null)
-                throw new System.ArgumentNullException("role");
-    
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/set-role?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/game/start-room?");
             urlBuilder_.Append("roomName=").Append(System.Uri.EscapeDataString(ConvertToString(roomName, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append("playerId=").Append(System.Uri.EscapeDataString(ConvertToString(playerId, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            urlBuilder_.Append("role=").Append(System.Uri.EscapeDataString(ConvertToString(role, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
             var client_ = _httpClient;
@@ -555,49 +555,13 @@ namespace GeneratedServerAPI
     
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Emoji 
-    {
-        [Newtonsoft.Json.JsonProperty("emoji", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Emoji1 { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static Emoji FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Emoji>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class PlayerId 
-    {
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static PlayerId FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<PlayerId>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Playing 
     {
         [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<PlayerId> Players { get; set; }
+        public System.Collections.Generic.ICollection<string> Players { get; set; }
     
         [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
+        public System.Collections.Generic.ICollection<string> PossibleThreats { get; set; }
     
         [Newtonsoft.Json.JsonProperty("maximumThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int MaximumThreats { get; set; }
@@ -606,22 +570,22 @@ namespace GeneratedServerAPI
         public int Version { get; set; }
     
         [Newtonsoft.Json.JsonProperty("forbiddenRoles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, RoleThreat> ForbiddenRoles { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> ForbiddenRoles { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playedPlayerRoles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, RoleThreat> PlayedPlayerRoles { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> PlayedPlayerRoles { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojis", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<Emoji>> PlayerEmojis { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<string>> PlayerEmojis { get; set; }
     
         [Newtonsoft.Json.JsonProperty("playerEmojisHistory", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<System.Collections.Generic.ICollection<Emoji>>> PlayerEmojisHistory { get; set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.ICollection<System.Collections.Generic.ICollection<string>>> PlayerEmojisHistory { get; set; }
     
         [Newtonsoft.Json.JsonProperty("lastFailedThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RoleThreat> LastFailedThreats { get; set; }
+        public System.Collections.Generic.ICollection<string> LastFailedThreats { get; set; }
     
         [Newtonsoft.Json.JsonProperty("openThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RoleThreat> OpenThreats { get; set; }
+        public System.Collections.Generic.ICollection<string> OpenThreats { get; set; }
     
         [Newtonsoft.Json.JsonProperty("currentTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long CurrentTime { get; set; }
@@ -655,31 +619,13 @@ namespace GeneratedServerAPI
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class RoleThreat 
-    {
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Value { get; set; }
-    
-        public string ToJson() 
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-    
-        public static RoleThreat FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<RoleThreat>(data);
-        }
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.13.17.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Room 
     {
         [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<PlayerId> Players { get; set; }
+        public System.Collections.Generic.ICollection<string> Players { get; set; }
     
         [Newtonsoft.Json.JsonProperty("possibleThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RoleThreat> PossibleThreats { get; set; }
+        public System.Collections.Generic.ICollection<string> PossibleThreats { get; set; }
     
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
