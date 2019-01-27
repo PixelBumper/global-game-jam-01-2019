@@ -5,14 +5,16 @@ using GeneratedServerAPI;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
 using JetBrains.Annotations;
-using UnityEditor;
 using UnityEngine;
 
 namespace GGJ19.Scripts.GameLogic
 {
-    [CreateAssetMenu(fileName = nameof(GameLogicManager), menuName = "Tools/CreateGameLogicManager")]
-    public class GameLogicManager : ScriptableSingleton<GameLogicManager>
+    public class GameLogicManager : MonoBehaviour
     {
+        public static GameLogicManager currentInstance;
+
+        public static GameLogicManager instance => currentInstance;
+        
         public string MyPlayerId => SystemInfo.deviceUniqueIdentifier;
 
         [Header("Game Events")]
@@ -81,6 +83,18 @@ namespace GGJ19.Scripts.GameLogic
         private Room currentRoomState;
 
         private long lastVersionReceived = long.MinValue;
+
+        private void Awake()
+        {
+            if (currentInstance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            currentInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         public void ResetGameVars()
         {
