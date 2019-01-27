@@ -38,6 +38,15 @@ public class SendJoinRoomMessage : FlowNode
             RoomInformation joinRoomResponse = await serverApi.JoinRoomAsync(roomName, playerId);
             Debug.Log($"{nameof(joinRoomResponse)}:{joinRoomResponse.ToJson()}");
             GameLogicManager.instance.UpdateGameState(joinRoomResponse.Playing, joinRoomResponse.Waiting);
+            bool badResponse = joinRoomResponse.ToJson() == "{}";
+            if (badResponse)
+            {
+                // Try room info as fallback. Maybe we're already in there.
+                Debug.Log("Trying to get Room Info Anyway...");
+                RoomInformation roomInfoResponse = await serverApi.RoomInformationAsync(roomName);
+                Debug.Log($"{nameof(roomInfoResponse)}:{roomInfoResponse.ToJson()}");
+                GameLogicManager.instance.UpdateGameState(roomInfoResponse.Playing, roomInfoResponse.Waiting);
+            }
         }
     }
 }
