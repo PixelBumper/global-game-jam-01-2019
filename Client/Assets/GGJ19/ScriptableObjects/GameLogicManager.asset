@@ -25,6 +25,9 @@ MonoBehaviour:
   onGameWon: {fileID: 11400000, guid: 5342016a276d64cfbb5d676e7f2a2a87, type: 2}
   onGameLost: {fileID: 11400000, guid: ae605b5bd17ed42578fb64884780edd0, type: 2}
   onGamePhaseChanged: {fileID: 11400000, guid: bea161edbafae4355a9d2194c777bf7b, type: 2}
+  OnEmojiPhaseStarted: {fileID: 11400000, guid: a7c56548c61159a41b2e5ce7d89c0c1a,
+    type: 2}
+  OnEmojiPhaseEnded: {fileID: 11400000, guid: 539113ebd17a2a243b2527eb20f5a8cb, type: 2}
   player1Id: {fileID: 11400000, guid: 000c04a07d08a418b96afadc95365b53, type: 2}
   player2Id: {fileID: 11400000, guid: 38d64fb050e264779862007447babc0a, type: 2}
   player3Id: {fileID: 11400000, guid: 70d682553436e4f5b8032ed4b27a4a5e, type: 2}

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d244bed9807c9b84dbd83f32434fc4c9, type: 3}
-  m_Name: OnChatFase_Start
+  m_Name: OnEmojiFase_Ends
   m_EditorClassIdentifier: 
   _hiddenButton: 
