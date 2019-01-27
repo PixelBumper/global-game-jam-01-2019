@@ -18,15 +18,20 @@ public class SendStartGameMessage : FlowNode {
         SendServerRequest(roomName, playerId);
     }
 
+    public override void TriggerFlow() {
+        //base.TriggerFlow();
+    }
+
     private async Task SendServerRequest(string roomName, string playerId) {
         Debug.Log("Sending StartGame Request: " + roomName + " : " + playerId);
         if (!string.IsNullOrEmpty(roomName) && !string.IsNullOrEmpty(playerId)) {
             // No Nulls in request room!
             Debug.Log("Valid. Sent.");
             var serverApi = ServerApi.Instance;
-            RoomInformation startRoomResponse = await serverApi.StartRoomAsync(roomName, playerId);
+            var startRoomResponse = await serverApi.StartRoomAsync(roomName, playerId);
             Debug.Log($"{nameof(startRoomResponse)}:{startRoomResponse.ToJson()}");
             GameLogicManager.instance.UpdateGameState(startRoomResponse.Playing, startRoomResponse.Waiting);
+            base.TriggerFlow();
         }
     }
 }
