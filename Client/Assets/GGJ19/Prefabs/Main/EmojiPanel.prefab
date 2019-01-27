@@ -819,7 +819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 183.7, y: -248.8}
+  m_AnchoredPosition: {x: 135, y: -284}
   m_SizeDelta: {x: -698.6, y: -611.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5132821860549704971
@@ -887,6 +887,10 @@ GameObject:
   - component: {fileID: 1346190604880101554}
   - component: {fileID: 881717584999337259}
   - component: {fileID: 4933798811479381238}
+  - component: {fileID: 3490994792623991246}
+  - component: {fileID: 3522816494410699061}
+  - component: {fileID: 2820499117672093191}
+  - component: {fileID: 6894328943737060070}
   m_Layer: 5
   m_Name: EmojiPanelController
   m_TagString: Untagged
@@ -958,6 +962,10 @@ MonoBehaviour:
   - {fileID: 1346190604880101554}
   - {fileID: 881717584999337259}
   - {fileID: 4933798811479381238}
+  - {fileID: 3490994792623991246}
+  - {fileID: 3522816494410699061}
+  - {fileID: 2820499117672093191}
+  - {fileID: 6894328943737060070}
 --- !u!114 &458221828243524952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,7 +2029,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: Do Tween Scale To
-  Target: {fileID: 1376027797742207701}
+  Target: {fileID: 3299499920875008102}
   TargetValue: {x: 1, y: 1, z: 1}
   Duration: 0
   DelaySeconds: 0.3
@@ -3030,6 +3038,232 @@ MonoBehaviour:
   IsLoop: 0
   Loop: 0
   Easing: 17
+--- !u!114 &3490994792623991246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646583261311013939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4661301437102950689}
+  position: {x: 280, y: -104}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 3490994792623991246}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 2820499117672093191}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: a7c56548c61159a41b2e5ce7d89c0c1a, type: 2}
+--- !u!114 &3522816494410699061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646583261311013939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c8beeddb0679442a1c25737bfac1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4661301437102950689}
+  position: {x: 280, y: 136}
+  ports:
+    keys:
+    - FlowOutput
+    values:
+    - _fieldName: FlowOutput
+      _node: {fileID: 3522816494410699061}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowInput
+        node: {fileID: 6894328943737060070}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: On Global Event
+  GameEvent: {fileID: 11400000, guid: 539113ebd17a2a243b2527eb20f5a8cb, type: 2}
+--- !u!114 &2820499117672093191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646583261311013939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18e66ebf4dd6994d8a40e3e490e762d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4661301437102950689}
+  position: {x: 552, y: -152}
+  ports:
+    keys:
+    - Target
+    - TargetValue
+    - Duration
+    - DelaySeconds
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: TargetValue
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Duration
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: DelaySeconds
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 3490994792623991246}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 2820499117672093191}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Do Tween Scale To
+  Target: {fileID: 3299499920875008102}
+  TargetValue: {x: 1, y: 1, z: 1}
+  Duration: 0
+  DelaySeconds: 1
+  IsLoop: 0
+  Loop: 0
+  Easing: 30
+--- !u!114 &6894328943737060070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646583261311013939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18e66ebf4dd6994d8a40e3e490e762d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4661301437102950689}
+  position: {x: 520, y: 120}
+  ports:
+    keys:
+    - Target
+    - TargetValue
+    - Duration
+    - DelaySeconds
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: Target
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: TargetValue
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: Duration
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: DelaySeconds
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowInput
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 3522816494410699061}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 6894328943737060070}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Do Tween Scale To
+  Target: {fileID: 0}
+  TargetValue: {x: 0, y: 0, z: 0}
+  Duration: 0
+  DelaySeconds: 0
+  IsLoop: 0
+  Loop: 0
+  Easing: 18
 --- !u!1 &4728713445614542029
 GameObject:
   m_ObjectHideFlags: 0
