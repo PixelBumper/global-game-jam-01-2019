@@ -89,6 +89,7 @@ namespace GGJ19.Scripts.GameLogic
             if (currentInstance != null)
             {
                 Destroy(gameObject);
+                return;
             }
 
             currentInstance = this;
