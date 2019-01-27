@@ -25,6 +25,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onGameStart;
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
+        public ScriptableGameEvent onGamePhaseChanged;
 
         [Header("Game Variables")] 
         public GlobalString player1Id;
@@ -34,6 +35,7 @@ namespace GGJ19.Scripts.GameLogic
         public GlobalFloat lengthOfTurnInSeconds;
         public GlobalFloat amountOfTurns;
         public GlobalFloat currentTurn;
+        public GlobalString currentGamePhase;
 
         public GlobalString emojiIconPlayer1;
         public GlobalString emojiIconPlayer2;
@@ -124,54 +126,52 @@ namespace GGJ19.Scripts.GameLogic
             
             if (currentPlayingState != null)
             {
+                if (currentPlayingState != null &&
+                    currentPlayingState.CurrentPhase.ToString() != currentGamePhase.Value)
+                {
+                    UpdateGamePhase();
+                }
+                
                 if (currentPlayingState.CurrentRoundNumber >= currentPlayingState.MaxRoundNumber)
                 {
+                    currentGamePhase.Value = "NOT_STARTED";
                     onGameWon.SendEvent();
                 }
                 else if (currentPlayingState.OpenThreats.Count >= currentPlayingState.MaximumThreats)
                 {
+                    currentGamePhase.Value = "NOT_STARTED";
                     onGameLost.SendEvent();
                 }
             }
 
-            
-            if (previousRoomState == null || 
-                previousRoomState != currentRoomState ||
-                previousRoomState.Name != currentRoomState.Name || 
-                previousRoomState.Owner != currentRoomState.Owner ||
-                previousRoomState.Players.Count != currentRoomState.Players.Count ||
-                previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
+            if (currentRoomState != null)
             {
-                if (currentRoomState != null)
+                bool hasRoomChanged = false;
+                if (currentRoomState.Name != serverRoomName.Value)
                 {
+                    hasRoomChanged = true;
                     serverRoomName.Value = currentRoomState.Name;
-                    serverOwnerId.Value = currentRoomState.Owner;
                 }
 
-                // TODO : Make this check work. Currently too much noise between waiting/playing/game start
-                checkForGameStart();
+                serverOwnerId.Value = currentRoomState.Owner; 
+                
+                if (previousRoomState != null && previousRoomState.Players.Count != currentRoomState.Players.Count || previousRoomState == null)
+                {
+                    hasRoomChanged = true;
+                }
+                
+
+                if (hasRoomChanged)
+                {
+                    onRoomInfoChanged.SendEvent();
+                }
             }
         }
 
-        private void checkForGameStart()
+        private void UpdateGamePhase()
         {
-            PlayerId myCheckId = new PlayerId();
-            myCheckId.Name = MyPlayerId;
-
-            bool wasWaiting = previousRoomState != null && previousRoomState.Players.Contains(myCheckId);
-            bool isNotWaiting = currentRoomState != null && !currentRoomState.Players.Contains(myCheckId);
-            bool wasNotPlaying = previousPlayingState != null && !previousPlayingState.Players.Contains(myCheckId);
-            bool isPlaying = currentPlayingState != null && currentPlayingState.Players.Contains(myCheckId);
-
-            if(wasWaiting && isNotWaiting && wasNotPlaying && isPlaying)
-            {
-                // Yep! Were playing now!
-                onGameStart.SendEvent();
-            }
-            else
-            {
-                onRoomInfoChanged.SendEvent();
-            }
+            currentGamePhase.Value = currentPlayingState.CurrentPhase.ToString();
+            onGamePhaseChanged.SendEvent();
         }
 
         private void UpdateThreats() {
