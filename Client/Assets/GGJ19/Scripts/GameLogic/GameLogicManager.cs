@@ -82,6 +82,7 @@ namespace GGJ19.Scripts.GameLogic
             player4Id.Value = null;
 
             serverRoomName.Value = null;
+            serverOwnerId.Value = null;
         }
 
         public void UpdateGameState(Playing playingState, Room roomState)

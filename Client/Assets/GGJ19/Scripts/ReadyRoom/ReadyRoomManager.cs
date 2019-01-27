@@ -61,7 +61,10 @@ public class ReadyRoomManager : MonoBehaviour
         _knownPlayerIds[2] = GameLogicManager.instance.player3Id.Value;
         _knownPlayerIds[3] = GameLogicManager.instance.player4Id.Value;
 
-        startGameButton.SetActive(GameLogicManager.instance.MyPlayerId == GameLogicManager.instance.serverOwnerId.Value);
+        string serverOwner = GameLogicManager.instance.serverOwnerId.Value;
+        string myId = GameLogicManager.instance.MyPlayerId;
+
+        startGameButton.SetActive(GameLogicManager.instance.MyPlayerId == serverOwner);
 
         for (int i = 0; i < _knownPlayerIds.Length; i++)
         {

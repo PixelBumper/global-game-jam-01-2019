@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomIdDisplayField: {fileID: 1011770379}
   playerDisplayContianer: {fileID: 1886508143}
+  startGameButton: {fileID: 5917867595820448804}
   _readyRoomPollTime: {fileID: 11400000, guid: 1fdae13632c924b2580ac2a41be92ae3, type: 2}
   playerDisplays: []
 --- !u!4 &844979787
@@ -837,3 +838,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33fdad3048a2e4defa81840935bd7128, type: 3}
+--- !u!1 &5917867595820448804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 546217874536704540, guid: 33fdad3048a2e4defa81840935bd7128,
+    type: 3}
+  m_PrefabInstance: {fileID: 5917867595820448803}
+  m_PrefabAsset: {fileID: 0}
