@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GeneratedServerAPI;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
@@ -240,7 +241,7 @@ namespace GGJ19.Scripts.GameLogic
             }
         }
 
-        public async void SendRoomInfoRequest()
+        public async Task SendRoomInfoRequest()
         {
             string roomId = serverRoomName.Value;
             if (!string.IsNullOrEmpty(roomId))
