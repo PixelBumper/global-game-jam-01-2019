@@ -23,7 +23,7 @@ public class SendRoleChosenMessage : FlowNode {
         var serverApi = ServerApi.Instance;
         var joinRoomAsync = await serverApi.SetRoleAsync("", "", currentRoleChosen);
         var roomName = GameLogicManager.instance.serverRoomName?.Value;
-        var playerId = GameLogicManager.instance.PlayerId;
+        var playerId = GameLogicManager.instance.MyPlayerId;
         if (string.IsNullOrEmpty(roomName)) {
             UnityEngine.Debug.LogError("Room name is empty, wont set role on serverside");
             return;

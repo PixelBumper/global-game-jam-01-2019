@@ -41,7 +41,7 @@ public class SendCreateRoomMessage : FlowNode
                 }
             }
 
-            string playerId = logicManager.PlayerId;
+            string playerId = logicManager.MyPlayerId;
 
             Debug.Log(threatString);
             Debug.Log(playerId);

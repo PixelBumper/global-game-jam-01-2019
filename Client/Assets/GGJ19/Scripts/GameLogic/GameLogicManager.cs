@@ -11,7 +11,7 @@ namespace GGJ19.Scripts.GameLogic
     [CreateAssetMenu(fileName = nameof(GameLogicManager), menuName = "Tools/CreateGameLogicManager")]
     public class GameLogicManager : ScriptableSingleton<GameLogicManager>
     {
-        public string PlayerId => SystemInfo.deviceUniqueIdentifier;
+        public string MyPlayerId => SystemInfo.deviceUniqueIdentifier;
 
         [Header("Game Events")]
         public ScriptableGameEvent onPlayerCountChanged;
@@ -20,6 +20,7 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onFailedThreatsChanged;
         public ScriptableGameEvent onThreatsChanged;
         public ScriptableGameEvent onTurnChanged;
+        public ScriptableGameEvent onGameStart;
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
 
@@ -59,6 +60,7 @@ namespace GGJ19.Scripts.GameLogic
 
         [Header("Room Variables")]
         public GlobalString serverRoomName;
+        public GlobalString serverOwnerId;
 
         [Header("Server Variables")]
         public GlobalFloat serverPollTimeMs; // How many ms between server requests
@@ -130,13 +132,34 @@ namespace GGJ19.Scripts.GameLogic
 
             if (previousRoomState != currentRoomState
                 || previousRoomState.Name != currentRoomState.Name
-                || previousRoomState.Owner != currentRoomState.Name
+                || previousRoomState.Owner != currentRoomState.Owner
                 || previousRoomState.Players.Count != currentRoomState.Players.Count
                 || previousRoomState.PossibleThreats.Count != currentRoomState.PossibleThreats.Count)
             {
                 serverRoomName.Value = currentRoomState.Name;
+                serverOwnerId.Value = currentRoomState.Owner;
+
                 onRoomInfoChanged.SendEvent();
             }
+        }
+
+        private void checkForGameStart()
+        {
+
+            PlayerId myCheckId = PlayerId.FromJson("{\"name\": \"" + MyPlayerId + "}");
+
+            bool wasWaiting = previousRoomState.Players.Contains(myCheckId);
+            bool isNotWaiting = !currentRoomState.Players.Contains(myCheckId);
+            bool wasNotPlaying = !previousPlayingState.Players.Contains(myCheckId);
+            bool isPlaying = currentPlayingState.Players.Contains(myCheckId);
+
+            if(wasWaiting && isNotWaiting && wasNotPlaying && isPlaying)
+            {
+                // Yep! Were playing now!
+
+            }
+
+
         }
 
         private void UpdateThreats() {

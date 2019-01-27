@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4aa92c77e3c435bb85cffa12ba8d3a7, type: 3}
   m_Name: GameLogicManager
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   onPlayerCountChanged: {fileID: 11400000, guid: 9b2eca8bf12f045ababe6b5421064a72,
     type: 2}
   onEmojisChanged: {fileID: 11400000, guid: d5c127dbe4f3a49049f038eb8e417dc7, type: 2}
@@ -21,6 +21,7 @@ MonoBehaviour:
     type: 2}
   onThreatsChanged: {fileID: 11400000, guid: e8b4aa66c7c8f43109c2ae3ff1455637, type: 2}
   onTurnChanged: {fileID: 11400000, guid: f98759b72b47d4dccb7a481cdfca786b, type: 2}
+  onGameStart: {fileID: 11400000, guid: 1b545eb64e3e944c295f95b321f16150, type: 2}
   onGameWon: {fileID: 11400000, guid: 5342016a276d64cfbb5d676e7f2a2a87, type: 2}
   onGameLost: {fileID: 11400000, guid: ae605b5bd17ed42578fb64884780edd0, type: 2}
   player1Id: {fileID: 11400000, guid: 000c04a07d08a418b96afadc95365b53, type: 2}
@@ -50,5 +51,5 @@ MonoBehaviour:
   currentThreat6: {fileID: 11400000, guid: 644672af4d8b5d2478d6a43c797fd990, type: 2}
   currentThreat7: {fileID: 11400000, guid: 8e8459cfa1058fd4f9b0fafc40be30a9, type: 2}
   serverRoomName: {fileID: 11400000, guid: 839965d952f82473290b4467d06dd396, type: 2}
-  myPlayerId: {fileID: 11400000, guid: c3bd12fad639f4a7a8131e3d841b7b89, type: 2}
+  serverOwnerId: {fileID: 11400000, guid: 6f851de7a32134e72a61873f65bd84b8, type: 2}
   serverPollTimeMs: {fileID: 11400000, guid: 1fdae13632c924b2580ac2a41be92ae3, type: 2}

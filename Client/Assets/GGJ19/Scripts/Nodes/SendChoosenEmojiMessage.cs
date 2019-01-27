@@ -30,7 +30,7 @@ public class SendChoosenEmojiMessage : FlowNode
         try
         {
             var roomInformation = await ServerApi.Instance.SendEmojisAsync(gameLogicManager.serverRoomName.Value,
-                gameLogicManager.PlayerId, emojis);
+                gameLogicManager.MyPlayerId, emojis);
 
             gameLogicManager.UpdateGameState(roomInformation.Playing, roomInformation.Waiting);
         }

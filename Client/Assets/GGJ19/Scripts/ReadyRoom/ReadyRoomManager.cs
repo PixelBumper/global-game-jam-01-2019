@@ -11,6 +11,7 @@ public class ReadyRoomManager : MonoBehaviour
     // Public Objects
     public Text roomIdDisplayField;
     public GameObject playerDisplayContianer;
+    public GameObject startGameButton;
 
     // Global Variables
     public GlobalFloat _readyRoomPollTime;
@@ -30,12 +31,14 @@ public class ReadyRoomManager : MonoBehaviour
         initPlayerDisplays();
         updateKnownPlayers();
         GameLogicManager.instance.onPlayerCountChanged.AddListener(onPlayerNumberUpdate);
+        GameLogicManager.instance.onRoomInfoChanged.AddListener(onRoomInfoChange);
         InvokeRepeating("requestRoomInformation", 0, GameLogicManager.instance.serverPollTimeMs.Value / 1000f);
     }
 
     private void OnDestroy()
     {
         CancelInvoke();
+        GameLogicManager.instance.onRoomInfoChanged.RemoveListener(onRoomInfoChange);
         GameLogicManager.instance.onPlayerCountChanged.RemoveListener(onPlayerNumberUpdate);
     }
 
@@ -58,29 +61,15 @@ public class ReadyRoomManager : MonoBehaviour
         _knownPlayerIds[2] = GameLogicManager.instance.player3Id.Value;
         _knownPlayerIds[3] = GameLogicManager.instance.player4Id.Value;
 
-        for(int i = 0; i < _knownPlayerIds.Length; i++)
+        startGameButton.SetActive(GameLogicManager.instance.MyPlayerId == GameLogicManager.instance.serverOwnerId.Value);
+
+        for (int i = 0; i < _knownPlayerIds.Length; i++)
         {
-            Debug.Log(GameLogicManager.instance.PlayerId + "   ======      " + _knownPlayerIds[i]);
-            bool isMyPlayer = GameLogicManager.instance.PlayerId != null && 
-                GameLogicManager.instance.PlayerId == _knownPlayerIds[i];
+            bool isMyPlayer = GameLogicManager.instance.MyPlayerId != null && 
+                GameLogicManager.instance.MyPlayerId == _knownPlayerIds[i];
 
             playerDisplays[i].setPlayerId(_knownPlayerIds[i], isMyPlayer);
         }
-    }
-
-    private void checkForGameStart()
-    {
-        foreach (string id in _knownPlayerIds)
-        {
-            if (string.IsNullOrEmpty(id))
-            {
-                return;
-            }
-        }
-
-        // ALL PLAYERS FOUND! READY TO START!!!
-        CancelInvoke();
-        Invoke("StartGame", 2000);
     }
 
     // Client-Server Communication
@@ -93,12 +82,16 @@ public class ReadyRoomManager : MonoBehaviour
     private void onPlayerNumberUpdate()
     {
         updateKnownPlayers();
-        checkForGameStart();
+    }
+
+    private void onRoomInfoChange()
+    {
+
     }
 
     private void startGame()
     {
-
+        // Send StartGame Command
     }
 
 }
