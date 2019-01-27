@@ -1,11 +1,9 @@
 using UnityEngine;
 using XNode;
 
-namespace GGJ19.Scripts.Nodes
-{
+namespace HalfBlind.Nodes {
     [CreateNodeMenu(nameof(SetSprite), "Sprite")]
-    public class SetSprite : FlowNode
-    {
+    public class SetSprite : FlowNode {
         [Input] public SpriteRenderer Target;
         [Input] public Sprite MySprite;
 
