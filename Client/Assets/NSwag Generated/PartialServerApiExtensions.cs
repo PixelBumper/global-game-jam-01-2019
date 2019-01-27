@@ -26,11 +26,12 @@ namespace GeneratedServerAPI
             LogResponse(response.Content.ReadAsStringAsync());
         }
 
-        private async void LogResponse(Task<string> readAsStringAsync)
+        private async Task LogResponse(Task<string> readAsStringAsync)
         {
             try
             {
-                Debug.Log(await readAsStringAsync);
+                var log = await readAsStringAsync;
+                Debug.Log(log);
             }
             catch (Exception e)
             {

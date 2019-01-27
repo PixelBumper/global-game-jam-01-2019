@@ -290,7 +290,7 @@ namespace GGJ19.Scripts.GameLogic
 
         public void LogException(Exception e)
         {
-            Debug.Log(string.Format("Caught Error: {0} : {1}", e.Message, e.StackTrace));
+            Debug.LogError(string.Format("Caught Error: {0} : {1}", e.Message, e.StackTrace));
         }
     }
 }

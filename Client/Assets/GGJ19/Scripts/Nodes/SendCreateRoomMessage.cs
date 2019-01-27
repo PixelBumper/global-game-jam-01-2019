@@ -57,7 +57,7 @@ public class SendCreateRoomMessage : FlowNode
         }
         catch (Exception e)
         {
-            GameLogicManager.instance.LogException(e);
+            UnityEngine.Debug.LogException(e);
         }
     }
 }
