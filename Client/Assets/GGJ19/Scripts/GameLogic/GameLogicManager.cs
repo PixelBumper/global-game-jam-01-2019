@@ -308,7 +308,7 @@ namespace GGJ19.Scripts.GameLogic
                 {
                     var serverApi = ServerApi.Instance;
                     RoomInformation roomInfoResponse = await serverApi.RoomInformationAsync(roomId);
-                    Debug.Log($"{nameof(roomInfoResponse)}:{roomInfoResponse.ToJson()}");
+                    Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(roomInfoResponse)}:{roomInfoResponse.ToJson()}");
                     UpdateGameState(roomInfoResponse.Playing, roomInfoResponse.Waiting);
                 }
                 catch (Exception e)

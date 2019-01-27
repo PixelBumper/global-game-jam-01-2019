@@ -31,7 +31,7 @@ namespace GeneratedServerAPI
             try
             {
                 var log = await readAsStringAsync;
-                Debug.Log(log);
+                Debug.Log($"[{DateTime.Now:HH:mm:ss}]{log}");
             }
             catch (Exception e)
             {

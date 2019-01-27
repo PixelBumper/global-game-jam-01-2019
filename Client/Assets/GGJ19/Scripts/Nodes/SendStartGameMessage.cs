@@ -1,6 +1,7 @@
 ﻿using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using XNode;
@@ -29,7 +30,7 @@ public class SendStartGameMessage : FlowNode {
             Debug.Log("Valid. Sent.");
             var serverApi = ServerApi.Instance;
             var startRoomResponse = await serverApi.StartRoomAsync(roomName, playerId);
-            Debug.Log($"{nameof(startRoomResponse)}:{startRoomResponse.ToJson()}");
+            Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(startRoomResponse)}:{startRoomResponse.ToJson()}");
             GameLogicManager.instance.UpdateGameState(startRoomResponse.Playing, startRoomResponse.Waiting);
             base.TriggerFlow();
         }
