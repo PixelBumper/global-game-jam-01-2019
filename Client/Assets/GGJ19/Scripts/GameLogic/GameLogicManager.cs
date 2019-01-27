@@ -219,8 +219,8 @@ namespace GGJ19.Scripts.GameLogic
             }
             currentTheatsAmount.Value = currentPlayingState.PossibleThreats.Count;
             var threatsList = new List<string>(currentPlayingState.PossibleThreats.Count);
-            foreach (RoleThreat threat in currentPlayingState.PossibleThreats) {
-                threatsList.Add(threat.Value);
+            foreach (String threat in currentPlayingState.PossibleThreats) {
+                threatsList.Add(threat);
             }
 
             currentThreat1.Value = threatsList.Count > 0 ? threatsList[0] : string.Empty;
@@ -255,10 +255,10 @@ namespace GGJ19.Scripts.GameLogic
 
         private void GetEmojiForPlayerId(GlobalString playerId, GlobalString emojiForPlayerId) {
             if (playerId.Value != null) {
-                ICollection<Emoji> emojiCollection;
+                ICollection<string> emojiCollection;
                 if (currentPlayingState.PlayerEmojis.TryGetValue(playerId.Value, out emojiCollection) && emojiCollection.Count > 0) {
                     foreach (var emoji in emojiCollection) {
-                        emojiForPlayerId.Value = emoji.Emoji1;
+                        emojiForPlayerId.Value = emoji;
                         break;
                     }
                 }
@@ -272,13 +272,13 @@ namespace GGJ19.Scripts.GameLogic
             }
 
             Debug.Log("UPDATING PLAYERS");
-            var playerList = new List<PlayerId>(room.Players);
-            playerList.Sort((left, right) => string.Compare(left.Name, right.Name, StringComparison.Ordinal));
+            var playerList = new List<string>(room.Players);
+            playerList.Sort((left, right) => string.Compare(left, right, StringComparison.Ordinal));
 
-            player1Id.Value = playerList.Count > 0 ? playerList[0].Name : null;
-            player2Id.Value = playerList.Count > 1 ? playerList[1].Name : null;
-            player3Id.Value = playerList.Count > 2 ? playerList[2].Name : null;
-            player4Id.Value = playerList.Count > 3 ? playerList[3].Name : null;
+            player1Id.Value = playerList.Count > 0 ? playerList[0] : null;
+            player2Id.Value = playerList.Count > 1 ? playerList[1] : null;
+            player3Id.Value = playerList.Count > 2 ? playerList[2] : null;
+            player4Id.Value = playerList.Count > 3 ? playerList[3] : null;
 
             onPlayerCountChanged.SendEvent();
         }
