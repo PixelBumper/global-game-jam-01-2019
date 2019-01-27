@@ -215,6 +215,10 @@ namespace GGJ19.Scripts.GameLogic
 
         private void UpdatePlayers()
         {
+            if(currentRoomState == null) {
+                return;
+            }
+
             Debug.Log("UPDATING PLAYERS");
             var playerList = new List<PlayerId>(currentRoomState.Players);
             playerList.Sort((left, right) => string.Compare(left.Name, right.Name, StringComparison.Ordinal));
