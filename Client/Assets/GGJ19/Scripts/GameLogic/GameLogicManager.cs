@@ -44,6 +44,9 @@ namespace GGJ19.Scripts.GameLogic
         public GlobalString emojiIconPlayer3;
         public GlobalString emojiIconPlayer4;
 
+        [Header("Runtime Variables")]
+        public GlobalFloat CurrentPhaseRemainingTimeInSeconds;
+
         [Header("Room Events")]
         public ScriptableGameEvent onRoomInfoChanged;
 
@@ -117,6 +120,7 @@ namespace GGJ19.Scripts.GameLogic
             // TODO (slumley): We should actually check what changed, for now we just reload everything
             if (/*previousPlayingState == null*/ currentPlayingState != null)
             {
+                UpdatePhaseTime();
                 UpdateEmojiIcons();
                 UpdateThreats();
                 onSelectableRoleDisabledChanged.SendEvent();
@@ -168,6 +172,14 @@ namespace GGJ19.Scripts.GameLogic
                     onRoomInfoChanged.SendEvent();
                 }
             }
+        }
+
+        private void UpdatePhaseTime() {
+            var RoundEndingTimeMilliseconds = currentPlayingState.RoundEndingTime;
+            var serverCurrentMilliseconds = currentPlayingState.CurrentTime;
+            var remainingMilliseconds = RoundEndingTimeMilliseconds - serverCurrentMilliseconds;
+            CurrentPhaseRemainingTimeInSeconds.Value = remainingMilliseconds * 0.001f;
+            Debug.Log($"Game will finish in {remainingMilliseconds}ms at {RoundEndingTimeMilliseconds} were NOW: {serverCurrentMilliseconds}");
         }
 
         private void UpdateGamePhase()
