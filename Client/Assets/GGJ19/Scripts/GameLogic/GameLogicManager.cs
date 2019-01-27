@@ -133,6 +133,7 @@ namespace GGJ19.Scripts.GameLogic
                 }
             }
 
+
             if (previousRoomState != currentRoomState
                 || previousRoomState.Name != currentRoomState.Name
                 || previousRoomState.Owner != currentRoomState.Owner
@@ -142,27 +143,30 @@ namespace GGJ19.Scripts.GameLogic
                 serverRoomName.Value = currentRoomState.Name;
                 serverOwnerId.Value = currentRoomState.Owner;
 
-                onRoomInfoChanged.SendEvent();
+                // TODO : Make this check work. Currently too much noise between waiting/playing/game start
+                checkForGameStart();
             }
         }
 
         private void checkForGameStart()
         {
+            PlayerId myCheckId = new PlayerId();
+            myCheckId.Name = MyPlayerId;
 
-            PlayerId myCheckId = PlayerId.FromJson("{\"name\": \"" + MyPlayerId + "}");
-
-            bool wasWaiting = previousRoomState.Players.Contains(myCheckId);
-            bool isNotWaiting = !currentRoomState.Players.Contains(myCheckId);
-            bool wasNotPlaying = !previousPlayingState.Players.Contains(myCheckId);
-            bool isPlaying = currentPlayingState.Players.Contains(myCheckId);
+            bool wasWaiting = previousRoomState != null && previousRoomState.Players.Contains(myCheckId);
+            bool isNotWaiting = currentRoomState != null && !currentRoomState.Players.Contains(myCheckId);
+            bool wasNotPlaying = previousPlayingState != null && !previousPlayingState.Players.Contains(myCheckId);
+            bool isPlaying = currentPlayingState != null && currentPlayingState.Players.Contains(myCheckId);
 
             if(wasWaiting && isNotWaiting && wasNotPlaying && isPlaying)
             {
                 // Yep! Were playing now!
-
+                onGameStart.SendEvent();
             }
-
-
+            else
+            {
+                onRoomInfoChanged.SendEvent();
+            }
         }
 
         private void UpdateThreats() {

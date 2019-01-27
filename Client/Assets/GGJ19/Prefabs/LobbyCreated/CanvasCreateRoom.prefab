@@ -468,10 +468,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7461094632459471354}
   - component: {fileID: 7818601023648858323}
-  - component: {fileID: 8856832644843011261}
   - component: {fileID: 3472395852816727891}
   - component: {fileID: 5737189039345663663}
   - component: {fileID: 5043846936234562491}
+  - component: {fileID: 1434963068926282903}
   m_Layer: 0
   m_Name: UiController
   m_TagString: Untagged
@@ -506,59 +506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 8856832644843011261}
   - {fileID: 3472395852816727891}
   - {fileID: 5737189039345663663}
   - {fileID: 5043846936234562491}
---- !u!114 &8856832644843011261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7256238309155492586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6985b35646584ecd80fd395138d8751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: {fileID: 7818601023648858323}
-  position: {x: 56, y: 8}
-  ports:
-    keys:
-    - sceneName
-    - FlowInput
-    - FlowOutput
-    values:
-    - _fieldName: sceneName
-      _node: {fileID: 8856832644843011261}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowInput
-      _node: {fileID: 8856832644843011261}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: FlowOutput
-        node: {fileID: 3472395852816727891}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _dynamic: 0
-    - _fieldName: FlowOutput
-      _node: {fileID: 8856832644843011261}
-      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _dynamic: 0
-  _name: Change Scene By Name
-  sceneName: Main
+  - {fileID: 1434963068926282903}
 --- !u!114 &3472395852816727891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +543,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: FlowInput
-        node: {fileID: 8856832644843011261}
+        node: {fileID: 1434963068926282903}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -688,6 +639,45 @@ MonoBehaviour:
       _dynamic: 0
   _name: Change Scene By Name
   sceneName: LobbyJoin
+--- !u!114 &1434963068926282903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256238309155492586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5be7cc78f234ac981ed308d8255008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 7818601023648858323}
+  position: {x: 104, y: 24}
+  ports:
+    keys:
+    - FlowInput
+    - FlowOutput
+    values:
+    - _fieldName: FlowInput
+      _node: {fileID: 1434963068926282903}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: FlowOutput
+        node: {fileID: 3472395852816727891}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _dynamic: 0
+    - _fieldName: FlowOutput
+      _node: {fileID: 1434963068926282903}
+      _typeQualifiedName: XNode.Flow, Assembly-CSharp-firstpass, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _dynamic: 0
+  _name: Send Start Game Message
 --- !u!1 &7723148529731286692
 GameObject:
   m_ObjectHideFlags: 0
