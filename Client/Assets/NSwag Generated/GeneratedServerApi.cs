@@ -623,6 +623,9 @@ namespace GeneratedServerAPI
         [Newtonsoft.Json.JsonProperty("openThreats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<RoleThreat> OpenThreats { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("currentTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long CurrentTime { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("roundEndingTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long RoundEndingTime { get; set; }
     
