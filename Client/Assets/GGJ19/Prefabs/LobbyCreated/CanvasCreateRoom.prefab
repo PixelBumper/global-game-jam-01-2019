@@ -712,7 +712,7 @@ MonoBehaviour:
       _connectionType: 0
       _dynamic: 0
   _name: On Global Event
-  GameEvent: {fileID: 11400000, guid: 7e9702d846771458291603862cde1a33, type: 2}
+  GameEvent: {fileID: 11400000, guid: bea161edbafae4355a9d2194c777bf7b, type: 2}
 --- !u!114 &8211564186185602656
 MonoBehaviour:
   m_ObjectHideFlags: 0
