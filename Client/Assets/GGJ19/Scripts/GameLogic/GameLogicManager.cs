@@ -5,14 +5,16 @@ using GeneratedServerAPI;
 using GGJ19.Scripts.Server_Api;
 using HalfBlind.ScriptableVariables;
 using JetBrains.Annotations;
-using UnityEditor;
 using UnityEngine;
 
 namespace GGJ19.Scripts.GameLogic
 {
-    [CreateAssetMenu(fileName = nameof(GameLogicManager), menuName = "Tools/CreateGameLogicManager")]
-    public class GameLogicManager : ScriptableSingleton<GameLogicManager>
+    public class GameLogicManager : MonoBehaviour
     {
+        public static GameLogicManager currentInstance;
+
+        public static GameLogicManager instance => currentInstance;
+        
         public string MyPlayerId => SystemInfo.deviceUniqueIdentifier;
 
         [Header("Game Events")]
@@ -82,12 +84,26 @@ namespace GGJ19.Scripts.GameLogic
 
         private long lastVersionReceived = long.MinValue;
 
+        private void Awake()
+        {
+            if (currentInstance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            currentInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         public void ResetGameVars()
         {
             player1Id.Value = null;
             player2Id.Value = null;
             player3Id.Value = null;
             player4Id.Value = null;
+            currentGamePhase.Value = string.Empty;
+            lastVersionReceived = -1;
 
             serverRoomName.Value = null;
             serverOwnerId.Value = null;
@@ -111,11 +127,9 @@ namespace GGJ19.Scripts.GameLogic
             previousRoomState = currentRoomState;
             currentRoomState = roomState;
 
-            if(currentPlayingState == null)
-            {
-                // Stuff to do durring Room Creation
-                UpdatePlayers();
-            }
+
+            // Stuff to do durring Room Creation
+            UpdatePlayers(roomState);
 
             // TODO (slumley): We should actually check what changed, for now we just reload everything
             if (/*previousPlayingState == null*/ currentPlayingState != null)
@@ -225,61 +239,40 @@ namespace GGJ19.Scripts.GameLogic
             emojiIconPlayer3.Value = null;
             emojiIconPlayer4.Value = null;
 
-
             if(currentPlayingState == null)
             {
                 // Gmae Not Started Yet.
                 return;
             }
 
-            ICollection<Emoji> emojiCollection;
-            if (player1Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue( player1Id.Value, out emojiCollection) && emojiCollection.Count > 0)
-            {
-                foreach (var emoji in emojiCollection)
-                {
-                    emojiIconPlayer1.Value = emoji.Emoji1;
-                    break;
-                }
-            }
-            
-            if (player2Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player2Id.Value, out emojiCollection) && emojiCollection.Count > 0)
-            {
-                foreach (var emoji in emojiCollection)
-                {
-                    emojiIconPlayer2.Value = emoji.Emoji1;
-                    break;
-                }
-            }
-            
-            if (player3Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player3Id.Value, out emojiCollection) && emojiCollection.Count > 0)
-            {
-                foreach (var emoji in emojiCollection)
-                {
-                    emojiIconPlayer3.Value = emoji.Emoji1;
-                    break;
-                }
-            }
-            
-            if (player4Id.Value != null && currentPlayingState.PlayerEmojis.TryGetValue(player4Id.Value, out emojiCollection) && emojiCollection.Count > 0)
-            {
-                foreach (var emoji in emojiCollection)
-                {
-                    emojiIconPlayer4.Value = emoji.Emoji1;
-                    break;
-                }
-            }
+            GetEmojiForPlayerId(player1Id, emojiIconPlayer1);
+            GetEmojiForPlayerId(player2Id, emojiIconPlayer2);
+            GetEmojiForPlayerId(player3Id, emojiIconPlayer3);
+            GetEmojiForPlayerId(player4Id, emojiIconPlayer4);
 
             onEmojisChanged.SendEvent();
         }
 
-        private void UpdatePlayers()
+        private void GetEmojiForPlayerId(GlobalString playerId, GlobalString emojiForPlayerId) {
+            if (playerId.Value != null) {
+                ICollection<Emoji> emojiCollection;
+                if (currentPlayingState.PlayerEmojis.TryGetValue(playerId.Value, out emojiCollection) && emojiCollection.Count > 0) {
+                    foreach (var emoji in emojiCollection) {
+                        emojiForPlayerId.Value = emoji.Emoji1;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void UpdatePlayers(Room room)
         {
-            if(currentRoomState == null) {
+            if(room == null) {
                 return;
             }
 
             Debug.Log("UPDATING PLAYERS");
-            var playerList = new List<PlayerId>(currentRoomState.Players);
+            var playerList = new List<PlayerId>(room.Players);
             playerList.Sort((left, right) => string.Compare(left.Name, right.Name, StringComparison.Ordinal));
 
             player1Id.Value = playerList.Count > 0 ? playerList[0].Name : null;
@@ -307,6 +300,7 @@ namespace GGJ19.Scripts.GameLogic
                 try
                 {
                     var serverApi = ServerApi.Instance;
+                    Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(SendRoomInfoRequest)}");
                     RoomInformation roomInfoResponse = await serverApi.RoomInformationAsync(roomId);
                     Debug.Log($"[{DateTime.Now:HH:mm:ss}]{nameof(roomInfoResponse)}:{roomInfoResponse.ToJson()}");
                     UpdateGameState(roomInfoResponse.Playing, roomInfoResponse.Waiting);
