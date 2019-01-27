@@ -43,7 +43,7 @@ namespace HalfBlind.FlowNodes {
                 var targetVal = GetInputValue(nameof(TargetValue), TargetValue);
                 switch (Loop) {
                     case LoopType.Incremental:
-                        StartTween(target.transform.position + targetVal);
+                        StartTween(target.transform.localScale + targetVal);
                         break;
                 }
             }

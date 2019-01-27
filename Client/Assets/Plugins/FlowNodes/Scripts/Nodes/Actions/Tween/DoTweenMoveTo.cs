@@ -27,7 +27,7 @@ namespace HalfBlind.FlowNodes {
                 var target = GetInputValue(nameof(Target), Target);
                 var duration = GetInputValue(nameof(Duration), Duration);
 
-                tween = target.transform.DOScale(targetValue, duration);
+                tween = target.transform.DOMove(targetValue, duration);
                 tween.SetEase(Easing);
                 tween.onUpdate += OnUpdateTween;
                 tween.onComplete += OnTweenComplete;
@@ -41,7 +41,7 @@ namespace HalfBlind.FlowNodes {
                 var targetVal = GetInputValue(nameof(TargetValue), TargetValue);
                 switch (Loop) {
                     case LoopType.Incremental:
-                        StartTween(target.transform.localScale + targetVal);
+                        StartTween(target.transform.position + targetVal);
                         break;
                 }
             }
