@@ -50,8 +50,9 @@ public class SendCreateRoomMessage : FlowNode
             {
                 Debug.Log("Sending Create Room Request");
                 var serverApi = ServerApi.Instance;
-                Room joinRoomAsync = await serverApi.CreateRoomAsync(playerId, threatString,null, null, null, null);
-                GameLogicManager.instance.UpdateGameState(null, joinRoomAsync);
+                Room joinRoomResponse = await serverApi.CreateRoomAsync(playerId, threatString,null, null, null, null);
+                Debug.Log($"{nameof(joinRoomResponse)}:{joinRoomResponse.ToJson()}");
+                GameLogicManager.instance.UpdateGameState(null, joinRoomResponse);
             }
         }
         catch (Exception e)
