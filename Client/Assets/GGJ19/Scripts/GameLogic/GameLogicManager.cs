@@ -26,6 +26,8 @@ namespace GGJ19.Scripts.GameLogic
         public ScriptableGameEvent onGameWon;
         public ScriptableGameEvent onGameLost;
         public ScriptableGameEvent onGamePhaseChanged;
+        public ScriptableGameEvent OnEmojiPhaseStarted;
+        public ScriptableGameEvent OnEmojiPhaseEnded;
 
         [Header("Game Variables")] 
         public GlobalString player1Id;
@@ -170,7 +172,18 @@ namespace GGJ19.Scripts.GameLogic
 
         private void UpdateGamePhase()
         {
+            var previousValue = currentGamePhase.Value;
             currentGamePhase.Value = currentPlayingState.CurrentPhase.ToString();
+            if (string.IsNullOrEmpty(previousValue) || previousValue == "NOT_STARTED") {
+                if(currentGamePhase.Value == "PHASE_EMOJIS") {
+                    OnEmojiPhaseStarted.SendEvent();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(previousValue) && previousValue == "PHASE_EMOJIS") {
+                OnEmojiPhaseEnded.SendEvent();
+            }
+            
             onGamePhaseChanged.SendEvent();
         }
 
