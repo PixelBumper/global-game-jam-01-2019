@@ -24,6 +24,7 @@ MonoBehaviour:
   onGameStart: {fileID: 11400000, guid: 1b545eb64e3e944c295f95b321f16150, type: 2}
   onGameWon: {fileID: 11400000, guid: 5342016a276d64cfbb5d676e7f2a2a87, type: 2}
   onGameLost: {fileID: 11400000, guid: ae605b5bd17ed42578fb64884780edd0, type: 2}
+  onGamePhaseChanged: {fileID: 11400000, guid: bea161edbafae4355a9d2194c777bf7b, type: 2}
   player1Id: {fileID: 11400000, guid: 000c04a07d08a418b96afadc95365b53, type: 2}
   player2Id: {fileID: 11400000, guid: 38d64fb050e264779862007447babc0a, type: 2}
   player3Id: {fileID: 11400000, guid: 70d682553436e4f5b8032ed4b27a4a5e, type: 2}
@@ -32,6 +33,7 @@ MonoBehaviour:
     type: 2}
   amountOfTurns: {fileID: 11400000, guid: ddc856121055d45548ca10f74f48f82a, type: 2}
   currentTurn: {fileID: 11400000, guid: 37dcfbe83956d4133bbc4439b0d515a6, type: 2}
+  currentGamePhase: {fileID: 11400000, guid: 54e13f7ef665b47888b4731257957a09, type: 2}
   emojiIconPlayer1: {fileID: 11400000, guid: e4f53402699e446b69a7196b2a626c2d, type: 2}
   emojiIconPlayer2: {fileID: 11400000, guid: 284861698a28f46cfa9093783212a8f3, type: 2}
   emojiIconPlayer3: {fileID: 11400000, guid: 3c09b66ca09b2491fa9a0b1a38672287, type: 2}
