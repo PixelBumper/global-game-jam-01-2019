@@ -1,5 +1,6 @@
 ﻿using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
+using System.Threading.Tasks;
 using UnityEngine;
 using XNode;
 
@@ -17,18 +18,18 @@ public class SendRoleChosenMessage : FlowNode {
         SendServerRequest(currentRoleChosen);
     }
 
-    private async void SendServerRequest(string currentRoleChosen) {
+    private async Task SendServerRequest(string currentRoleChosen) {
         Debug.Log("Role choosen");
         
         var serverApi = ServerApi.Instance;
-        var joinRoomAsync = await serverApi.SetRoleAsync("", "", currentRoleChosen);
+        var setRoleResponse = await serverApi.SetRoleAsync("", "", currentRoleChosen);
         var roomName = GameLogicManager.instance.serverRoomName?.Value;
         var playerId = GameLogicManager.instance.PlayerId;
         if (string.IsNullOrEmpty(roomName)) {
             UnityEngine.Debug.LogError("Room name is empty, wont set role on serverside");
             return;
         }
-        //var joinRoomAsync = await serverApi.SetRoleAsync(roomName, playerId, currentRoleChosen);
-        GameLogicManager.instance.UpdateGameState(joinRoomAsync.Playing, joinRoomAsync.Waiting);
+
+        GameLogicManager.instance.UpdateGameState(setRoleResponse.Playing, setRoleResponse.Waiting);
     }
 }

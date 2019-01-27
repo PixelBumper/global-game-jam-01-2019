@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
 using UnityEngine;
@@ -23,7 +24,7 @@ public class SendChoosenEmojiMessage : FlowNode
         sendEmojis(inputValue);
     }
 
-    private async void sendEmojis(string emojis)
+    private async Task sendEmojis(string emojis)
     {
         var gameLogicManager = GameLogicManager.instance;
         Debug.Log("dispatch request");

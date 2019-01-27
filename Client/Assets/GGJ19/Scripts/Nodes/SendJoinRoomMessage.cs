@@ -1,6 +1,7 @@
 ﻿using GeneratedServerAPI;
 using GGJ19.Scripts.GameLogic;
 using GGJ19.Scripts.Server_Api;
+using System.Threading.Tasks;
 using UnityEngine;
 using XNode;
 
@@ -25,7 +26,7 @@ public class SendJoinRoomMessage : FlowNode
         SendServerRequest(roomName, playerId);
     }
 
-    private async void SendServerRequest(string roomName, string playerId)
+    private async Task SendServerRequest(string roomName, string playerId)
     {
         Debug.Log("Sending Join Request: " + roomName + " : " + playerId);
         if (!string.IsNullOrEmpty(roomName) && !string.IsNullOrEmpty(playerId))
